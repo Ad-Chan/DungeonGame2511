@@ -67,4 +67,39 @@ public class Dungeon {
     	}
     	return foundEntities;
     }
+    
+    public ArrayList<String> checkSurrounding(Entity e) {
+    	ArrayList<String> surrounding = new ArrayList<String>();
+    	ArrayList<Entity> left = findEntity(e.getX()-1, e.getY());
+    	ArrayList<Entity> right = findEntity(e.getX()+1, e.getY());
+    	ArrayList<Entity> up = findEntity(e.getX(), e.getY()-1);
+    	ArrayList<Entity> down = findEntity(e.getX(), e.getY()+1);
+
+    	if (checkNeighbour(left) == true) {
+    		surrounding.add("Left");
+    	}
+    	if (checkNeighbour(right) == true) {
+    		surrounding.add("Right");    		
+    	}
+    	if (checkNeighbour(up) == true) {
+    		surrounding.add("Up");    		
+    	}
+    	if (checkNeighbour(down) == true) {
+    		surrounding.add("Down");   		
+    	}
+    	return surrounding;
+    	
+    }
+    
+    public boolean checkNeighbour(ArrayList<Entity> next) {
+    	for (Entity e:next) {
+    		if (e.getClass().equals(Boulder.class)) {
+    			return true;
+    		}
+    		if (e.getClass().equals(Wall.class)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }
