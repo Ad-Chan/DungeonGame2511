@@ -46,4 +46,13 @@ public class Player extends Entity {
     	this.inventory.add(item);
     }
     
+    public boolean nextToPlayer(int x, int y) {
+    	ArrayList<Entity> entitiesAtLocation = dungeon.findEntity(x, y);
+    	for(Entity e: entitiesAtLocation) {
+    		if(e.getClass().equals(Wall.class)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }
