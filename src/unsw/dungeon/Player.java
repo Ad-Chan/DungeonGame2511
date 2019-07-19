@@ -1,5 +1,7 @@
 package unsw.dungeon;
 
+import java.util.ArrayList;
+
 /**
  * The player entity
  * @author Robert Clifton-Everest
@@ -8,7 +10,7 @@ package unsw.dungeon;
 public class Player extends Entity {
 
     private Dungeon dungeon;
-
+    private ArrayList<Collectable> inventory;
     /**
      * Create a player positioned in square (x,y)
      * @param x
@@ -17,6 +19,7 @@ public class Player extends Entity {
     public Player(Dungeon dungeon, int x, int y) {
         super(x, y);
         this.dungeon = dungeon;
+        this.inventory = new ArrayList<Collectable>();
     }
 
     public void moveUp() {
@@ -38,4 +41,9 @@ public class Player extends Entity {
         if (getX() < dungeon.getWidth() - 1)
             x().set(getX() + 1);
     }
+    
+    public void addCollectable(Collectable item) {
+    	this.inventory.add(item);
+    }
+    
 }
