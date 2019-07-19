@@ -48,6 +48,16 @@ public class Dungeon {
         entities.add(entity);
     }
     
+    public void removeCollectable(int id) {
+    	for (Entity e: entities) {
+    		if (e.getClass().equals(Collectable.class)) {
+    			if(((Collectable) e).getCollectable_id() == id) {
+    				entities.remove(e);
+    			}
+    		}
+    	}
+    }
+    
     public ArrayList<Entity> findEntity(int x, int y) {
     	ArrayList<Entity> foundEntities = new ArrayList<Entity>();
     	for(Entity e: entities){

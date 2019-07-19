@@ -52,6 +52,11 @@ public class Player extends Entity {
     		if(e.getClass().equals(Wall.class)) {
     			return true;
     		}
+    		if(e.getClass().equals(Collectable.class)) {
+    			int id = ((Collectable) e).getCollectable_id();
+    			this.addCollectable((Collectable) e);
+    			dungeon.removeCollectable(id);
+    		}
     	}
     	return false;
     }
