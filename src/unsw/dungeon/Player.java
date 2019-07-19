@@ -63,6 +63,10 @@ public class Player extends Entity {
     				return true;
     			}
     		}
+    		if(e.getClass().equals(Sword.class)) { //Code for picking up sword, need to unload entity
+    			this.addCollectable((Collectable)e);
+    			dungeon.removeCollectable(((Collectable)e).getCollectable_id());
+    		}
     	}
     	return false;
     }
