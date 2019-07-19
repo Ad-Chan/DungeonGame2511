@@ -88,6 +88,22 @@ public abstract class DungeonLoader {
     public abstract void onLoad(FloorSwitch floorSwitch);
 
     public abstract void onLoad(Boulder boulder);
+    
+    public abstract void onLoad(Sword sword);
+
+    public abstract void onLoad(InvincibilityPotion potion);
+    
+    public abstract void onLoad(Treasure gold);
+
+    public abstract void onLoad(Key key);
+    
+    public abstract void onLoad(Door door);
+
+    public abstract void onLoad(Enemy enemy);
+    
+    public abstract void onLoad(UnlitBomb unlitBomb);
+    
+
     // TODO Create additional abstract methods for the other entities
 
 }
