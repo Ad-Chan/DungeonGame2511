@@ -57,6 +57,9 @@ public class Player extends Entity {
     			this.addCollectable((Collectable) e);
     			dungeon.removeCollectable(id);
     		}
+    		if(e.getClass().equals(Boulder.class)) {
+    			//((Boulder)e).moveBoulder(x+1, y+1);
+    		}
     	}
     	return false;
     }

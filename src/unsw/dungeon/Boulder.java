@@ -7,4 +7,9 @@ public class Boulder extends Entity {
 		super(x, y);
 	}
 	
+	//Change position of boulder
+	public void moveBoulder(int x, int y) {
+		y().set(y);
+		x().set(x);
+	}
 }
