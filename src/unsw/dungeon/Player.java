@@ -59,7 +59,9 @@ public class Player extends Entity {
     		}
     		if(e.getClass().equals(Boulder.class)) {
     			ArrayList<String> surrounding = dungeon.checkSurrounding(e);
-    			((Boulder)e).checkPlayerPos(this.getX(), this.getY(), surrounding);
+    			if (((Boulder)e).checkPlayerPos(this.getX(), this.getY(), surrounding)) {
+    				return true;
+    			}
     		}
     	}
     	return false;
