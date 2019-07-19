@@ -58,7 +58,7 @@ public class Player extends Entity {
     			dungeon.removeCollectable(id);
     		}
     		if(e.getClass().equals(Boulder.class)) {
-    			//((Boulder)e).moveBoulder(x+1, y+1);
+    			((Boulder)e).checkPlayerPos(this.getX(), this.getY());
     		}
     	}
     	return false;
