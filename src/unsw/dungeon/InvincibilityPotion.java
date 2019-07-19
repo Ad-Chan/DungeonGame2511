@@ -1,10 +1,10 @@
 package unsw.dungeon;
 
 // Invincibility Potion Class (to be modified)
-public class InvincibilityPotion extends Entity {
+public class InvincibilityPotion extends Collectable {
 	
-	public InvincibilityPotion(int x, int y) {
-		super(x, y);
+	public InvincibilityPotion(int x, int y, int id) {
+		super(x, y, id);
 	}
 	
 }
