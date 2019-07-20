@@ -43,7 +43,7 @@ class SwordTreasureTest {
 		dungeon.addEntity(newTreasure);
 		newP.moveDown();
 		ArrayList<Collectable> inventory = newP.getInventory();
-		assert(inventory.get(0).getClass().equals(Sword.class));
+		assert(inventory.get(0).getClass().equals(Treasure.class));
 	}
 	
 	@Test
