@@ -20,6 +20,7 @@ public class Dungeon {
     private int width, height;
     private List<Entity> entities;
     private Player player;
+    private ArrayList<GoalCondition> goalList;
 
     public Dungeon(int width, int height) {
         this.width = width;
@@ -48,18 +49,16 @@ public class Dungeon {
         entities.add(entity);
     }
     
-    /*public void removeCollectable(int id) {
-    	for (Entity e: entities) {
-    		if (e.getClass().equals(Collectable.class)) {
-    			if(((Collectable) e).getCollectable_id() == id) {
-    				entities.remove(e);
-    			}
-    		}
-    	}
-    }*/
-    
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
+    }
+    
+    public void addGoal(GoalCondition goal) {
+    	if(goalList.contains(goal)) {
+    		return;
+    	}
+    	goalList.add(goal);
+    	return;
     }
     
     public ArrayList<Entity> findEntity(int x, int y) {
