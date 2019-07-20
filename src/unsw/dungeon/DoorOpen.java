@@ -3,7 +3,7 @@ package unsw.dungeon;
 public class DoorOpen implements DoorState {
 
 	@Override
-	public void unlock() {
+	public void unlock(Door door) {
 		//DoNothing		
 	}
 	
