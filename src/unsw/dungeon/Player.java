@@ -58,20 +58,8 @@ public class Player extends Entity {
     				return true;
     			}
     		}
-    		if(e.getClass().equals(Sword.class)) { //Code for picking up different collectables, need to unload entity
-    			this.addCollectable((Sword)e);
-    			dungeon.removeEntity(e);
-    		}
-    		if(e.getClass().equals(Key.class)) { 
-    			this.addCollectable((Key)e);
-    			dungeon.removeEntity(e);
-    		}
-    		if(e.getClass().equals(Treasure.class)) { 
-    			this.addCollectable((Treasure)e);
-    			dungeon.removeEntity(e);
-    		}
-    		if(e.getClass().equals(UnlitBomb.class)) { 
-    			this.addCollectable((UnlitBomb)e);
+    		if(Collectable.class.isAssignableFrom(e.getClass())) {
+    			this.addCollectable((Collectable)e);
     			dungeon.removeEntity(e);
     		}
     	}
