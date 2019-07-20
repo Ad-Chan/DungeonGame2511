@@ -104,10 +104,9 @@ public abstract class DungeonLoader {
         	uniqueID++;
         	break;
         case "door":
-        	Door door = new Door(x, y, uniqueID);
+        	Door door = new Door(x, y, 4);
         	onLoad(door);
         	entity = door;
-        	uniqueID++;
         	break;
         case "enemy":
         	Enemy enemy = new Enemy(x, y, uniqueID);
