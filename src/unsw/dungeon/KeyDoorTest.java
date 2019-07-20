@@ -21,7 +21,7 @@ class KeyDoorTest {
 		Key newKey = new Key(1, 1, 2, 5);
 		assert(newDoor.getX() == 1 && newDoor.getY() == 2);
 		assert(newDoor.getKeycode() == 5);
-		assert(newDoor.checkState() == "Locked");
+		assert(newDoor.checkStrategy() == "Locked");
 	}
 
 	//User Story 2.3: Player can pick up a key
@@ -45,7 +45,7 @@ class KeyDoorTest {
 		Door newDoor = new Door(5, 6, 5);
 		assert(newKey.getKeycode() == newDoor.getKeycode());
 		newDoor.unlockDoor(newKey.getKeycode());
-		assert(newDoor.checkState() == "Open");
+		assert(newDoor.checkStrategy() == "Open");
 	}
 	
 

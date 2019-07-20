@@ -4,12 +4,12 @@ package unsw.dungeon;
 public class Door extends Entity{
 	
 	private int keycode;
-	private DoorState state;
+	private DoorStrategy strategy;
 	
 	public Door(int x, int y, int keycode) {
 		super(x, y);
 		this.setKeycode(keycode);
-		this.state = new DoorClosed();
+		this.strategy = new DoorClosed();
 	}
 
 	public int getKeycode() {
@@ -21,21 +21,21 @@ public class Door extends Entity{
 	}
 
 	public boolean unlockDoor(int keycode) {
-		if (keycode == this.keycode && this.checkState().equals("Locked")) {
-			state.unlock(this);
+		if (keycode == this.keycode && this.checkStrategy().equals("Locked")) {
+			strategy.unlock(this);
 			return true;
 		}
 		return false;
 	}
 	
-	public void setState(DoorState newState) {
-		this.state = newState;
+	public void setState(DoorStrategy newState) {
+		this.strategy = newState;
 	}
 	
-	public String checkState() {
-		if (this.state instanceof DoorClosed) {
+	public String checkStrategy() {
+		if (this.strategy instanceof DoorClosed) {
 			return "Locked";
-		} else if (this.state instanceof DoorOpen){
+		} else if (this.strategy instanceof DoorOpen){
 			return "Open";
 		}
 		return "Unknown";

@@ -1,6 +1,6 @@
 package unsw.dungeon;
 
-public class DoorClosed implements DoorState{
+public class DoorClosed implements DoorStrategy{
 
 	@Override
 	public void unlock(Door door) {

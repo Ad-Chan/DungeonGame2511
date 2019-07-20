@@ -149,7 +149,7 @@ public class Player extends Entity {
     			this.addCollectable((Collectable)e);
     			dungeon.removeEntity(e);
     		}
-    		if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
+    		if (e.getClass().equals(Door.class) && ((Door)e).checkStrategy().equals("Locked")) {
     			return true;
     		}
     	}
