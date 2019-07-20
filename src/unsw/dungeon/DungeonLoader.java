@@ -19,6 +19,7 @@ import org.json.JSONTokener;
 public abstract class DungeonLoader {
 
     private JSONObject json;
+    private int uniqueID;
 
     public DungeonLoader(String filename) throws FileNotFoundException {
         json = new JSONObject(new JSONTokener(new FileReader("dungeons/" + filename)));
@@ -36,6 +37,8 @@ public abstract class DungeonLoader {
 
         JSONArray jsonEntities = json.getJSONArray("entities");
 
+        uniqueID = 0;
+        
         for (int i = 0; i < jsonEntities.length(); i++) {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
@@ -66,9 +69,10 @@ public abstract class DungeonLoader {
         	entity = exit;
         	break;
         case "switch":
-        	FloorSwitch floorSwitch = new FloorSwitch(x, y);
+        	FloorSwitch floorSwitch = new FloorSwitch(x, y, uniqueID);
         	onLoad(floorSwitch);
         	entity = floorSwitch;
+        	uniqueID++;
         	break;
         case "boulder":
         	Boulder boulder = new Boulder(x, y);
@@ -76,39 +80,46 @@ public abstract class DungeonLoader {
         	entity = boulder;
         	break;
         case "sword":
-        	Sword sword = new Sword(x, y, 1); //Need unique ID
+        	Sword sword = new Sword(x, y, uniqueID);
         	onLoad(sword);
         	entity = sword;
+        	uniqueID++;
         	break;
         case "invincibility":
-        	InvincibilityPotion potion = new InvincibilityPotion(x, y, 2, 10); //Need unique ID
+        	InvincibilityPotion potion = new InvincibilityPotion(x, y, uniqueID, 10);
         	onLoad(potion);
         	entity = potion;
+        	uniqueID++;
         	break;
         case "treasure":
-        	Treasure treasure = new Treasure(x, y, 3); //Need unique ID
+        	Treasure treasure = new Treasure(x, y, uniqueID);
         	onLoad(treasure);
         	entity = treasure;
+        	uniqueID++;
         	break;
         case "key":
-        	Key key = new Key(x, y, 9 , 4); //Need unique ID
+        	Key key = new Key(x, y, uniqueID , 4);
         	onLoad(key);
         	entity = key;
+        	uniqueID++;
         	break;
         case "door":
-        	Door door = new Door(x, y, 4); //Unique keycode
+        	Door door = new Door(x, y, uniqueID);
         	onLoad(door);
         	entity = door;
+        	uniqueID++;
         	break;
         case "enemy":
-        	Enemy enemy = new Enemy(x, y);
+        	Enemy enemy = new Enemy(x, y, uniqueID);
         	onLoad(enemy);
         	entity = enemy;
+        	uniqueID++;
         	break;
         case "bomb":
-        	UnlitBomb bomb = new UnlitBomb(x, y, 6); //Need unique ID
+        	UnlitBomb bomb = new UnlitBomb(x, y, uniqueID);
         	onLoad(bomb);
         	entity = bomb;
+        	uniqueID++;
         	break;
         }
         dungeon.addEntity(entity);
@@ -137,8 +148,5 @@ public abstract class DungeonLoader {
     public abstract void onLoad(Enemy enemy);
     
     public abstract void onLoad(UnlitBomb unlitBomb);
-    
-
-    // TODO Create additional abstract methods for the other entities
 
 }
