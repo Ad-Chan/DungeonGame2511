@@ -36,14 +36,14 @@ public abstract class DungeonLoader {
         Dungeon dungeon = new Dungeon(width, height);
 
         JSONArray jsonEntities = json.getJSONArray("entities");
-        JSONObject jsonGoal = json.getJSONObject("goal-condition");
+        //JSONObject jsonGoal = json.getJSONObject("goal-condition");
 
         uniqueID = 0;
         
         for (int i = 0; i < jsonEntities.length(); i++) {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
-        loadGoal(dungeon, jsonGoal);
+        //loadGoal(dungeon, jsonGoal);
         return dungeon;
     }
 
@@ -127,7 +127,7 @@ public abstract class DungeonLoader {
     }
 	
 
-    private void loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
+    /*private void loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
         String mainGoal = json.getString("goal");
         
         switch(mainGoal) {
@@ -153,7 +153,7 @@ public abstract class DungeonLoader {
         	
         }
 
-	}
+	}*/
 
     public abstract void onLoad(Entity player);
 
