@@ -16,8 +16,8 @@ public class Player extends Entity {
      * @param x
      * @param y
      */
-    public Player(Dungeon dungeon, int x, int y) {
-        super(x, y);
+    public Player(Dungeon dungeon, int x, int y, String name) {
+        super(x, y, name);
         this.dungeon = dungeon;
         this.inventory = new ArrayList<Collectable>();
     }
@@ -51,11 +51,11 @@ public class Player extends Entity {
     }
     
     public void unlockDoor() {
-    	ArrayList<Entity> interactions = find_interaction(Key.class, Door.class);
+    	ArrayList<Entity> interactions = find_interaction("Key", "Door");
     	if (interactions.size() >= 2) {
 	    	int keycode = ((Key)interactions.get(0)).getKeycode();
 	    	for (Entity i: interactions) {
-	    		if (i.getClass().equals(Door.class)) {
+	    		if (i.getEntityName().equals("Door")) {
 	    			if (((Door)i).unlockDoor(keycode)) {
 	    				this.inventory.remove(interactions.get(0));
 	    				keycode = -1;
@@ -66,9 +66,9 @@ public class Player extends Entity {
     }
 
     public void attackEnemy() { 
-    	ArrayList<Entity> interactions = find_interaction(Sword.class, Enemy.class);
+    	ArrayList<Entity> interactions = find_interaction("Sword", "Enemy");
     	for (Entity i: interactions) {
-    		if (i.getClass().equals(Enemy.class) && interactions.get(0).getClass().equals(Sword.class)) {
+    		if (i.getEntityName().equals("Enemy") && interactions.get(0).getEntityName().equals("Sword")) {
     			dungeon.removeEntity(i);
     			((Sword)interactions.get(0)).decrementHealth();
     		}
@@ -77,8 +77,8 @@ public class Player extends Entity {
     
     public void placeBomb() {
     	for (Collectable e: this.inventory) {
-    		if (e.getClass().equals(UnlitBomb.class)) {
-    			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
+    		if (e.getEntityName().equals("UnlitBomb")) {
+    			LitBomb newBomb = new LitBomb(this.getX(), this.getY(), "LitBomb");
     			dungeon.addEntity(newBomb);
     			this.inventory.remove(e);
     			break;
@@ -87,37 +87,37 @@ public class Player extends Entity {
     }
     
     //Generalised finding interaction between a collectable and specific entity (e.g. sword and enemy classes)
-    public ArrayList<Entity> find_interaction(Class<?> collectable, Class<?> entity) {
+    public ArrayList<Entity> find_interaction(String collectable, String entity) {
     	ArrayList<Entity> interactions = new ArrayList<Entity>();
     	for (Collectable e: this.inventory) {
-    		if (e.getClass().equals(collectable)) {
+    		if (e.getEntityName().equals(collectable)) {
     			interactions.add(e);
-    			ArrayList<Class<?>> types = new ArrayList<Class<?>>();
+    			ArrayList<String> types = new ArrayList<String>();
     			types.add(entity);
     			ArrayList<String> surrounding = dungeon.checkSurrounding(this, types);
     			for (String i: surrounding) {
     				Entity add;
     				switch(i) {
     				case "Left":
-    					add = (Door)dungeon.getEntity(this.getX()-1, this.getY(), Door.class);
+    					add = (Door)dungeon.getEntity(this.getX()-1, this.getY(), "Door");
     					if (add != null) {
     						interactions.add(add);
     					}
     					break;
     				case "Right":
-						add = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
+						add = (Door)dungeon.getEntity(this.getX()+1, this.getY(), "Door");
     					if (add != null) {
     						interactions.add(add);
     					} 				
     					break;
     				case "Up":
-    					add = (Door)dungeon.getEntity(this.getX(), this.getY()+1, Door.class);
+    					add = (Door)dungeon.getEntity(this.getX(), this.getY()+1, "Door");
     					if (add != null) {
     						interactions.add(add);
     					}
     					break;
     				case "Down":
-    					add = (Door)dungeon.getEntity(this.getX(), this.getY()-1, Door.class);
+    					add = (Door)dungeon.getEntity(this.getX(), this.getY()-1, "Door");
     					if (add != null) {
     						interactions.add(add);
     					}
@@ -136,10 +136,10 @@ public class Player extends Entity {
     			return true;
     		}
     		if(e.getClass().equals(Boulder.class)) {
-    			ArrayList<Class<?>> types = new ArrayList<Class<?>>();
-    			types.add(Boulder.class);
-    			types.add(Wall.class);
-    			types.add(Door.class);
+    			ArrayList<String> types = new ArrayList<String>();
+    			types.add("Boulder");
+    			types.add("Wall");
+    			types.add("Door");
     			ArrayList<String> surrounding = dungeon.checkSurrounding(e, types);
     			if (((Boulder)e).checkPlayerPos(this.getX(), this.getY(), surrounding)) {
     				return true;
@@ -149,7 +149,7 @@ public class Player extends Entity {
     			this.addCollectable((Collectable)e);
     			dungeon.removeEntity(e);
     		}
-    		if (e.getClass().equals(Door.class) && ((Door)e).checkStrategy().equals("Locked")) {
+    		if (e.getEntityName().equals("Door") && ((Door)e).checkStrategy().equals("Locked")) {
     			return true;
     		}
     	}

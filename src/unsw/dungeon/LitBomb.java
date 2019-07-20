@@ -8,8 +8,8 @@ import java.util.TimerTask;
 public class LitBomb extends Entity {
 	
 	private LitBombState state;
-	public LitBomb(int x, int y) {
-		super(x, y);
+	public LitBomb(int x, int y, String name) {
+		super(x, y, name);
 		this.state = new LitBomb1();
 		bombTick();
 	}

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 // Boulder Class (to be modified)
 public class Boulder extends Entity {
 	
-	public Boulder(int x, int y) {
-		super(x, y);
+	public Boulder(int x, int y, String name) {
+		super(x, y, name);
 	}
 	
 	//Change position of boulder

@@ -6,8 +6,8 @@ public class Door extends Entity{
 	private int keycode;
 	private DoorStrategy strategy;
 	
-	public Door(int x, int y, int keycode) {
-		super(x, y);
+	public Door(int x, int y, int keycode, String name) {
+		super(x, y, name);
 		this.setKeycode(keycode);
 		this.strategy = new DoorClosed();
 	}

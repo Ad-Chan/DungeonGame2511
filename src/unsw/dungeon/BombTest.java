@@ -8,7 +8,7 @@ class BombTest {
 
 	@Test
 	void createBomb() {
-		UnlitBomb newBomb = new UnlitBomb(1, 1, 1);
+		UnlitBomb newBomb = new UnlitBomb(1, 1, 1, "UnlitBomb");
 		assert(newBomb.getX() == 1 && newBomb.getY() == 1);
 	}
 	
@@ -16,8 +16,8 @@ class BombTest {
 	@Test
 	void pickupBomb() {
 		Dungeon dungeon = new Dungeon(50, 50);
-		Player newP = new Player(dungeon, 1, 0);
-		UnlitBomb newBomb = new UnlitBomb(1, 1, 1);
+		Player newP = new Player(dungeon, 1, 0, "Player");
+		UnlitBomb newBomb = new UnlitBomb(1, 1, 1, "UnlitBomb");
 		assert(newBomb.getX() == 1 && newBomb.getY() == 1);
 		dungeon.addEntity(newBomb);
 		newP.moveDown();
@@ -27,7 +27,7 @@ class BombTest {
 
 	@Test
 	void litBombStages() throws InterruptedException {
-		LitBomb newBomb = new LitBomb(1, 1);
+		LitBomb newBomb = new LitBomb(1, 1, "LitBomb");
 		assert(newBomb.checkState() == "LitBomb1");
 		Thread.sleep(400);
 		assert(newBomb.checkState() == "LitBomb2");
@@ -41,14 +41,14 @@ class BombTest {
 	@Test
 	void dropBomb() {
 		Dungeon dungeon = new Dungeon(50, 50);
-		Player newP = new Player(dungeon, 1, 0);
-		UnlitBomb newBomb = new UnlitBomb(1, 1, 1);
+		Player newP = new Player(dungeon, 1, 0, "Player");
+		UnlitBomb newBomb = new UnlitBomb(1, 1, 1, "UnlitBomb");
 		assert(newBomb.getX() == 1 && newBomb.getY() == 1);
 		dungeon.addEntity(newBomb);
 		newP.moveDown();
 		ArrayList<Collectable> inventory = newP.getInventory();
-		assert(inventory.get(0).getClass().equals(UnlitBomb.class));
+		assert(inventory.get(0).getEntityName().equals("UnlitBomb"));
 		newP.placeBomb();
-		assert(dungeon.getEntity(1, 1, LitBomb.class).getClass().equals(LitBomb.class));
+		assert(dungeon.getEntity(1, 1, "LitBomb").getEntityName().equals("LitBomb"));
 	}
 }

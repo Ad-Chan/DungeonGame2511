@@ -71,17 +71,17 @@ public class Dungeon {
     	return foundEntities;
     }
     
-    public Entity getEntity(int x, int y, Class<?> t) {
+    public Entity getEntity(int x, int y, String t) {
     	ArrayList<Entity> entities = findEntity(x, y);
     	for (Entity e: entities) {
-    		if (e.getClass().equals(t)) {
+    		if (e.getEntityName().equals(t)) {
     			return e;
     		}
     	}
     	return null;
     }
     
-    public ArrayList<String> checkSurrounding(Entity e, ArrayList<Class<?>> types) {
+    public ArrayList<String> checkSurrounding(Entity e, ArrayList<String> types) {
     	ArrayList<String> surrounding = new ArrayList<String>();
     	ArrayList<Entity> left = findEntity(e.getX()-1, e.getY());
     	ArrayList<Entity> right = findEntity(e.getX()+1, e.getY());
@@ -104,10 +104,10 @@ public class Dungeon {
     	
     }
     
-    public boolean checkNeighbour(ArrayList<Entity> next, ArrayList<Class<?>> types) {
+    public boolean checkNeighbour(ArrayList<Entity> next, ArrayList<String> types) {
     	for (Entity e:next) {
-    		for (Class<?> i: types) {
-	    		if (e.getClass().equals(i)) {
+    		for (String i: types) {
+	    		if (e.getEntityName().equals(i)) {
 	    			return true;
 	    		}
     		}

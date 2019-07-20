@@ -7,7 +7,7 @@ class DungeonTest {
 	@Test
 	void createDungeon() {
 		Dungeon dungeon = new Dungeon(50,50);
-		Player newP = new Player(dungeon, 0, 0);
+		Player newP = new Player(dungeon, 0, 0, "Player");
 		dungeon.setPlayer(newP);
 		assert(dungeon.getPlayer().equals(newP));
 	}
@@ -21,19 +21,19 @@ class DungeonTest {
 	@Test
 	void addEntity() {
 		Dungeon dungeon = new Dungeon(50, 50);
-		Boulder newBoulder = new Boulder(1,1);
+		Boulder newBoulder = new Boulder(1,1, "Boulder");
 		dungeon.addEntity(newBoulder);
-		assert(dungeon.getEntity(1, 1, Boulder.class).equals(newBoulder));
+		assert(dungeon.getEntity(1, 1, "Boulder").equals(newBoulder));
 		
 	}	
 	
 	@Test
 	void removeEntity() {
 		Dungeon dungeon = new Dungeon(50, 50);
-		Boulder newBoulder = new Boulder(1,1);
+		Boulder newBoulder = new Boulder(1,1, "Boulder");
 		dungeon.addEntity(newBoulder);
 		dungeon.removeEntity(newBoulder);
-		assert(dungeon.getEntity(1, 1, Boulder.class) == null);
+		assert(dungeon.getEntity(1, 1, "Boulder") == null);
 		
 	}	
 	
