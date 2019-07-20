@@ -1,7 +1,7 @@
 package unsw.dungeon;
 
 // Door Class (to be modified)
-public class Door extends Entity implements DoorState{
+public class Door extends Entity{
 	
 	private int keycode;
 	private DoorState state;
@@ -9,6 +9,7 @@ public class Door extends Entity implements DoorState{
 	public Door(int x, int y, int keycode) {
 		super(x, y);
 		this.setKeycode(keycode);
+		this.state = new DoorClosed();
 	}
 
 	public int getKeycode() {
@@ -19,9 +20,11 @@ public class Door extends Entity implements DoorState{
 		this.keycode = keycode;
 	}
 
-	@Override
-	public void unlock() {
-		state.unlock();
-	}	
+	public void unlockDoor(int keycode) {
+		if (keycode == this.keycode) {
+			state.unlock();
+		}
+	}
+	
 	
 }
