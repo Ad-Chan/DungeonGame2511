@@ -1,7 +1,5 @@
 package unsw.dungeon;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +16,6 @@ class KeyDoorTest {
 	@Test
 	void createDoor() {
 		Door newDoor = new Door(1, 2, 5);
-		Key newKey = new Key(1, 1, 2, 5);
 		assert(newDoor.getX() == 1 && newDoor.getY() == 2);
 		assert(newDoor.getKeycode() == 5);
 		assert(newDoor.checkStrategy() == "Locked");
