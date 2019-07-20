@@ -1,12 +1,12 @@
 package unsw.dungeon;
 
 // Key Class (to be modified)
-public class Key extends Entity {
+public class Key extends Collectable {
 	
 	private int keycode;
 	
-	public Key(int x, int y, int keycode) {
-		super(x, y);
+	public Key(int x, int y, int id, int keycode) {
+		super(x, y, id);
 		this.setKeycode(keycode);
 	}
 

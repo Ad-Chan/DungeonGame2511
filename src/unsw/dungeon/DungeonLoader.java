@@ -76,22 +76,22 @@ public abstract class DungeonLoader {
         	entity = boulder;
         	break;
         case "sword":
-        	Sword sword = new Sword(x, y, 1);
+        	Sword sword = new Sword(x, y, 1); //Need unique ID
         	onLoad(sword);
         	entity = sword;
         	break;
         case "invincibility":
-        	InvincibilityPotion potion = new InvincibilityPotion(x, y, 2, 10);
+        	InvincibilityPotion potion = new InvincibilityPotion(x, y, 2, 10); //Need unique ID
         	onLoad(potion);
         	entity = potion;
         	break;
         case "treasure":
-        	Treasure treasure = new Treasure(x, y, 3);
+        	Treasure treasure = new Treasure(x, y, 3); //Need unique ID
         	onLoad(treasure);
         	entity = treasure;
         	break;
         case "key":
-        	Key key = new Key(x, y, 4);
+        	Key key = new Key(x, y, 9 , 4); //Need unique ID
         	onLoad(key);
         	entity = key;
         	break;
@@ -106,7 +106,7 @@ public abstract class DungeonLoader {
         	entity = enemy;
         	break;
         case "bomb":
-        	UnlitBomb bomb = new UnlitBomb(x, y, 6);
+        	UnlitBomb bomb = new UnlitBomb(x, y, 6); //Need unique ID
         	onLoad(bomb);
         	entity = bomb;
         	break;
