@@ -52,11 +52,6 @@ public class Player extends Entity {
     		if(e.getClass().equals(Wall.class)) {
     			return true;
     		}
-    		if(e.getClass().equals(Collectable.class)) {
-    			int id = ((Collectable) e).getCollectable_id();
-    			this.addCollectable((Collectable) e);
-    			dungeon.removeCollectable(id);
-    		}
     		if(e.getClass().equals(Boulder.class)) {
     			ArrayList<String> surrounding = dungeon.checkSurrounding(e);
     			if (((Boulder)e).checkPlayerPos(this.getX(), this.getY(), surrounding)) {
@@ -67,6 +62,7 @@ public class Player extends Entity {
     			this.addCollectable((Collectable)e);
     			dungeon.removeCollectable(((Collectable)e).getCollectable_id());
     		}
+    		
     	}
     	return false;
     }
