@@ -58,11 +58,22 @@ public class Player extends Entity {
     				return true;
     			}
     		}
-    		if(e.getClass().equals(Sword.class)) { //Code for picking up sword, need to unload entity
-    			this.addCollectable((Collectable)e);
-    			dungeon.removeCollectable(((Collectable)e).getCollectable_id());
+    		if(e.getClass().equals(Sword.class)) { //Code for picking up different collectables, need to unload entity
+    			this.addCollectable((Sword)e);
+    			dungeon.removeCollectable(((Sword)e).getCollectable_id());
     		}
-    		
+    		if(e.getClass().equals(Key.class)) { 
+    			this.addCollectable((Key)e);
+    			dungeon.removeCollectable(((Sword)e).getCollectable_id());
+    		}
+    		if(e.getClass().equals(Treasure.class)) { 
+    			this.addCollectable((Treasure)e);
+    			dungeon.removeCollectable(((Treasure)e).getCollectable_id());
+    		}
+    		if(e.getClass().equals(UnlitBomb.class)) { 
+    			this.addCollectable((UnlitBomb)e);
+    			dungeon.removeCollectable(((UnlitBomb)e).getCollectable_id());
+    		}
     	}
     	return false;
     }
