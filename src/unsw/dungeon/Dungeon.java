@@ -48,7 +48,7 @@ public class Dungeon {
         entities.add(entity);
     }
     
-    public void removeCollectable(int id) {
+    /*public void removeCollectable(int id) {
     	for (Entity e: entities) {
     		if (e.getClass().equals(Collectable.class)) {
     			if(((Collectable) e).getCollectable_id() == id) {
@@ -56,6 +56,10 @@ public class Dungeon {
     			}
     		}
     	}
+    }*/
+    
+    public void removeEntity(Entity entity) {
+    	entities.remove(entity);
     }
     
     public ArrayList<Entity> findEntity(int x, int y) {
