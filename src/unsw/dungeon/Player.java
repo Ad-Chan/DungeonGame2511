@@ -52,7 +52,7 @@ public class Player extends Entity {
     
     public void unlockDoor() {
     	ArrayList<Entity> interactions = find_interaction(Key.class, Door.class);
-    	if (interactions.size() > 2) {
+    	if (interactions.size() >= 2) {
 	    	int keycode = ((Key)interactions.get(0)).getKeycode();
 	    	for (Entity i: interactions) {
 	    		if (i.getClass().equals(Door.class)) {
