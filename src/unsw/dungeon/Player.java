@@ -54,29 +54,31 @@ public class Player extends Entity {
     			ArrayList<String> surrounding = dungeon.checkSurrounding(this, types);
     			for (String i: surrounding) {
     				Door door;
-    				if (i.equals("Left")) {
+    				switch(i) {
+    				case "Left":
     					door = (Door)dungeon.getEntity(this.getX()-1, this.getY(), Door.class);
     					if (door != null) {
     						door.unlockDoor(((Key)e).getKeycode());
     					}
-    				}
-    				if (i.equals("Right")) {
-    					door = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
-    					if (door != null) {
-    						door.unlockDoor(((Key)e).getKeycode());
-    					}
-    				}
-    				if (i.equals("Up")) {
+    					break;
+    				case "Right":
+						door = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
+						if (door != null) {
+							door.unlockDoor(((Key)e).getKeycode());
+						}    				
+    					break;
+    				case "Up":
     					door = (Door)dungeon.getEntity(this.getX(), this.getY()+1, Door.class);
     					if (door != null) {
     						door.unlockDoor(((Key)e).getKeycode());
     					}
-    				}
-    				if (i.equals("Down")) {
+    					break;
+    				case "Down":
     					door = (Door)dungeon.getEntity(this.getX(), this.getY()-1, Door.class);
     					if (door != null) {
     						door.unlockDoor(((Key)e).getKeycode());
     					}
+    					break;
     				}
     			}
     			
