@@ -21,13 +21,22 @@ public class Door extends Entity{
 	}
 
 	public void unlockDoor(int keycode) {
-		if (keycode == this.keycode) {
+		if (keycode == this.keycode && this.checkState().equals("Locked")) {
 			state.unlock(this);
 		}
 	}
 	
 	public void setState(DoorState newState) {
 		this.state = newState;
+	}
+	
+	public String checkState() {
+		if (this.state instanceof DoorClosed) {
+			return "Locked";
+		} else if (this.state instanceof DoorOpen){
+			return "Open";
+		}
+		return "Unknown";
 	}
 	
 }

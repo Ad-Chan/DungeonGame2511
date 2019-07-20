@@ -72,39 +72,54 @@ public class Dungeon {
     	return foundEntities;
     }
     
-    public ArrayList<String> checkSurrounding(Entity e) {
+    public Entity getEntity(int x, int y, Class<?> t) {
+    	ArrayList<Entity> entities = findEntity(x, y);
+    	for (Entity e: entities) {
+    		if (e.getClass().equals(t)) {
+    			return e;
+    		}
+    	}
+    	return null;
+    }
+    
+    public ArrayList<String> checkSurrounding(Entity e, ArrayList<Class<?>> types) {
     	ArrayList<String> surrounding = new ArrayList<String>();
     	ArrayList<Entity> left = findEntity(e.getX()-1, e.getY());
     	ArrayList<Entity> right = findEntity(e.getX()+1, e.getY());
     	ArrayList<Entity> up = findEntity(e.getX(), e.getY()-1);
     	ArrayList<Entity> down = findEntity(e.getX(), e.getY()+1);
 
-    	if (checkNeighbour(left) == true) {
+    	if (checkNeighbour(left, types) == true) {
     		surrounding.add("Left");
     	}
-    	if (checkNeighbour(right) == true) {
+    	if (checkNeighbour(right, types) == true) {
     		surrounding.add("Right");    		
     	}
-    	if (checkNeighbour(up) == true) {
+    	if (checkNeighbour(up, types) == true) {
     		surrounding.add("Up");    		
     	}
-    	if (checkNeighbour(down) == true) {
+    	if (checkNeighbour(down, types) == true) {
     		surrounding.add("Down");   		
     	}
     	return surrounding;
     	
     }
     
-    public boolean checkNeighbour(ArrayList<Entity> next) {
+    public boolean checkNeighbour(ArrayList<Entity> next, ArrayList<Class<?>> types) {
     	for (Entity e:next) {
-    		if (e.getClass().equals(Boulder.class)) {
-    			return true;
-    		}
-    		if (e.getClass().equals(Wall.class)) {
-    			return true;
-    		}
-    		if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
-    			return true;
+    		//if (e.getClass().equals(Boulder.class)) {
+    			//return true;
+    		//}
+    		//if (e.getClass().equals(Wall.class)) {
+    			//return true;
+    		//}
+    		//if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
+    			//return true;
+    		//}
+    		for (Class<?> i: types) {
+	    		if (e.getClass().equals(i)) {
+	    			return true;
+	    		}
     		}
     	}
     	return false;

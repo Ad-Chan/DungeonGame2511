@@ -48,8 +48,37 @@ public class Player extends Entity {
     
     public void unlockDoor() {
     	for (Collectable e: this.inventory) {
-    		if (e.getClass().equals(Key.class)) {
-    			//ArrayList<String> surrounding = dungeon.checkSurrounding(this);
+    		if (e.getClass().equals(Key.class)) {  			
+    			ArrayList<Class<?>> types = new ArrayList<Class<?>>();
+    			types.add(Door.class);
+    			ArrayList<String> surrounding = dungeon.checkSurrounding(this, types);
+    			for (String i: surrounding) {
+    				Door door;
+    				if (i.equals("Left")) {
+    					door = (Door)dungeon.getEntity(this.getX()-1, this.getY(), Door.class);
+    					if (door != null) {
+    						door.unlockDoor(((Key)e).getKeycode());
+    					}
+    				}
+    				if (i.equals("Right")) {
+    					door = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
+    					if (door != null) {
+    						door.unlockDoor(((Key)e).getKeycode());
+    					}
+    				}
+    				if (i.equals("Up")) {
+    					door = (Door)dungeon.getEntity(this.getX(), this.getY()+1, Door.class);
+    					if (door != null) {
+    						door.unlockDoor(((Key)e).getKeycode());
+    					}
+    				}
+    				if (i.equals("Down")) {
+    					door = (Door)dungeon.getEntity(this.getX(), this.getY()-1, Door.class);
+    					if (door != null) {
+    						door.unlockDoor(((Key)e).getKeycode());
+    					}
+    				}
+    			}
     			
     		}
     	}
@@ -62,7 +91,11 @@ public class Player extends Entity {
     			return true;
     		}
     		if(e.getClass().equals(Boulder.class)) {
-    			ArrayList<String> surrounding = dungeon.checkSurrounding(e);
+    			ArrayList<Class<?>> types = new ArrayList<Class<?>>();
+    			types.add(Boulder.class);
+    			types.add(Wall.class);
+    			types.add(Door.class);
+    			ArrayList<String> surrounding = dungeon.checkSurrounding(e, types);
     			if (((Boulder)e).checkPlayerPos(this.getX(), this.getY(), surrounding)) {
     				return true;
     			}
@@ -70,6 +103,9 @@ public class Player extends Entity {
     		if(Collectable.class.isAssignableFrom(e.getClass())) {
     			this.addCollectable((Collectable)e);
     			dungeon.removeEntity(e);
+    		}
+    		if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
+    			return true;
     		}
     	}
     	return false;

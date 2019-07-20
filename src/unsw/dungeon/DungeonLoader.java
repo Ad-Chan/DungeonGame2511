@@ -96,7 +96,7 @@ public abstract class DungeonLoader {
         	entity = key;
         	break;
         case "door":
-        	Door door = new Door(x, y, 5);
+        	Door door = new Door(x, y, 4); //Unique keycode
         	onLoad(door);
         	entity = door;
         	break;
