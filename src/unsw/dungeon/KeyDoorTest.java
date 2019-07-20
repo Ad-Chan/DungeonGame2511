@@ -24,6 +24,7 @@ class KeyDoorTest {
 		assert(newDoor.checkState() == "Locked");
 	}
 
+	//User Story 2.3: Player can pick up a key
 	@Test
 	void pickupKey() {
 		Dungeon dungeon = new Dungeon(50, 50);
@@ -36,6 +37,8 @@ class KeyDoorTest {
 		assert(inventory.get(0).getClass().equals(Key.class));	
 	}	
 	
+	//User Story 2.3: Player can press a button to use the key
+	// Player can open the door by pressing the button with the key in hand
 	@Test
 	void openDoor() {
 		Key newKey = new Key(5, 4, 2, 5);
@@ -45,4 +48,5 @@ class KeyDoorTest {
 		assert(newDoor.checkState() == "Open");
 	}
 	
+
 }

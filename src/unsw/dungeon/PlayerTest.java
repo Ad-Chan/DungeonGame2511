@@ -30,6 +30,8 @@ class PlayerTest {
 		assert(dungeon.getWidth() == 50 && dungeon.getHeight() == 50);
 	}	
 
+	
+	//User Story 1.1 
 	@Test
 	void movePlayer() {
 		Dungeon dungeon = new Dungeon(50, 50);
@@ -44,6 +46,7 @@ class PlayerTest {
 		assert(newP.getX() == 5);
 	}
 	
+	//User Story 3.1: Player will be able to pick up items from the ground by walking over them.
 	@Test
 	void addCollectable() {
 		Dungeon dungeon = new Dungeon(50, 50);
@@ -66,6 +69,7 @@ class PlayerTest {
 		assert(newP.nextToPlayer(6,5) == true && newP.nextToPlayer(5,6) == true);
 	}
 	
+	//User Story 1.2
 	@Test
 	void nextToWall() {
 		Dungeon dungeon = new Dungeon(50, 50);
