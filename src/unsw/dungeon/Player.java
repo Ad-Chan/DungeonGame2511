@@ -51,7 +51,10 @@ public class Player extends Entity {
     	int keycode = ((Key)interactions.get(0)).getKeycode();
     	for (Entity i: interactions) {
     		if (i.getClass().equals(Door.class)) {
-    			((Door)i).unlockDoor(keycode);
+    			if (((Door)i).unlockDoor(keycode)) {
+    				this.inventory.remove(interactions.get(0));
+    				keycode = -1;
+    			}
     		}
     	}
     }
@@ -59,8 +62,9 @@ public class Player extends Entity {
     public void attackEnemy() { 
     	ArrayList<Entity> interactions = find_interaction(Sword.class, Enemy.class);
     	for (Entity i: interactions) {
-    		if (i.getClass().equals(Enemy.class)) {
-    			//AttackEnemy
+    		if (i.getClass().equals(Enemy.class) && interactions.get(0).getClass().equals(Sword.class)) {
+    			dungeon.removeEntity(i);
+    			((Sword)interactions.get(0)).decrementHealth();
     		}
     	}
     }
