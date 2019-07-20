@@ -23,7 +23,7 @@ class PlayerTest {
 		assert(newP.getX() == 0 && newP.getY() == 0);
 	}	
 	
-	@Test
+	@Test //THIS IS A DUNGEON TEST
 	void sizeCheck() {
 		Dungeon dungeon = new Dungeon(50, 50);
 		Player newP = new Player(dungeon, 0, 0);
@@ -56,6 +56,17 @@ class PlayerTest {
 	}
 	
 	@Test
+	void nextToPlayer() {
+		Dungeon dungeon = new Dungeon(50, 50);
+		Player newP = new Player(dungeon, 5, 5);
+		Wall newWall = new Wall(6, 5);
+		Wall newWall1 = new Wall(5, 6);
+		dungeon.addEntity(newWall);
+		dungeon.addEntity(newWall1);
+		assert(newP.nextToPlayer(6,5) == true && newP.nextToPlayer(5,6) == true);
+	}
+	
+	@Test
 	void nextToWall() {
 		Dungeon dungeon = new Dungeon(50, 50);
 		Player newP = new Player(dungeon, 5, 5);
@@ -65,15 +76,4 @@ class PlayerTest {
 		assert(newP.getX() == 5);
 	}
 	
-	@Test
-	void pushBoulder() {
-		Dungeon dungeon = new Dungeon(50, 50);
-		Player newP = new Player(dungeon, 5, 5);
-		Wall newWall = new Wall(6, 5);
-		Boulder newBoulder = new Boulder(4,5);
-		dungeon.addEntity(newWall);
-		dungeon.addEntity(newBoulder);
-		newP.moveLeft();
-		assert(newBoulder.getX() == 3);
-	}
 }
