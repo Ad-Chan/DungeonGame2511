@@ -47,43 +47,64 @@ public class Player extends Entity {
     }
     
     public void unlockDoor() {
+    	ArrayList<Entity> interactions = find_interaction(Key.class, Door.class);
+    	int keycode = ((Key)interactions.get(0)).getKeycode();
+    	for (Entity i: interactions) {
+    		if (i.getClass().equals(Door.class)) {
+    			((Door)i).unlockDoor(keycode);
+    		}
+    	}
+    }
+
+    public void attackEnemy() { 
+    	ArrayList<Entity> interactions = find_interaction(Sword.class, Enemy.class);
+    	for (Entity i: interactions) {
+    		if (i.getClass().equals(Enemy.class)) {
+    			//AttackEnemy
+    		}
+    	}
+    }
+    
+    public ArrayList<Entity> find_interaction(Class<?> collectable, Class<?> entity) {
+    	ArrayList<Entity> interactions = new ArrayList<Entity>();
     	for (Collectable e: this.inventory) {
-    		if (e.getClass().equals(Key.class)) {  			
+    		if (e.getClass().equals(collectable)) {
+    			interactions.add(e);
     			ArrayList<Class<?>> types = new ArrayList<Class<?>>();
-    			types.add(Door.class);
+    			types.add(entity);
     			ArrayList<String> surrounding = dungeon.checkSurrounding(this, types);
     			for (String i: surrounding) {
-    				Door door;
+    				Entity add;
     				switch(i) {
     				case "Left":
-    					door = (Door)dungeon.getEntity(this.getX()-1, this.getY(), Door.class);
-    					if (door != null) {
-    						door.unlockDoor(((Key)e).getKeycode());
+    					add = (Door)dungeon.getEntity(this.getX()-1, this.getY(), Door.class);
+    					if (add != null) {
+    						interactions.add(add);
     					}
     					break;
     				case "Right":
-						door = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
-						if (door != null) {
-							door.unlockDoor(((Key)e).getKeycode());
-						}    				
+						add = (Door)dungeon.getEntity(this.getX()+1, this.getY(), Door.class);
+    					if (add != null) {
+    						interactions.add(add);
+    					} 				
     					break;
     				case "Up":
-    					door = (Door)dungeon.getEntity(this.getX(), this.getY()+1, Door.class);
-    					if (door != null) {
-    						door.unlockDoor(((Key)e).getKeycode());
+    					add = (Door)dungeon.getEntity(this.getX(), this.getY()+1, Door.class);
+    					if (add != null) {
+    						interactions.add(add);
     					}
     					break;
     				case "Down":
-    					door = (Door)dungeon.getEntity(this.getX(), this.getY()-1, Door.class);
-    					if (door != null) {
-    						door.unlockDoor(((Key)e).getKeycode());
+    					add = (Door)dungeon.getEntity(this.getX(), this.getY()-1, Door.class);
+    					if (add != null) {
+    						interactions.add(add);
     					}
     					break;
     				}
-    			}
-    			
+    			}    			
     		}
     	}
+    	return interactions;
     }
     
     public boolean nextToPlayer(int x, int y) {
