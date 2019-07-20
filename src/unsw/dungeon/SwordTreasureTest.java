@@ -33,6 +33,7 @@ class SwordTreasureTest {
 		assert(inventory.get(0).getClass().equals(Sword.class));
 	}
 	
+	//User Story 3.5: Player can pick up treasure from floor.
 	@Test
 	void pickupTreasure() {
 		Dungeon dungeon = new Dungeon(50, 50);

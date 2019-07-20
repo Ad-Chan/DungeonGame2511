@@ -14,6 +14,7 @@ class BombTest {
 		assert(newBomb.getX() == 1 && newBomb.getY() == 1);
 	}
 	
+	//User Story 2.4: Player can pick up bomb from floor.
 	@Test
 	void pickupBomb() {
 		Dungeon dungeon = new Dungeon(50, 50);
@@ -38,6 +39,7 @@ class BombTest {
 		assert(newBomb.checkState() == "Explode");
 	}
 	
+	//User Story 2.4: Bomb will explode when player drops it onto the ground.
 	@Test
 	void dropBomb() {
 		Dungeon dungeon = new Dungeon(50, 50);
