@@ -46,6 +46,15 @@ public class Player extends Entity {
     	this.inventory.add(item);
     }
     
+    public void unlockDoor() {
+    	for (Collectable e: this.inventory) {
+    		if (e.getClass().equals(Key.class)) {
+    			//ArrayList<String> surrounding = dungeon.checkSurrounding(this);
+    			
+    		}
+    	}
+    }
+    
     public boolean nextToPlayer(int x, int y) {
     	ArrayList<Entity> entitiesAtLocation = dungeon.findEntity(x, y);
     	for(Entity e: entitiesAtLocation) {

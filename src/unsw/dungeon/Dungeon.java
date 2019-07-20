@@ -103,7 +103,11 @@ public class Dungeon {
     		if (e.getClass().equals(Wall.class)) {
     			return true;
     		}
+    		if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
+    			return true;
+    		}
     	}
     	return false;
     }
+    
 }
