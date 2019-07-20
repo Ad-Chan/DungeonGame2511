@@ -46,6 +46,10 @@ public class Player extends Entity {
     	this.inventory.add(item);
     }
     
+    public ArrayList<Collectable> getInventory() {
+    	return this.inventory;
+    }
+    
     public void unlockDoor() {
     	ArrayList<Entity> interactions = find_interaction(Key.class, Door.class);
     	int keycode = ((Key)interactions.get(0)).getKeycode();
