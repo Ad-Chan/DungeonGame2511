@@ -18,5 +18,9 @@ public class Sword extends Collectable {
 		this.health = health;
 	}
 	
+	public void decrementHealth() {
+		this.health--;
+	}
+	
 	
 }
