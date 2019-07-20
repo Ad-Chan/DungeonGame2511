@@ -20,10 +20,12 @@ public class Door extends Entity{
 		this.keycode = keycode;
 	}
 
-	public void unlockDoor(int keycode) {
+	public boolean unlockDoor(int keycode) {
 		if (keycode == this.keycode && this.checkState().equals("Locked")) {
 			state.unlock(this);
+			return true;
 		}
+		return false;
 	}
 	
 	public void setState(DoorState newState) {

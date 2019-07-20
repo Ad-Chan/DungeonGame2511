@@ -69,6 +69,18 @@ public class Player extends Entity {
     	}
     }
     
+    public void placeBomb() {
+    	for (Collectable e: this.inventory) {
+    		if (e.getClass().equals(UnlitBomb.class)) {
+    			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
+    			dungeon.addEntity(newBomb);
+    			this.inventory.remove(e);
+    			break;
+    		}
+    	}
+    }
+    
+    //Generalised finding interaction between a collectable and specific entity (e.g. sword and enemy classes)
     public ArrayList<Entity> find_interaction(Class<?> collectable, Class<?> entity) {
     	ArrayList<Entity> interactions = new ArrayList<Entity>();
     	for (Collectable e: this.inventory) {
