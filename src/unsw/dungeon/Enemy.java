@@ -6,8 +6,11 @@ import java.util.TimerTask;
 // Enemy Class (to be modified)
 public class Enemy extends Entity {
 	
-	public Enemy(int x, int y) {
+	private int id;
+	
+	public Enemy(int x, int y, int id) {
 		super(x, y);
+		this.id = id;
 		Timer timer = new Timer();
 		timer.schedule(new moveTimer(),0,5000);
 	}

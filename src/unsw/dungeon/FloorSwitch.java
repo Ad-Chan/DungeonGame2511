@@ -3,8 +3,11 @@ package unsw.dungeon;
 // Floor Switch Class (to be modified)
 public class FloorSwitch extends Entity {
 	
-	public FloorSwitch(int x, int y) {
+	private int id;
+	
+	public FloorSwitch(int x, int y, int id) {
 		super(x, y);
+		this.id = id;
 	}
 	
 }
