@@ -106,15 +106,6 @@ public class Dungeon {
     
     public boolean checkNeighbour(ArrayList<Entity> next, ArrayList<Class<?>> types) {
     	for (Entity e:next) {
-    		//if (e.getClass().equals(Boulder.class)) {
-    			//return true;
-    		//}
-    		//if (e.getClass().equals(Wall.class)) {
-    			//return true;
-    		//}
-    		//if (e.getClass().equals(Door.class) && ((Door)e).checkState().equals("Locked")) {
-    			//return true;
-    		//}
     		for (Class<?> i: types) {
 	    		if (e.getClass().equals(i)) {
 	    			return true;
