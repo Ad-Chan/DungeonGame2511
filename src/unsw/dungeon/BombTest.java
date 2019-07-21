@@ -28,13 +28,13 @@ class BombTest {
 	@Test
 	void litBombStages() throws InterruptedException {
 		LitBomb newBomb = new LitBomb(1, 1, "LitBomb");
-		assert(newBomb.checkState() == "LitBomb1");
+		assert(newBomb.checkStrategy() == "LitBomb1");
 		Thread.sleep(400);
-		assert(newBomb.checkState() == "LitBomb2");
+		assert(newBomb.checkStrategy() == "LitBomb2");
 		Thread.sleep(400);
-		assert(newBomb.checkState() == "LitBomb3");
+		assert(newBomb.checkStrategy() == "LitBomb3");
 		Thread.sleep(400);
-		assert(newBomb.checkState() == "Explode");
+		assert(newBomb.checkStrategy() == "Explode");
 	}
 	
 	//User Story 2.4: Bomb will explode when player drops it onto the ground.
