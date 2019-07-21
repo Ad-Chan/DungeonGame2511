@@ -23,7 +23,7 @@ public class LitBomb extends Entity {
 		timer.schedule(new bombTimer(),0,500);	
 	}
 	
-	public String checkState() {
+	public String checkStrategy() {
 		if (this.state instanceof LitBomb1) {
 			return "LitBomb1";
 		} else if (this.state instanceof LitBomb2) {
