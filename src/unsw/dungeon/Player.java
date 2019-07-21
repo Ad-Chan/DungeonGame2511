@@ -86,6 +86,14 @@ public class Player extends Entity {
     	}
     }
     
+    public void activatePotion() {
+    	for (Entity e: this.inventory) {
+    		if (e.getEntityName().equals("InvincibilityPotion")) {
+    			//Make player invincible, change enemies to run away from player
+    		}
+    	}
+    }
+    
     //Generalised finding interaction between a collectable and specific entity (e.g. sword and enemy classes)
     public ArrayList<Entity> find_interaction(String collectable, String entity) {
     	ArrayList<Entity> interactions = new ArrayList<Entity>();
@@ -147,6 +155,9 @@ public class Player extends Entity {
     		}
     		if(Collectable.class.isAssignableFrom(e.getClass())) {
     			this.addCollectable((Collectable)e);
+    			if (e.getEntityName().equals("InvincibilityPotion")) {
+    				this.activatePotion();
+    			}
     			dungeon.removeEntity(e);
     		}
     		if (e.getEntityName().equals("Door") && ((Door)e).checkStrategy().equals("Locked")) {
