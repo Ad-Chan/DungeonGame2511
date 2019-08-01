@@ -12,6 +12,7 @@ public class Player extends Entity implements PlayerPos{
     private Dungeon dungeon;
     private ArrayList<Collectable> inventory;
     ArrayList<PlayerPosObserver> observers;
+    private int potionTime;
     /**
      * Create a player positioned in square (x,y)
      * @param x
@@ -22,11 +23,10 @@ public class Player extends Entity implements PlayerPos{
         this.dungeon = dungeon;
         this.inventory = new ArrayList<Collectable>();
         this.observers = new ArrayList<PlayerPosObserver>();
+        this.potionTime = 0;
     }
 
     public void moveUp() {
-        //if (getY() > 0 && !nextToPlayer(getX(), getY()-1))
-            //y().set(getY() - 1);
         if (!findObstacles(getX(), getY()-1) == true) {
         	y().set(getY() - 1); 
         	pickupCollectables(this.getX(), this.getY());
@@ -35,8 +35,6 @@ public class Player extends Entity implements PlayerPos{
     }
 
     public void moveDown() {
-        //if (getY() < dungeon.getHeight() - 1 && !nextToPlayer(getX(), getY()+1))
-            //y().set(getY() + 1);
         if (!findObstacles(getX(), getY()+1) == true) {
         	y().set(getY() + 1);
         	pickupCollectables(this.getX(), this.getY());
@@ -45,8 +43,6 @@ public class Player extends Entity implements PlayerPos{
     }
 
     public void moveLeft() {
-        //if (getX() > 0 && !nextToPlayer(getX()-1, getY()))
-            //x().set(getX() - 1);
         if (!findObstacles(getX()-1, getY()) == true) {
         	x().set(getX() - 1);
         	pickupCollectables(this.getX(), this.getY());
@@ -56,8 +52,6 @@ public class Player extends Entity implements PlayerPos{
     }
 
     public void moveRight() {
-        //if (getX() < dungeon.getWidth() - 1 && !nextToPlayer(getX()+1, getY()))
-            //x().set(getX() + 1);
         if (!findObstacles(getX()+1, getY()) == true) {
         	x().set(getX() + 1);
         	pickupCollectables(this.getX(), this.getY());
@@ -67,8 +61,8 @@ public class Player extends Entity implements PlayerPos{
     }
     
     public void addCollectable(Collectable item) {
+    	dungeon.removeEntity(item);
     	this.inventory.add(item);
-    	System.out.println(item);
     }
     
     public void removeCollectable(Collectable item) {
@@ -99,7 +93,7 @@ public class Player extends Entity implements PlayerPos{
     public void attackEnemy(Enemy e) { 
     	for (Collectable c: inventory) {
     		if (c instanceof Sword) {
-    			if (((Sword)c).getHealth() > 1) {
+    			if (((Sword)c).getHealth() > 1 || this.potionTime > 0) {
         			dungeon.removeEntity(e);
         			((Sword)c).decrementHealth();   				
     			} else if (((Sword)c).getHealth() == 1){
@@ -114,8 +108,8 @@ public class Player extends Entity implements PlayerPos{
     	}
     }
     
-    public void activatePotion() {
-    	
+    public void activatePotion(InvincibilityPotion i) {
+    	this.potionTime += i.getTime_limit();
     }
     
     /*public void placeBomb() {
@@ -147,7 +141,6 @@ public class Player extends Entity implements PlayerPos{
 		for (PlayerPosObserver p : this.observers) {
 			p.update(this);
 		}
-		
 	}
 	
 	public ArrayList<PlayerPosObserver> getObservers() {

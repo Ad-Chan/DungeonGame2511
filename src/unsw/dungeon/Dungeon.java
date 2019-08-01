@@ -92,52 +92,8 @@ public class Dungeon {
     	}
     }
     
-    /*public void removePlayerPosObserver(PlayerPosObserver p) {
+    public void removePlayerPosObserver(PlayerPosObserver p) {
     	this.player.detachObserver(p);
-    }*/
-    
-    /*public Entity getEntity(int x, int y, String t) {
-    	ArrayList<Entity> entities = findEntity(x, y);
-    	for (Entity e: entities) {
-    		if (e.getEntityName().equals(t)) {
-    			return e;
-    		}
-    	}
-    	return null;
     }
-    
-    public ArrayList<String> checkSurrounding(Entity e, ArrayList<String> types) {
-    	ArrayList<String> surrounding = new ArrayList<String>();
-    	ArrayList<Entity> left = findEntity(e.getX()-1, e.getY());
-    	ArrayList<Entity> right = findEntity(e.getX()+1, e.getY());
-    	ArrayList<Entity> up = findEntity(e.getX(), e.getY()-1);
-    	ArrayList<Entity> down = findEntity(e.getX(), e.getY()+1);
-
-    	if (checkNeighbour(left, types) == true) {
-    		surrounding.add("Left");
-    	}
-    	if (checkNeighbour(right, types) == true) {
-    		surrounding.add("Right");    		
-    	}
-    	if (checkNeighbour(up, types) == true) {
-    		surrounding.add("Up");    		
-    	}
-    	if (checkNeighbour(down, types) == true) {
-    		surrounding.add("Down");   		
-    	}
-    	return surrounding;
-    	
-    }
-    
-    public boolean checkNeighbour(ArrayList<Entity> next, ArrayList<String> types) {
-    	for (Entity e:next) {
-    		for (String i: types) {
-	    		if (e.getEntityName().equals(i)) {
-	    			return true;
-	    		}
-    		}
-    	}
-    	return false;
-    }*/
     
 }

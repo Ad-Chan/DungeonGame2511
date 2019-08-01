@@ -26,7 +26,7 @@ public class InvincibilityPotion extends Collectable {
     public void playerWalksInto(Player player) {
 			player.addCollectable(this);
 			this.setTime_limit(5);
-			player.activatePotion();
+			player.activatePotion(this);
     }
 	
 }
