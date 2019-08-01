@@ -20,10 +20,9 @@ public class Entity {
      * @param x
      * @param y
      */
-    public Entity(int x, int y, String name) {
+    public Entity(int x, int y) {
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
-        this.setEntityName(name);
     }
 
     public IntegerProperty x() {

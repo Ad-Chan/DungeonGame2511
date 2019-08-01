@@ -8,8 +8,8 @@ public class Enemy extends Entity {
 	
 	private int id;
 	
-	public Enemy(int x, int y, int id, String name) {
-		super(x, y, name);
+	public Enemy(int x, int y, int id) {
+		super(x, y);
 		this.id = id;
 		Timer timer = new Timer();
 		timer.schedule(new moveTimer(),0,5000);

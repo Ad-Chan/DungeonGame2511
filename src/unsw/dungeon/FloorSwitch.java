@@ -5,8 +5,8 @@ public class FloorSwitch extends Entity {
 	
 	private int id;
 	
-	public FloorSwitch(int x, int y, int id, String name) {
-		super(x, y, name);
+	public FloorSwitch(int x, int y, int id) {
+		super(x, y);
 		this.id = id;
 	}
 	

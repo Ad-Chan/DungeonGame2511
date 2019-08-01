@@ -4,8 +4,8 @@ public class Collectable extends Entity{
 
 	private int collectable_id;
 	
-	public Collectable(int x, int y, int id, String name) {
-		super(x, y, name);
+	public Collectable(int x, int y, int id) {
+		super(x, y);
 		this.setCollectable_id(id);
 	}
 

@@ -5,8 +5,8 @@ public class Key extends Collectable {
 	
 	private int keycode;
 	
-	public Key(int x, int y, int id, int keycode, String name) {
-		super(x, y, id, name);
+	public Key(int x, int y, int id, int keycode) {
+		super(x, y, id);
 		this.setKeycode(keycode);
 	}
 

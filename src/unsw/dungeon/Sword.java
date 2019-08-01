@@ -5,8 +5,8 @@ public class Sword extends Collectable {
 	
 	private int health;
 	
-	public Sword(int x, int y, int id, String name) {
-		super(x, y, id, name);
+	public Sword(int x, int y, int id) {
+		super(x, y, id);
 		this.setHealth(5); //Sword is 5 health because only 5 hits before breaking
 	}
 
