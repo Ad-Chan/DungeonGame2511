@@ -47,10 +47,14 @@ public class Dungeon {
 
     public void addEntity(Entity entity) {
         entities.add(entity);
+        if (this.player != null) {
+        	addPlayerPosObserver();
+        }
     }
     
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
+    	this.player.detachObserver(entity);
     }
     
     /*public void addGoal(GoalCondition goal) {
@@ -71,7 +75,20 @@ public class Dungeon {
     	return foundEntities;
     }
     
-    public Entity getEntity(int x, int y, String t) {
+    public void addPlayerPosObserver() {
+    	ArrayList<PlayerPosObserver> observers = player.getObservers();
+    	for (Entity e: this.entities) {
+    		if (!observers.contains(e)) {
+    			player.attachObserver(e);
+    		}
+    	}
+    }
+    
+    /*public void removePlayerPosObserver(PlayerPosObserver p) {
+    	this.player.detachObserver(p);
+    }*/
+    
+    /*public Entity getEntity(int x, int y, String t) {
     	ArrayList<Entity> entities = findEntity(x, y);
     	for (Entity e: entities) {
     		if (e.getEntityName().equals(t)) {
@@ -113,6 +130,6 @@ public class Dungeon {
     		}
     	}
     	return false;
-    }
+    }*/
     
 }

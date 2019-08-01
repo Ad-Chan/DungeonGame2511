@@ -8,13 +8,13 @@ import javafx.beans.property.SimpleIntegerProperty;
  * @author Robert Clifton-Everest
  *
  */
-public class Entity {
+public class Entity implements PlayerPosObserver{
 
     // IntegerProperty is used so that changes to the entities position can be
     // externally observed.
     private IntegerProperty x, y;
-    private String entityName;
-    
+    private int playerX;
+    private int playerY;
     /**
      * Create an entity positioned in square (x,y)
      * @param x
@@ -23,6 +23,8 @@ public class Entity {
     public Entity(int x, int y) {
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
+        //this.playerX = -999; //values to be determined
+        //this.playerY = -999; //values to be determined
     }
 
     public IntegerProperty x() {
@@ -45,11 +47,30 @@ public class Entity {
         return x().get();
     }
 
-	public String getEntityName() {
-		return entityName;
+    public int getPlayerX() {
+    	return playerX;
+    }
+    
+    public int getPlayerY() {
+    	return playerY;
+    }
+    
+	@Override
+	public void update(PlayerPos obj) {
+		if (obj instanceof Player) {
+			update((Player) obj);
+		}
+		
 	}
-
-	public void setEntityName(String entityName) {
-		this.entityName = entityName;
+	
+	public void update(Player p) {
+		this.playerX = p.getX();
+		this.playerY = p.getY();
+		//System.out.println(this.getPlayerX());
+		//System.out.println(this.getPlayerY());
 	}
+	
+	public boolean isObstacle(int x, int y) {
+		return false;
+	}	
 }

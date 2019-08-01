@@ -1,7 +1,7 @@
 package unsw.dungeon;
 
 // Key Class (to be modified)
-public class Key extends Collectable {
+public class Key extends Collectable{
 	
 	private int keycode;
 	
@@ -17,5 +17,12 @@ public class Key extends Collectable {
 	public void setKeycode(int keycode) {
 		this.keycode = keycode;
 	}
+	
+	@Override
+    public void playerWalksInto(Player player) {
+		if (this.getPlayerX() == this.getX() && this.getPlayerY() == this.getY()) {
+			player.addCollectable(this);
+		}
+    }
 	
 }

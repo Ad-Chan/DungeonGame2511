@@ -61,7 +61,8 @@ public abstract class DungeonLoader {
             entity = player;
             break;
         case "wall":
-            Wall wall = new Wall(x, y);
+        	Wall wall = new Wall(x, y);
+            //dungeon.addPlayerPosObserver(wall);
             onLoad(wall);
             entity = wall;
             break;
@@ -69,15 +70,18 @@ public abstract class DungeonLoader {
         	Exit exit = new Exit(x, y);
         	onLoad(exit);
         	entity = exit;
+            //dungeon.addPlayerPosObserver(exit);
         	break;
         case "switch":
         	FloorSwitch floorSwitch = new FloorSwitch(x, y, uniqueID);
         	onLoad(floorSwitch);
         	entity = floorSwitch;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(floorSwitch);
         	break;
         case "boulder":
         	Boulder boulder = new Boulder(x, y);
+            //dungeon.addPlayerPosObserver(boulder);
         	onLoad(boulder);
         	entity = boulder;
         	break;
@@ -86,41 +90,48 @@ public abstract class DungeonLoader {
         	onLoad(sword);
         	entity = sword;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(sword);
         	break;
         case "invincibility":
         	InvincibilityPotion potion = new InvincibilityPotion(x, y, uniqueID, 10);
         	onLoad(potion);
         	entity = potion;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(potion);
         	break;
         case "treasure":
         	Treasure treasure = new Treasure(x, y, uniqueID);
         	onLoad(treasure);
         	entity = treasure;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(treasure);
         	break;
         case "key":
         	Key key = new Key(x, y, uniqueID , 4);
         	onLoad(key);
         	entity = key;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(key);
         	break;
         case "door":
         	Door door = new Door(x, y, 4);
         	onLoad(door);
         	entity = door;
+            //dungeon.addPlayerPosObserver(door);
         	break;
         case "enemy":
         	Enemy enemy = new Enemy(x, y, uniqueID);
         	onLoad(enemy);
         	entity = enemy;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(enemy);
         	break;
         case "bomb":
         	UnlitBomb bomb = new UnlitBomb(x, y, uniqueID);
         	onLoad(bomb);
         	entity = bomb;
         	uniqueID++;
+            //dungeon.addPlayerPosObserver(bomb);
         	break;
         }
         dungeon.addEntity(entity);
