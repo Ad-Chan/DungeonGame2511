@@ -29,6 +29,7 @@ public class Player extends Entity implements PlayerPos{
             //y().set(getY() - 1);
         if (!findObstacles(getX(), getY()-1) == true) {
         	y().set(getY() - 1); 
+        	pickupCollectables(this.getX(), this.getY());
         	notifyObservers();
         }
     }
@@ -38,6 +39,7 @@ public class Player extends Entity implements PlayerPos{
             //y().set(getY() + 1);
         if (!findObstacles(getX(), getY()+1) == true) {
         	y().set(getY() + 1);
+        	pickupCollectables(this.getX(), this.getY());
         	notifyObservers();      	
         }
     }
@@ -47,6 +49,7 @@ public class Player extends Entity implements PlayerPos{
             //x().set(getX() - 1);
         if (!findObstacles(getX()-1, getY()) == true) {
         	x().set(getX() - 1);
+        	pickupCollectables(this.getX(), this.getY());
         	notifyObservers();       	
         }
 
@@ -57,6 +60,7 @@ public class Player extends Entity implements PlayerPos{
             //x().set(getX() + 1);
         if (!findObstacles(getX()+1, getY()) == true) {
         	x().set(getX() + 1);
+        	pickupCollectables(this.getX(), this.getY());
         	notifyObservers();       	
         }
 
@@ -74,29 +78,25 @@ public class Player extends Entity implements PlayerPos{
     public boolean findObstacles(int x, int y) {
     	ArrayList<Entity> entities = dungeon.findEntity(x, y);
     	for (Entity e : entities) {
-    		if (e.isObstacle(x, y) == true) {
+    		if (e.isObstacle(x, y, this) == true) {
     			return true;
     		}
     	}
     	return false;
     }
     
-    /*public void unlockDoor() {
-    	ArrayList<Entity> interactions = find_interaction("Key", "Door");
-    	if (interactions.size() >= 2) {
-	    	int keycode = ((Key)interactions.get(0)).getKeycode();
-	    	for (Entity i: interactions) {
-	    		if (i.getEntityName().equals("Door")) {
-	    			if (((Door)i).unlockDoor(keycode)) {
-	    				this.inventory.remove(interactions.get(0));
-	    				keycode = -1;
-	    			}
-	    		}
-	    	}
+    public void pickupCollectables(int x, int y) {
+    	ArrayList<Entity> entities = dungeon.findEntity(x, y);
+    	for (Entity e: entities) {
+    		e.playerWalksInto(this);
     	}
     }
+    
+    public void unlockDoor() {
 
-    public void attackEnemy() { 
+    }
+
+    /*public void attackEnemy() { 
     	ArrayList<Entity> interactions = find_interaction("Sword", "Enemy");
     	for (Entity i: interactions) {
     		if (i.getEntityName().equals("Enemy") && interactions.get(0).getEntityName().equals("Sword")) {

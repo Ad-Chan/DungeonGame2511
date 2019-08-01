@@ -20,9 +20,7 @@ public class Key extends Collectable{
 	
 	@Override
     public void playerWalksInto(Player player) {
-		if (this.getPlayerX() == this.getX() && this.getPlayerY() == this.getY()) {
 			player.addCollectable(this);
-		}
     }
-	
+		
 }

@@ -70,7 +70,7 @@ public class Entity implements PlayerPosObserver{
 		//System.out.println(this.getPlayerY());
 	}
 	
-	public boolean isObstacle(int x, int y) {
+	public boolean isObstacle(int x, int y, Player p) {
 		return false;
 	}	
 }

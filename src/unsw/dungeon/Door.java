@@ -20,25 +20,27 @@ public class Door extends Entity{
 		this.keycode = keycode;
 	}
 
-	public boolean unlockDoor(int keycode) {
-		if (keycode == this.keycode && this.checkStrategy().equals("Locked")) {
-			strategy.unlock(this);
-			return true;
-		}
-		return false;
+	public void unlockDoor(int keycode) {
+		strategy.unlock(this);
 	}
 	
 	public void setState(DoorStrategy newState) {
 		this.strategy = newState;
 	}
 	
-	public String checkStrategy() {
-		if (this.strategy instanceof DoorClosed) {
-			return "Locked";
-		} else if (this.strategy instanceof DoorOpen){
-			return "Open";
+	
+	@Override
+	public boolean isObstacle(int x, int y, Player p) {
+		for (Entity e: p.getInventory()) {
+			if (e instanceof Key) {
+				unlockDoor(((Key) e).getKeycode());
+			}
+		}			
+		if (this.getX() == x && this.getY() == y && this.strategy instanceof DoorOpen){
+			return false;
+		} else {
+			return true;
 		}
-		return "Unknown";
 	}
 	
 }
