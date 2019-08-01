@@ -112,16 +112,16 @@ public class Player extends Entity implements PlayerPos{
     	this.potionTime += i.getTime_limit();
     }
     
-    /*public void placeBomb() {
+    public void placeBomb() {
     	for (Collectable e: this.inventory) {
-    		if (e.getEntityName().equals("UnlitBomb")) {
+    		if (e instanceof UnlitBomb) {
     			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
     			dungeon.addEntity(newBomb);
     			this.inventory.remove(e);
     			break;
     		}
     	}
-    }*/
+    }
     
 	@Override
 	public void attachObserver(PlayerPosObserver p) {

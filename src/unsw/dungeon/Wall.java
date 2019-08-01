@@ -7,11 +7,6 @@ public class Wall extends Entity implements PlayerPosObserver{
     }
 	
 	@Override
-    public void playerWalksInto(Player player) {
-
-    }
-	
-	@Override
 	public boolean isObstacle(int x, int y, Player p) {
 		if (this.getX() == x && this.getY() == y) {
 			return true;

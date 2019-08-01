@@ -62,9 +62,6 @@ public class DungeonController {
         case RIGHT:
             player.moveRight();
             break;
-        case K: //Preliminary binding, can be changed
-        	//player.unlockDoor();
-        	break;
         case J: //Preliminary binding, can be changed
         	//player.attackEnemy();
         	break;

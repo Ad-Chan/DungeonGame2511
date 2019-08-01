@@ -17,4 +17,17 @@ public class Key extends Collectable{
 	public void setKeycode(int keycode) {
 		this.keycode = keycode;
 	}
+	
+	@Override
+    public void playerWalksInto(Player player) {
+		boolean found = false;
+		for (Collectable c: player.getInventory()) {
+			if (c instanceof Key) {
+				found = true;
+			}
+		}
+		if (found == false) {
+			player.addCollectable(this);			
+		}
+    }
 }

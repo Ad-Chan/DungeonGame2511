@@ -6,5 +6,10 @@ public class DoorOpen implements DoorStrategy {
 	public void unlock(Door door) {
 		//DoNothing		
 	}
+
+	@Override
+	public boolean checkLock() {
+		return false;
+	}
 	
 }

@@ -36,7 +36,7 @@ public class Door extends Entity{
 				unlockDoor(((Key) e).getKeycode());
 			}
 		}			
-		if (this.getX() == x && this.getY() == y && this.strategy instanceof DoorOpen){
+		if (this.getX() == x && this.getY() == y && this.strategy.checkLock() == false){
 			return false;
 		} else {
 			return true;

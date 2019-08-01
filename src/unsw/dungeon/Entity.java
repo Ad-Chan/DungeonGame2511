@@ -66,8 +66,6 @@ public class Entity implements PlayerPosObserver{
 	public void update(Player p) {
 		this.playerX = p.getX();
 		this.playerY = p.getY();
-		//System.out.println(this.getPlayerX());
-		//System.out.println(this.getPlayerY());
 	}
 	
 	public boolean isObstacle(int x, int y, Player p) {

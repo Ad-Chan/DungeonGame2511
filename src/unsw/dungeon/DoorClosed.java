@@ -7,4 +7,9 @@ public class DoorClosed implements DoorStrategy{
 		door.setState(new DoorOpen());
 	}
 
+	@Override
+	public boolean checkLock() {
+		return true;
+	}
+
 }
