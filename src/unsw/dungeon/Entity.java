@@ -33,6 +33,10 @@ public class Entity {
     public IntegerProperty y() {
         return y;
     }
+    
+    public void playerWalksInto(Player player) {
+    	
+    }
 
     public int getY() {
         return y().get();
