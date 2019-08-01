@@ -71,6 +71,10 @@ public class Player extends Entity implements PlayerPos{
     	System.out.println(item);
     }
     
+    public void removeCollectable(Collectable item) {
+    	this.inventory.remove(item);
+    }
+    
     public ArrayList<Collectable> getInventory() {
     	return this.inventory;
     }
@@ -92,17 +96,29 @@ public class Player extends Entity implements PlayerPos{
     	}
     }
     
-    /*public void attackEnemy() { 
-    	ArrayList<Entity> interactions = find_interaction("Sword", "Enemy");
-    	for (Entity i: interactions) {
-    		if (i.getEntityName().equals("Enemy") && interactions.get(0).getEntityName().equals("Sword")) {
-    			dungeon.removeEntity(i);
-    			((Sword)interactions.get(0)).decrementHealth();
+    public void attackEnemy(Enemy e) { 
+    	for (Collectable c: inventory) {
+    		if (c instanceof Sword) {
+    			if (((Sword)c).getHealth() > 1) {
+        			dungeon.removeEntity(e);
+        			((Sword)c).decrementHealth();   				
+    			} else if (((Sword)c).getHealth() == 1){
+        			dungeon.removeEntity(e);
+        			((Sword)c).decrementHealth();
+        			this.removeCollectable(c);
+    			}
     		}
+    	}
+    	if (dungeon.findSpecificEntity(e) != null) {
+    		//player should die
     	}
     }
     
-    public void placeBomb() {
+    public void activatePotion() {
+    	
+    }
+    
+    /*public void placeBomb() {
     	for (Collectable e: this.inventory) {
     		if (e.getEntityName().equals("UnlitBomb")) {
     			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
@@ -111,17 +127,10 @@ public class Player extends Entity implements PlayerPos{
     			break;
     		}
     	}
-    }
+    }*/
     
-    public void activatePotion() {
-    	for (Entity e: this.inventory) {
-    		if (e.getEntityName().equals("InvincibilityPotion")) {
-    			//Make player invincible, change enemies to run away from player
-    		}
-    	}
-    }
     
-    //Generalised finding interaction between a collectable and specific entity (e.g. sword and enemy classes)
+   /* //Generalised finding interaction between a collectable and specific entity (e.g. sword and enemy classes)
     public ArrayList<Entity> find_interaction(String collectable, String entity) {
     	ArrayList<Entity> interactions = new ArrayList<Entity>();
     	for (Collectable e: this.inventory) {

@@ -30,6 +30,11 @@ public class Enemy extends Entity {
     public void moveRight() {
             x().set(getX() + 1);
     }
+    
+	@Override
+    public void playerWalksInto(Player player) {
+		player.attackEnemy(this);
+    }
 
     class moveTimer extends TimerTask {
 

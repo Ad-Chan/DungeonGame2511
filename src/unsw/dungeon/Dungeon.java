@@ -75,6 +75,14 @@ public class Dungeon {
     	return foundEntities;
     }
     
+    public Entity findSpecificEntity(Entity e) {
+    	if (entities.contains(e)) {
+    		return e;
+    	} else {
+    		return null;
+    	}
+    }
+    
     public void addPlayerPosObserver() {
     	ArrayList<PlayerPosObserver> observers = player.getObservers();
     	for (Entity e: this.entities) {

@@ -18,4 +18,15 @@ public class InvincibilityPotion extends Collectable {
 		this.time_limit = time_limit;
 	}
 	
+	public void decrementTime() {
+		this.time_limit = this.time_limit-1;
+	}
+	
+	@Override
+    public void playerWalksInto(Player player) {
+			player.addCollectable(this);
+			this.setTime_limit(5);
+			player.activatePotion();
+    }
+	
 }
