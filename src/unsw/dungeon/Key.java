@@ -17,10 +17,4 @@ public class Key extends Collectable{
 	public void setKeycode(int keycode) {
 		this.keycode = keycode;
 	}
-	
-	@Override
-    public void playerWalksInto(Player player) {
-			player.addCollectable(this);
-    }
-		
 }

@@ -1,7 +1,5 @@
 package unsw.dungeon;
 
-import java.util.ArrayList;
-
 // Boulder Class (to be modified)
 public class Boulder extends Entity {
 	
@@ -15,25 +13,37 @@ public class Boulder extends Entity {
 	}
 	
 	@Override
-	public boolean isObstacle(int x, int y, Player P) {
+	public boolean isObstacle(int x, int y, Player p) {
 		if (this.getX() == x && this.getY() == y) {
-			if (this.getPlayerX() > x && this.getPlayerY() == y) {
-				moveBoulder(x-1, y);
+			if (this.getPlayerX()-1 == x && this.getPlayerY() == y) {
+				if (p.findObstacles(x-1, y) != true) {
+					moveBoulder(x-1, y);
+					return false;
+				}
+				return true;
 			}
-			if (this.getPlayerX() < x && this.getPlayerY() == y) {
-				moveBoulder(x+1, y);
+			if (this.getPlayerX()+1 == x && this.getPlayerY() == y) {
+				if (p.findObstacles(x+1, y) != true) {
+					moveBoulder(x+1, y);
+					return false;
+				}
+				return true;
 			}
-			if (this.getPlayerX() == x && this.getPlayerY() > y) {
-				moveBoulder(x, y-1);
+			if (this.getPlayerX() == x && this.getPlayerY()-1 == y) {
+				if (p.findObstacles(x, y-1) != true) {
+					moveBoulder(x, y-1);
+					return false;
+				}
+				return true;
 			}
-			if (this.getPlayerX() == x && this.getPlayerY() < y) {
-				moveBoulder(x, y+1);
+			if (this.getPlayerX() == x && this.getPlayerY()+1 == y) {
+				if (p.findObstacles(x, y+1) != true) {
+					moveBoulder(x, y+1);
+					return false;
+				}
+				return true;
 			}
-			System.out.println(this.getPlayerX());
-			System.out.println(this.getPlayerY());
-			return false;
-		} else {
-			return false;
 		}
+		return true;
 	}
 }

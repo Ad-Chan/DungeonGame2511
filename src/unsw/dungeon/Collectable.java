@@ -17,4 +17,8 @@ public class Collectable extends Entity{
 		this.collectable_id = collectable_id;
 	}
 	
+	@Override
+    public void playerWalksInto(Player player) {
+			player.addCollectable(this);
+    }
 }

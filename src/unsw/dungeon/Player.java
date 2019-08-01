@@ -92,10 +92,6 @@ public class Player extends Entity implements PlayerPos{
     	}
     }
     
-    public void unlockDoor() {
-
-    }
-
     /*public void attackEnemy() { 
     	ArrayList<Entity> interactions = find_interaction("Sword", "Enemy");
     	for (Entity i: interactions) {
