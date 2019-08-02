@@ -34,7 +34,6 @@ public class Enemy extends Entity {
 	@Override
     public boolean playerWalksInto(Player player) {
 		player.attackEnemy(this);
-		System.out.println("dead");
 		return false;
     }
 
