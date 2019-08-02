@@ -67,11 +67,8 @@ public class Dungeon {
     	this.controller.removeEntity(entity);
     }
     
-    public void addGoal(GoalCondition goal) {
-    	if(goalList.contains(goal)) {
-    		return;
-    	}
-    	goalList.add(goal);
+    public void addGoalList(ArrayList<GoalCondition> goalList) {
+    	goalList.equals(goalList);
     	return;
     }
     

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import java.util.ArrayList;
 
 /**
  * Loads a dungeon from a .json file.
@@ -43,7 +44,9 @@ public abstract class DungeonLoader {
         for (int i = 0; i < jsonEntities.length(); i++) {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
-        loadGoal(dungeon, jsonGoal);
+        
+        ArrayList<GoalCondition> goalList = loadGoal(dungeon, jsonGoal);
+        dungeon.addGoalList(goalList);
         
         return dungeon;
     }
@@ -158,31 +161,46 @@ public abstract class DungeonLoader {
         }
         dungeon.addEntityLocal(entity);
     }
-    private void loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
+    private ArrayList<GoalCondition> loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
+    	ArrayList<GoalCondition> goalList = new ArrayList<GoalCondition>();
         String mainGoal = json.getString("goal");
-        
+        GoalCondition goal;
+        JSONArray jsonSubGoals;
+        ArrayList<GoalCondition> subGoalsList;
+
         switch(mainGoal) {
         case "exit":
-        	GoalCondition exitGoal = new Goal("exit");
-        	dungeon.addGoal(exitGoal);
+        	goal = new Goal("exit");
         	break;
         case "boulders":
-        	GoalCondition bouldersGoal = new Goal("boulders");
-        	dungeon.addGoal(bouldersGoal);
+        	goal = new Goal("boulders");
         	break;
         case "treasure":
-        	GoalCondition treasureGoal = new Goal("treasure");
-        	dungeon.addGoal(treasureGoal);
+        	goal = new Goal("treasure");
         	break;
         case "enemies":
-        	GoalCondition enemiesGoal = new Goal("enemies");
-        	dungeon.addGoal(enemiesGoal);
+        	goal = new Goal("enemies");
         	break;
         case "AND":
-        	
+        	goal = new SubGoals("AND");
+        	jsonSubGoals = json.getJSONArray("subgoals");
+        	subGoalsList = new ArrayList<GoalCondition>();
+            for (int i = 0; i < jsonSubGoals.length(); i++) {
+                subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
+            }
+            goalList.addAll(subGoalsList);
         case "OR":
+        	goal = new SubGoals("OR");
+        	jsonSubGoals = json.getJSONArray("subgoals");
+        	subGoalsList = new ArrayList<GoalCondition>();
+            for (int i = 0; i < jsonSubGoals.length(); i++) {
+                subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
+            }
+            goalList.addAll(subGoalsList);
         	
         }
+        return goalList;
+        
 
 	}
 
