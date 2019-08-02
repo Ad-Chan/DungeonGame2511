@@ -36,14 +36,15 @@ public abstract class DungeonLoader {
         Dungeon dungeon = new Dungeon(width, height);
 
         JSONArray jsonEntities = json.getJSONArray("entities");
-        //JSONObject jsonGoal = json.getJSONObject("goal-condition");
+        JSONObject jsonGoal = json.getJSONObject("goal-condition");
 
         uniqueID = 0;
         
         for (int i = 0; i < jsonEntities.length(); i++) {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
-        //loadGoal(dungeon, jsonGoal);
+        loadGoal(dungeon, jsonGoal);
+        
         return dungeon;
     }
 
@@ -157,33 +158,33 @@ public abstract class DungeonLoader {
         }
         dungeon.addEntityLocal(entity);
     }
-    /*private void loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
+    private void loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
         String mainGoal = json.getString("goal");
         
         switch(mainGoal) {
         case "exit":
-        	GoalCondition exitGoal = new GoalCondition("exit");
+        	GoalCondition exitGoal = new Goal("exit");
         	dungeon.addGoal(exitGoal);
         	break;
         case "boulders":
-        	GoalCondition bouldersGoal = new GoalCondition("boulders");
+        	GoalCondition bouldersGoal = new Goal("boulders");
         	dungeon.addGoal(bouldersGoal);
         	break;
         case "treasure":
-        	GoalCondition treasureGoal = new GoalCondition("treasure");
+        	GoalCondition treasureGoal = new Goal("treasure");
         	dungeon.addGoal(treasureGoal);
         	break;
         case "enemies":
-        	GoalCondition enemiesGoal = new GoalCondition("enemies");
+        	GoalCondition enemiesGoal = new Goal("enemies");
         	dungeon.addGoal(enemiesGoal);
         	break;
-        //case "AND":
+        case "AND":
         	
-        //case "OR":
+        case "OR":
         	
         }
 
-	}*/
+	}
 
     public abstract void onLoad(Entity player, Boolean isNewEntity);
 
