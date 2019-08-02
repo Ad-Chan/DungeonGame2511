@@ -18,7 +18,7 @@ import java.util.List;
 public class Dungeon {
 
     private int width, height;
-    private List<Entity> entities;
+    private ArrayList<Entity> entities;
     private Player player;
     //private ArrayList<GoalCondition> goalList;
 
@@ -54,7 +54,6 @@ public class Dungeon {
     
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
-    	this.player.detachObserver(entity);
     }
     
     /*public void addGoal(GoalCondition goal) {
@@ -64,6 +63,10 @@ public class Dungeon {
     	goalList.add(goal);
     	return;
     }*/
+    
+    public ArrayList<Entity> getAllEntities() {
+    	return this.entities;
+    }
     
     public ArrayList<Entity> findEntity(int x, int y) {
     	ArrayList<Entity> foundEntities = new ArrayList<Entity>();

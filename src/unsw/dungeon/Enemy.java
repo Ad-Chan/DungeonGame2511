@@ -34,6 +34,7 @@ public class Enemy extends Entity {
 	@Override
     public void playerWalksInto(Player player) {
 		player.attackEnemy(this);
+		System.out.println("dead");
     }
 
     class moveTimer extends TimerTask {
