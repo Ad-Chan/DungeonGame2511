@@ -32,4 +32,8 @@ public class EntityController {
 		}
 		
 	}
+	
+	public void updateImage(Entity e) {
+		this.dungeonLoader.updateImage(e);
+	}
 }

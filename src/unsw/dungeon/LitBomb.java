@@ -23,17 +23,17 @@ public class LitBomb extends Entity {
 		timer.schedule(new bombTimer(),0,500);	
 	}
 	
-	public String checkStrategy() {
+	public int checkStrategy() {
 		if (this.state instanceof LitBomb1) {
-			return "LitBomb1";
+			return 1;
 		} else if (this.state instanceof LitBomb2) {
-			return "LitBomb2";
+			return 2;
 		} else if (this.state instanceof LitBomb3) {
-			return "LitBomb3";
+			return 3;
 		} else if (this.state instanceof Explode) {
-			return "Explode";
+			return 4;
 		} 
-		return "Unknown";
+		return -1;
 	}
     
 	class bombTimer extends TimerTask {

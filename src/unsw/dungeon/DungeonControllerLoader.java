@@ -214,6 +214,20 @@ public class DungeonControllerLoader extends DungeonLoader {
     public void removeAddedEntity() {
     	newEntities.remove(0);
     }
+    
+    public void updateImage(Entity e) {
+    	ImageView view = null;
+    	if (e instanceof LitBomb) {
+    		if (((LitBomb)e).checkStrategy() == 2) {
+    			view = new ImageView(litBomb2Image);
+    		} else if (((LitBomb)e).checkStrategy() == 3) {
+    			view = new ImageView(litBomb3Image);
+    		} else if (((LitBomb)e).checkStrategy() == 4) {
+    			view = new ImageView(litBomb4Image);
+    		}
+    	}
+    	trackPosition(e, view);
+    }
 
     /**
      * Set a node in a GridPane to have its position track the position of an
