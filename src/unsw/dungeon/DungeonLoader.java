@@ -165,7 +165,7 @@ public abstract class DungeonLoader {
     }
     private ArrayList<GoalCondition> loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
     	ArrayList<GoalCondition> goalList = new ArrayList<GoalCondition>();
-        String mainGoal = json.getString("goal");
+        String mainGoal = jsonGoal.getString("goal");
         GoalCondition goal = null;
         JSONArray jsonSubGoals;
         ArrayList<GoalCondition> subGoalsList;
@@ -185,7 +185,7 @@ public abstract class DungeonLoader {
         	break;
         case "AND":
         	goal = new SubGoals("AND");
-        	jsonSubGoals = json.getJSONArray("subgoals");
+        	jsonSubGoals = jsonGoal.getJSONArray("subgoals");
         	subGoalsList = new ArrayList<GoalCondition>();
             for (int i = 0; i < jsonSubGoals.length(); i++) {
                 subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
@@ -193,7 +193,7 @@ public abstract class DungeonLoader {
             goalList.addAll(subGoalsList);
         case "OR":
         	goal = new SubGoals("OR");
-        	jsonSubGoals = json.getJSONArray("subgoals");
+        	jsonSubGoals = jsonGoal.getJSONArray("subgoals");
         	subGoalsList = new ArrayList<GoalCondition>();
             for (int i = 0; i < jsonSubGoals.length(); i++) {
                 subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
