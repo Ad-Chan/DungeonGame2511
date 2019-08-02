@@ -1,6 +1,8 @@
 package unsw.dungeon;
 
 
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -25,7 +27,13 @@ public class EntityController {
 		for (Node n: list) {
 			if (n.equals(e.getImage())) {
 				list.remove(n);
+				break;
 			}
 		}
+		
+	}
+	
+	public void updateImage(Entity e) {
+		this.dungeonLoader.updateImage(e);
 	}
 }

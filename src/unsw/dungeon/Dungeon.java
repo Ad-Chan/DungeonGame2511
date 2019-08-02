@@ -111,4 +111,8 @@ public class Dungeon {
     	this.controller = e;
     }
     
+    public void updateImage(Entity e) {
+    	this.controller.updateImage(e);
+    }
+    
 }

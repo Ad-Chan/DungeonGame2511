@@ -47,6 +47,8 @@ public abstract class DungeonLoader {
         
         ArrayList<GoalCondition> goalList = loadGoal(dungeon, jsonGoal);
         dungeon.addGoalList(goalList);
+
+        loadGoal(dungeon, jsonGoal);
         
         return dungeon;
     }
@@ -164,7 +166,7 @@ public abstract class DungeonLoader {
     private ArrayList<GoalCondition> loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
     	ArrayList<GoalCondition> goalList = new ArrayList<GoalCondition>();
         String mainGoal = json.getString("goal");
-        GoalCondition goal;
+        GoalCondition goal = null;
         JSONArray jsonSubGoals;
         ArrayList<GoalCondition> subGoalsList;
 
@@ -199,6 +201,7 @@ public abstract class DungeonLoader {
             goalList.addAll(subGoalsList);
         	
         }
+        goalList.add(goal);
         return goalList;
         
 
