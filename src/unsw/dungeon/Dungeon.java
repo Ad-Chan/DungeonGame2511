@@ -21,7 +21,7 @@ public class Dungeon {
     private ArrayList<Entity> entities;
     private Player player;
     private EntityController controller;
-    //private ArrayList<GoalCondition> goalList;
+    private ArrayList<GoalCondition> goalList;
 
     public Dungeon(int width, int height) {
         this.width = width;
@@ -67,13 +67,13 @@ public class Dungeon {
     	this.controller.removeEntity(entity);
     }
     
-    /*public void addGoal(GoalCondition goal) {
+    public void addGoal(GoalCondition goal) {
     	if(goalList.contains(goal)) {
     		return;
     	}
     	goalList.add(goal);
     	return;
-    }*/
+    }
     
     public ArrayList<Entity> getAllEntities() {
     	return this.entities;
