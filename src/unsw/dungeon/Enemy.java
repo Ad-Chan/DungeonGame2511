@@ -11,8 +11,8 @@ public class Enemy extends Entity {
 	public Enemy(int x, int y, int id) {
 		super(x, y);
 		this.id = id;
-		Timer timer = new Timer();
-		timer.schedule(new moveTimer(),0,5000);
+		//Timer timer = new Timer();
+		//timer.schedule(new moveTimer(),0,5000);
 	}
 	
     public void moveUp() {
@@ -32,9 +32,10 @@ public class Enemy extends Entity {
     }
     
 	@Override
-    public void playerWalksInto(Player player) {
+    public boolean playerWalksInto(Player player) {
 		player.attackEnemy(this);
 		System.out.println("dead");
+		return false;
     }
 
     class moveTimer extends TimerTask {
