@@ -45,11 +45,10 @@ public abstract class DungeonLoader {
             loadEntity(dungeon, jsonEntities.getJSONObject(i));
         }
         
-        ArrayList<GoalCondition> goalList = loadGoal(dungeon, jsonGoal);
+        ArrayList<GoalCondition> goalList = loadGoal(jsonGoal);
         dungeon.addGoalList(goalList);
 
-        loadGoal(dungeon, jsonGoal);
-        
+        //System.out.print(goalList + "\n");
         return dungeon;
     }
 
@@ -163,7 +162,7 @@ public abstract class DungeonLoader {
         }
         dungeon.addEntityLocal(entity);
     }
-    private ArrayList<GoalCondition> loadGoal(Dungeon dungeon, JSONObject jsonGoal) {
+    private ArrayList<GoalCondition> loadGoal(JSONObject jsonGoal) {
     	ArrayList<GoalCondition> goalList = new ArrayList<GoalCondition>();
         String mainGoal = jsonGoal.getString("goal");
         System.out.print(mainGoal + "\n");
@@ -191,19 +190,13 @@ public abstract class DungeonLoader {
         case "AND":
         	goal = new SubGoals("AND");
         	jsonSubGoals = jsonGoal.getJSONArray("subgoals");
-        	subGoalsList = new ArrayList<GoalCondition>();
-            for (int i = 0; i < jsonSubGoals.length(); i++) {
-                subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
-            }
+        	subGoalsList = addSubGoals(jsonSubGoals);
             goalList.addAll(subGoalsList);
             //System.out.print("added AND subgoal");
         case "OR":
         	goal = new SubGoals("OR");
         	jsonSubGoals = jsonGoal.getJSONArray("subgoals");
-        	subGoalsList = new ArrayList<GoalCondition>();
-            for (int i = 0; i < jsonSubGoals.length(); i++) {
-                subGoalsList = loadGoal(dungeon, jsonSubGoals.getJSONObject(i));
-            }
+        	subGoalsList = addSubGoals(jsonSubGoals);
             goalList.addAll(subGoalsList);
             //System.out.print("added OR subgoal");
         	
@@ -212,8 +205,15 @@ public abstract class DungeonLoader {
         goalList.add(goal);
         return goalList;
         
-
 	}
+    
+    ArrayList<GoalCondition> addSubGoals(JSONArray jsonSubGoals) {
+    	ArrayList<GoalCondition> subGoalsList = new ArrayList<GoalCondition>();
+    	for (int i = 0; i < jsonSubGoals.length(); i++) {
+            subGoalsList.addAll(loadGoal(jsonSubGoals.getJSONObject(i)));
+        }
+    	return subGoalsList;
+    }
 
     public abstract void onLoad(Entity player, Boolean isNewEntity);
 
