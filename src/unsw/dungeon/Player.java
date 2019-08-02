@@ -61,7 +61,7 @@ public class Player extends Entity implements PlayerPos{
     }
     
     public void addCollectable(Collectable item) {
-    	dungeon.removeEntity(item);
+    	//dungeon.removeEntity(item);
     	this.inventory.add(item);
     }
     
@@ -94,7 +94,9 @@ public class Player extends Entity implements PlayerPos{
     
     public void attackEnemy(Enemy e) { 
     	for (Collectable c: inventory) {
+			System.out.println("finding");   		
     		if (c instanceof Sword) {
+    			System.out.println(((Sword) c).getHealth());
     			if (((Sword)c).getHealth() > 1 || this.potionTime > 0) {
         			dungeon.removeEntity(e);
         			((Sword)c).decrementHealth();   				
@@ -106,7 +108,7 @@ public class Player extends Entity implements PlayerPos{
     		}
     	}
     	if (dungeon.findSpecificEntity(e) != null) {
-    		//player should die
+    		dungeon.removeEntity(this);
     	}
     }
     
