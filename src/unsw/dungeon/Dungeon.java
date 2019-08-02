@@ -20,6 +20,7 @@ public class Dungeon {
     private int width, height;
     private ArrayList<Entity> entities;
     private Player player;
+    private EntityController controller;
     //private ArrayList<GoalCondition> goalList;
 
     public Dungeon(int width, int height) {
@@ -45,11 +46,15 @@ public class Dungeon {
         this.player = player;
     }
 
-    public void addEntity(Entity entity) {
+    public void addEntityLocal(Entity entity) {
         entities.add(entity);
         if (this.player != null) {
         	addPlayerPosObserver();
         }
+    }
+    
+    public void addEntity(Entity entity) {
+    	this.controller.addNewEntity(entity);
     }
     
     public void removeEntity(Entity entity) {
@@ -97,6 +102,10 @@ public class Dungeon {
     
     public void removePlayerPosObserver(PlayerPosObserver p) {
     	this.player.detachObserver(p);
+    }
+    
+    public void setEntityController(EntityController e) {
+    	this.controller = e;
     }
     
 }

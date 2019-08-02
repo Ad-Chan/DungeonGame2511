@@ -46,6 +46,11 @@ public class DungeonController {
             squares.getChildren().add(entity);
 
     }
+    
+    @FXML
+    public void addNew(ImageView e) {
+    	squares.getChildren().add(e);    	
+    }
 
     @FXML
     public void handleKeyPress(KeyEvent event) {
@@ -66,11 +71,15 @@ public class DungeonController {
         	//player.attackEnemy();
         	break;
         case L: //Preliminary binding, can be changed
-        	//player.placeBomb();
+        	player.placeBomb();
         	break;
         default:
             break;
         }
+    }
+    
+    public Dungeon getDungeon() {
+    	return this.dungeon;
     }
 
 }

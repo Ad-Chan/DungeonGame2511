@@ -20,6 +20,7 @@ import javafx.scene.layout.GridPane;
 public class DungeonControllerLoader extends DungeonLoader {
 
     private List<ImageView> entities;
+    public List<ImageView> newEntities;
 
     //Images
     private Image playerImage;
@@ -45,6 +46,7 @@ public class DungeonControllerLoader extends DungeonLoader {
             throws FileNotFoundException {
         super(filename);
         entities = new ArrayList<>();
+        newEntities = new ArrayList<>();
         playerImage = new Image("/human_new.png");
         wallImage = new Image("/brick_brown_0.png");
         exitImage = new Image("/exit.png");
@@ -67,80 +69,148 @@ public class DungeonControllerLoader extends DungeonLoader {
     }
 
     @Override
-    public void onLoad(Entity player) {
+    public void onLoad(Entity player, Boolean isNewEntity) {
         ImageView view = new ImageView(playerImage);
-        addEntity(player, view);
+    	if (isNewEntity == false) {
+        	addEntity(player, view);    		
+    	} else {
+    		addNewEntity(player, view);
+    	}
     }
 
     @Override
-    public void onLoad(Wall wall) {
+    public void onLoad(Wall wall, Boolean isNewEntity) {
         ImageView view = new ImageView(wallImage);
-        addEntity(wall, view);
+    	if (isNewEntity == false) {
+        	addEntity(wall, view);    		
+    	} else {
+    		addNewEntity(wall, view);
+    	}
     }
     
     @Override
-    public void onLoad(Exit exit) {
+    public void onLoad(Exit exit, Boolean isNewEntity) {
     	ImageView view = new ImageView(exitImage);
-    	addEntity(exit, view);
+    	if (isNewEntity == false) {
+        	addEntity(exit, view);    		
+    	} else {
+    		addNewEntity(exit, view);
+    	}
     }
     
     @Override
-    public void onLoad(FloorSwitch floorSwitch) {
+    public void onLoad(FloorSwitch floorSwitch, Boolean isNewEntity) {
     	ImageView view = new ImageView(switchImage);
-    	addEntity(floorSwitch, view);
+    	if (isNewEntity == false) {
+        	addEntity(floorSwitch, view);    		
+    	} else {
+    		addNewEntity(floorSwitch, view);
+    	}
     }
     
     @Override
-    public void onLoad(Boulder boulder) {
+    public void onLoad(Boulder boulder, Boolean isNewEntity) {
     	ImageView view = new ImageView(boulderImage);
-    	addEntity(boulder, view);
+    	if (isNewEntity == false) {
+        	addEntity(boulder, view);    		
+    	} else {
+    		addNewEntity(boulder, view);
+    	}
     }
     
     @Override
-    public void onLoad(Sword sword) {
+    public void onLoad(Sword sword, Boolean isNewEntity) {
     	ImageView view = new ImageView(swordImage);
-    	addEntity(sword, view);
+    	if (isNewEntity == false) {
+        	addEntity(sword, view);    		
+    	} else {
+    		addNewEntity(sword, view);
+    	}
     }
     
     @Override
-    public void onLoad(InvincibilityPotion potion) {
+    public void onLoad(InvincibilityPotion potion, Boolean isNewEntity) {
     	ImageView view = new ImageView(potionImage);
-    	addEntity(potion, view);
+    	if (isNewEntity == false) {
+        	addEntity(potion, view);    		
+    	} else {
+    		addNewEntity(potion, view);
+    	}
     }
     
     @Override
-    public void onLoad(Treasure gold) {
+    public void onLoad(Treasure gold, Boolean isNewEntity) {
     	ImageView view = new ImageView(goldImage);
-    	addEntity(gold, view);
+    	if (isNewEntity == false) {
+        	addEntity(gold, view);    		
+    	} else {
+    		addNewEntity(gold, view);
+    	}
     }
     
     @Override
-    public void onLoad(Key key) {
+    public void onLoad(Key key, Boolean isNewEntity) {
     	ImageView view = new ImageView(keyImage);
-    	addEntity(key, view);
+    	if (isNewEntity == false) {
+        	addEntity(key, view);    		
+    	} else {
+    		addNewEntity(key, view);
+    	}
     }
 
     @Override
-    public void onLoad(Door door) {
+    public void onLoad(Door door, Boolean isNewEntity) {
     	ImageView view = new ImageView(doorClosedImage);
-    	addEntity(door, view);
+    	if (isNewEntity == false) {
+        	addEntity(door, view);    		
+    	} else {
+    		addNewEntity(door, view);
+    	}
     }
     
     @Override
-    public void onLoad(Enemy enemy) {
+    public void onLoad(Enemy enemy, Boolean isNewEntity) {
     	ImageView view = new ImageView(enemyImage);
-    	addEntity(enemy, view);
+    	if (isNewEntity == false) {
+        	addEntity(enemy, view);    		
+    	} else {
+    		addNewEntity(enemy, view);
+    	};
     }
     
     @Override
-    public void onLoad(UnlitBomb unlitBomb) {
+    public void onLoad(UnlitBomb unlitBomb, Boolean isNewEntity) {
     	ImageView view = new ImageView(unlitBombImage);
-    	addEntity(unlitBomb, view);
+    	if (isNewEntity == false) {
+        	addEntity(unlitBomb, view);    		
+    	} else {
+    		addNewEntity(unlitBomb, view);
+    	}
+    }
+    
+    @Override
+    public void onLoad(LitBomb litBomb, Boolean isNewEntity) {
+    	ImageView view = new ImageView(litBomb1Image);
+    	if (isNewEntity == false) {
+        	addEntity(litBomb, view);    		
+    	} else {
+    		addNewEntity(litBomb, view);
+    	}
     }
     
     private void addEntity(Entity entity, ImageView view) {
         trackPosition(entity, view);
         entities.add(view);
+    }
+    
+    private void addNewEntity(Entity entity, ImageView view) {
+        trackPosition(entity, view);
+        entities.add(view);
+        newEntities.add(view);
+    }
+    
+    public void removeAddedEntity() {
+    	newEntities.remove(0);
     }
 
     /**
