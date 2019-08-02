@@ -22,5 +22,19 @@ public class Sword extends Collectable {
 		this.health--;
 	}
 	
-	
+	@Override
+    public boolean playerWalksInto(Player player) {
+		boolean found = false;
+		for (Collectable c: player.getInventory()) {
+			if (c instanceof Sword) {
+				found = true;
+			}
+		}
+		if (found == false) {
+			player.addCollectable(this);
+			return true;
+		} else {
+			return false;
+		}
+    }	
 }

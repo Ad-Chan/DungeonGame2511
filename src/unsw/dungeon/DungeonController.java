@@ -81,6 +81,10 @@ public class DungeonController {
     public Dungeon getDungeon() {
     	return this.dungeon;
     }
+    
+    public GridPane getSquares() {
+    	return this.squares;
+    }
 
 }
 

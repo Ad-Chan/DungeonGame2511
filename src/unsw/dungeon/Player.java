@@ -86,7 +86,9 @@ public class Player extends Entity implements PlayerPos{
     public void pickupCollectables(int x, int y) {
     	ArrayList<Entity> entities = dungeon.findEntity(x, y);
     	for (Entity e: entities) {
-    		e.playerWalksInto(this);
+    		if (e.playerWalksInto(this)== true) {
+    			dungeon.addToInventory(e);
+    		}
     	}
     }
     

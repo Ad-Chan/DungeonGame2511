@@ -23,10 +23,11 @@ public class InvincibilityPotion extends Collectable {
 	}
 	
 	@Override
-    public void playerWalksInto(Player player) {
+    public boolean playerWalksInto(Player player) {
 			player.addCollectable(this);
 			this.setTime_limit(5);
 			player.activatePotion(this);
+			return true;
     }
 	
 }

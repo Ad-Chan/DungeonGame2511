@@ -28,6 +28,7 @@ public class Dungeon {
         this.height = height;
         this.entities = new ArrayList<>();
         this.player = null;
+        this.controller = null;
     }
 
     public int getWidth() {
@@ -59,6 +60,11 @@ public class Dungeon {
     
     public void removeEntity(Entity entity) {
     	entities.remove(entity);
+    	this.controller.removeEntity(entity);
+    }
+    
+    public void addToInventory(Entity entity) {
+    	this.controller.removeEntity(entity);
     }
     
     /*public void addGoal(GoalCondition goal) {

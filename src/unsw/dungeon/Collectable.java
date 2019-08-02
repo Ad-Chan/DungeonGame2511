@@ -18,7 +18,8 @@ public class Collectable extends Entity{
 	}
 	
 	@Override
-    public void playerWalksInto(Player player) {
+    public boolean playerWalksInto(Player player) {
 			player.addCollectable(this);
+			return true;
     }
 }

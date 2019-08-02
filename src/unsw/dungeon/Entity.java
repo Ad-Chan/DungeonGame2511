@@ -2,6 +2,7 @@ package unsw.dungeon;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.image.ImageView;
 
 /**
  * An entity in the dungeon.
@@ -15,6 +16,7 @@ public class Entity implements PlayerPosObserver{
     private IntegerProperty x, y;
     private int playerX;
     private int playerY;
+    private ImageView image;
     /**
      * Create an entity positioned in square (x,y)
      * @param x
@@ -23,6 +25,7 @@ public class Entity implements PlayerPosObserver{
     public Entity(int x, int y) {
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
+        this.image = null;
         //this.playerX = -999; //values to be determined
         //this.playerY = -999; //values to be determined
     }
@@ -35,8 +38,8 @@ public class Entity implements PlayerPosObserver{
         return y;
     }
     
-    public void playerWalksInto(Player player) {
-    	
+    public boolean playerWalksInto(Player player) {
+    	return false;
     }
 
     public int getY() {
@@ -71,4 +74,12 @@ public class Entity implements PlayerPosObserver{
 	public boolean isObstacle(int x, int y, Player p) {
 		return false;
 	}	
+	
+	public void setImage(ImageView i) {
+		this.image = i;
+	}
+	
+	public ImageView getImage() {
+		return this.image;
+	}
 }

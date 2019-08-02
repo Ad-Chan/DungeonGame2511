@@ -19,7 +19,7 @@ public class Key extends Collectable{
 	}
 	
 	@Override
-    public void playerWalksInto(Player player) {
+    public boolean playerWalksInto(Player player) {
 		boolean found = false;
 		for (Collectable c: player.getInventory()) {
 			if (c instanceof Key) {
@@ -27,7 +27,10 @@ public class Key extends Collectable{
 			}
 		}
 		if (found == false) {
-			player.addCollectable(this);			
+			player.addCollectable(this);
+			return true;
+		} else {
+			return false;
 		}
     }
 }

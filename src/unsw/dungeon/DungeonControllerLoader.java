@@ -200,11 +200,13 @@ public class DungeonControllerLoader extends DungeonLoader {
     
     private void addEntity(Entity entity, ImageView view) {
         trackPosition(entity, view);
+        entity.setImage(view);
         entities.add(view);
     }
     
     private void addNewEntity(Entity entity, ImageView view) {
         trackPosition(entity, view);
+        entity.setImage(view);
         entities.add(view);
         newEntities.add(view);
     }
