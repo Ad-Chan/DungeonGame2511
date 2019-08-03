@@ -219,14 +219,14 @@ public class DungeonControllerLoader extends DungeonLoader {
     	ImageView view = null;
     	if (e instanceof LitBomb) {
     		if (((LitBomb)e).checkStrategy() == 2) {
-    			System.out.println("2");
+    			//System.out.println("2");
     			view = new ImageView(litBomb2Image);
     		} else if (((LitBomb)e).checkStrategy() == 3) {
     			view = new ImageView(litBomb3Image);
-    			System.out.println("3");
+    			//System.out.println("3");
     		} else if (((LitBomb)e).checkStrategy() == 4) {
     			view = new ImageView(litBomb4Image);
-    			System.out.println("4");
+    			//System.out.println("4");
     		}
     	} else if (e instanceof Door) {
     		if (((Door)e).isUnlocked() == false) {
@@ -249,9 +249,7 @@ public class DungeonControllerLoader extends DungeonLoader {
      * @param node
      */
     private void trackPosition(Entity entity, Node node) {
-    	
-		System.out.println(entity.getX());
-		System.out.println(entity.getY());
+
         GridPane.setColumnIndex(node, entity.getX());
         GridPane.setRowIndex(node, entity.getY());
         entity.x().addListener(new ChangeListener<Number>() {
