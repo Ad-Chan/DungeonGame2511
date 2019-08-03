@@ -468,11 +468,6 @@
       "type": "wall"
     },
     {
-      "x": 16,
-      "y": 12,
-      "type": "gnome"
-    },    
-    {
       "x": 0,
       "y": 13,
       "type": "wall"

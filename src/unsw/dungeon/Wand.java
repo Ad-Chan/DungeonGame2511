@@ -27,16 +27,10 @@ public class Wand extends Weapon{
 	@Override
     public boolean playerWalksInto(Player player) {
 		boolean found = false;
-		/*for (Collectable c: player.getInventory()) {
-			if (c instanceof Wand) {
-				found = true;
-			}
-		}*/
 		if (player.getWeapon() != null) {
 			found = true;
 		}
 		if (found == false) {
-			//player.addCollectable(this);
 			player.setWeapon(this);
 			return true;
 		} else {
