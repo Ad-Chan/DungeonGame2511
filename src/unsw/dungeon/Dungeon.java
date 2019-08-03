@@ -187,4 +187,8 @@ public class Dungeon {
     	}
     	return true;
     }
+    
+    public void killPlayer(Enemy e) {
+    	this.player.attackEnemy(e);
+    }
 }

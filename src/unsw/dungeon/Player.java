@@ -134,6 +134,7 @@ public class Player extends Entity implements PlayerPos{
     	}
     }
     
+    
     public void attackEnemy(Enemy e) { 
     	for (Collectable c: inventory) {  		
     		if (c instanceof Sword) {
@@ -201,5 +202,9 @@ public class Player extends Entity implements PlayerPos{
 	
 	public void updateImage(Entity e) {
 		this.dungeon.updateImage(e);
+	}
+	
+	public Dungeon getDungeon() {
+		return this.dungeon;
 	}
 }

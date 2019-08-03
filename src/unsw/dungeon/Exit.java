@@ -8,7 +8,11 @@ public class Exit extends Entity {
     
     @Override
     public boolean playerWalksInto(Player player) {
-    	//If Conditions are complete -> complete level
+    	if (player.getDungeon().checkGoalCompletion() == true) {
+    		
+    	} else {
+    		
+    	}
     	return false;
     }
 }

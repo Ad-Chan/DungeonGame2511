@@ -1,5 +1,6 @@
 package unsw.dungeon;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,7 +14,7 @@ public class Enemy extends Entity {
 		super(x, y);
 		this.id = id;
 		Timer timer = new Timer();
-		timer.schedule(new moveTimer(),0,1000);
+		timer.schedule(new moveTimer(),0,500);
 		this.dungeon = dungeon;
 		this.health = 1;
 	}
@@ -21,24 +22,28 @@ public class Enemy extends Entity {
     public void moveUp() {
         if (!this.dungeon.getPlayer().findObstacles(getX(), getY()-1) == true) {    
         	y().set(getY() - 1);
+        	this.findPlayer(this.dungeon);
         }
     }
 
     public void moveDown() {
         if (!this.dungeon.getPlayer().findObstacles(getX(), getY()+1) == true) {    
         	y().set(getY() + 1);
+        	this.findPlayer(this.dungeon);
         }
     }
 
     public void moveLeft() {
     	if (!this.dungeon.getPlayer().findObstacles(getX()-1, getY()) == true) {    
         	x().set(getX() - 1);
+        	this.findPlayer(this.dungeon);
         }
     }
 
     public void moveRight() {
         if (!this.dungeon.getPlayer().findObstacles(getX()+1, getY()) == true) {    
         	x().set(getX() + 1);
+        	this.findPlayer(this.dungeon);
         }
     }
     
@@ -63,6 +68,15 @@ public class Enemy extends Entity {
     		//System.out.println("Down");
     	}
     	
+    }
+    
+    public void findPlayer(Dungeon dungeon) {
+    	ArrayList<Entity> entities = dungeon.findEntity(this.getX(), this.getY());
+    	for (Entity e: entities) {
+    		if (e.equals(dungeon.getPlayer())) {
+    			dungeon.killPlayer(this);
+    		}
+    	}
     }
     
     public void decrementHealth() {
