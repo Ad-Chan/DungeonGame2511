@@ -160,4 +160,21 @@ public class Dungeon {
     	return count;
     }
     
+    public GoalCondition findGoal(String goalName) {
+    	for(GoalCondition g: this.goalList) {
+    		if(g.getEntityName().equals(goalName)) {
+    			return g;
+    		}
+    	}
+    	return null;
+    }
+    
+    public boolean checkGoalCompletion() {
+    	for(GoalCondition g: this.goalList) {
+    		if(!g.getGoalStatus()) {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
 }
