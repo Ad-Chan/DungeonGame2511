@@ -42,9 +42,7 @@ public class DungeonControllerLoader extends DungeonLoader {
     private Image litBomb4Image;
     private Image wandImage;
     private Image wandProjectileImage;
-    private Image slingshotImage;
-    private Image slingshotProjectileImage;
-    
+
 
     public DungeonControllerLoader(String filename)
             throws FileNotFoundException {
