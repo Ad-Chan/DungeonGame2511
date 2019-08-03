@@ -77,6 +77,9 @@ public class DungeonController {
         case L:
         	player.placeBomb();
         	break;
+        case K:
+        	player.useWand();
+        	break;
         default:
             break;
         }

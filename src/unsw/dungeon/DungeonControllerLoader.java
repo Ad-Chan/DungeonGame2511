@@ -40,6 +40,8 @@ public class DungeonControllerLoader extends DungeonLoader {
     private Image litBomb2Image;
     private Image litBomb3Image;
     private Image litBomb4Image;
+    private Image wandImage;
+    private Image wandProjectileImage;
     
 
     public DungeonControllerLoader(String filename)
@@ -64,6 +66,8 @@ public class DungeonControllerLoader extends DungeonLoader {
         litBomb2Image = new Image("/bomb_lit_2.png");
         litBomb3Image = new Image("/bomb_lit_3.png");
         litBomb4Image = new Image("/bomb_lit_4.png");
+        wandImage = new Image("/wand.png");
+        wandProjectileImage = new Image("/wandProjectile.png");
         
         
     }
@@ -198,6 +202,28 @@ public class DungeonControllerLoader extends DungeonLoader {
     	}
     }
     
+	@Override
+	public void onLoad(Wand wand, Boolean isNewEntity) {
+		ImageView view = new ImageView(wandImage);
+	   	if (isNewEntity == false) {
+        	addEntity(wand, view);    		
+    	} else {
+    		addNewEntity(wand, view);
+    	}
+		
+	}
+	
+	@Override
+	public void onLoad(WandProjectile wandProjectile, Boolean isNewEntity) {
+		ImageView view = new ImageView(wandProjectileImage);
+	   	if (isNewEntity == false) {
+        	addEntity(wandProjectile, view);    		
+    	} else {
+    		addNewEntity(wandProjectile, view);
+    	}
+		
+	}
+    
     private void addEntity(Entity entity, ImageView view) {
         trackPosition(entity, view);
         entity.setImage(view);
@@ -274,6 +300,10 @@ public class DungeonControllerLoader extends DungeonLoader {
     public DungeonController loadController() throws FileNotFoundException {
         return new DungeonController(load(), entities);
     }
+
+
+
+
 
 
 }

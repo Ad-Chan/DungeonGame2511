@@ -129,6 +129,12 @@ public abstract class DungeonLoader {
         	entity = bomb;
         	uniqueID++;
         	break;
+        case "wand":
+        	Wand wand = new Wand(x, y, uniqueID);
+        	onLoad(wand, isNewEntity);
+        	entity = wand;
+        	uniqueID++;
+        	break;
         }
         dungeon.addEntityLocal(entity);
     }
@@ -160,6 +166,10 @@ public abstract class DungeonLoader {
         	onLoad((UnlitBomb)entity, isNewEntity);
         } else if (entity instanceof LitBomb) {
         	onLoad((LitBomb)entity, isNewEntity);
+        } else if (entity instanceof Wand) {
+        	onLoad((Wand)entity, isNewEntity);
+        } else if (entity instanceof WandProjectile) {
+        	onLoad((WandProjectile)entity, isNewEntity);
         }
         dungeon.addEntityLocal(entity);
     }
@@ -252,4 +262,8 @@ public abstract class DungeonLoader {
     public abstract void onLoad(UnlitBomb unlitBomb, Boolean isNewEntity);
 
     public abstract void onLoad(LitBomb litBomb, Boolean isNewEntity);
+    
+    public abstract void onLoad(Wand wand, Boolean isNewEntity);
+    
+    public abstract void onLoad(WandProjectile wandProjectile, Boolean isNewEntity);
 }

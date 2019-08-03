@@ -110,6 +110,11 @@ public class Enemy extends Entity {
 		player.attackEnemy(this);
 		return false;
     }
+	
+	@Override
+	public boolean isObstacle(int x, int y, Player p) {
+		return true;
+	}	
 
     class moveTimer extends TimerTask {
 

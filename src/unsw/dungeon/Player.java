@@ -18,6 +18,7 @@ public class Player extends Entity implements PlayerPos{
     private Dungeon dungeon;
     private ArrayList<Collectable> inventory;
     ArrayList<PlayerPosObserver> observers;
+    private Sword weapon;
     private int potionTime;
     /**
      * Create a player positioned in square (x,y)
@@ -30,6 +31,7 @@ public class Player extends Entity implements PlayerPos{
         this.inventory = new ArrayList<Collectable>();
         this.observers = new ArrayList<PlayerPosObserver>();
         this.potionTime = 0;
+        this.weapon = null;
     }
     
 	public void potionTick() {
@@ -150,7 +152,7 @@ public class Player extends Entity implements PlayerPos{
     
     
     public void attackEnemy(Enemy e) { 
-    	for (Collectable c: inventory) {  		
+    	/*for (Collectable c: inventory) {  		
     		if (c instanceof Sword) {
     			if (((Sword)c).getHealth() > 1) {
         			e.decrementHealth();
@@ -163,6 +165,20 @@ public class Player extends Entity implements PlayerPos{
         			this.removeCollectable(c);
     			}
     		}
+    	}*/
+    	if (this.weapon != null) {
+	    	if (this.weapon.ranged() == false) {
+	    		if (this.weapon.getHealth() > 1) {
+	    			e.decrementHealth();
+					dungeon.removeEntity(e);
+	    			this.weapon.decrementHealth();   				
+				} else if (this.weapon.getHealth() == 1){
+	    			e.decrementHealth();
+					dungeon.removeEntity(e);
+					this.weapon.decrementHealth();
+	    			this.removeWeapon();
+				}
+	    	}
     	}
     	if (this.potionTime > 0) {
 			e.decrementHealth();
@@ -170,6 +186,35 @@ public class Player extends Entity implements PlayerPos{
     	}
     	if (dungeon.findSpecificEntity(e) != null) {
     		this.killPlayer();
+    	}
+    }
+    
+    public void useWand() {
+    	/*if (inventory.size() > 0) {
+	    	for (Collectable c: inventory) {
+	    		if (c instanceof Wand) {
+	    			if (((Wand)c).getHealth() > 1) {
+	        			((Wand)c).decrementHealth(); 
+	        			((Wand)c).fireProjectiles(this); 
+	    			} else if (((Wand)c).getHealth() == 1){
+	        			((Wand)c).decrementHealth();
+	        			((Wand)c).fireProjectiles(this); 
+	        			this.removeCollectable(c);
+	    			}
+	    		}
+	    	}
+    	}*/
+    	if (this.weapon != null) {
+	    	if (this.weapon.ranged() == true) {
+	    		if (this.weapon.getHealth() > 1) {
+	    			this.weapon.decrementHealth();  
+					((Wand)this.weapon).fireProjectiles(this);
+				} else if (this.weapon.getHealth() == 1){
+					this.weapon.decrementHealth();
+					((Wand)this.weapon).fireProjectiles(this);
+	    			this.removeWeapon();
+				}
+	    	}
     	}
     }
     
@@ -247,5 +292,25 @@ public class Player extends Entity implements PlayerPos{
 	public void killPlayer() {
 		dungeon.removeEntity(this);
 		dungeon.killWindow();
+	}
+	
+	public void createEntities(Entity e) {
+		dungeon.addEntity(e);
+	}
+	
+	public void destroyEntities(Entity e) {
+		dungeon.removeEntity(e);
+	}
+	
+	public Sword getWeapon() {
+		return this.weapon;
+	}
+	
+	public void setWeapon(Sword weapon) {
+		this.weapon = weapon;
+	}
+	
+	public void removeWeapon() {
+		this.weapon = null;
 	}
 }
