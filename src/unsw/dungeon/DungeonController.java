@@ -33,6 +33,7 @@ public class DungeonController {
 
     @FXML
     public void initialize() {
+    	
         Image ground = new Image("/dirt_0_new.png");
 
         // Add the ground first so it is below all other entities
