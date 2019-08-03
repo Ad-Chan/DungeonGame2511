@@ -215,7 +215,7 @@ public class DungeonControllerLoader extends DungeonLoader {
     	newEntities.remove(0);
     }
     
-    public void updateImage(Entity e) {
+    public ImageView updateImage(Entity e) {
     	ImageView view = null;
     	if (e instanceof LitBomb) {
     		if (((LitBomb)e).checkStrategy() == 2) {
@@ -225,8 +225,14 @@ public class DungeonControllerLoader extends DungeonLoader {
     		} else if (((LitBomb)e).checkStrategy() == 4) {
     			view = new ImageView(litBomb4Image);
     		}
+    	} else if (e instanceof Door) {
+    		if (((Door)e).isUnlocked() == false) {
+    			view = new ImageView(doorOpenImage);
+    		}
     	}
+    	
     	trackPosition(e, view);
+    	return view;
     }
 
     /**

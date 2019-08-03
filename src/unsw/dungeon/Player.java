@@ -156,4 +156,8 @@ public class Player extends Entity implements PlayerPos{
 	public ArrayList<PlayerPosObserver> getObservers() {
 		return this.observers;
 	}
+	
+	public void updateImage(Entity e) {
+		this.dungeon.updateImage(e);
+	}
 }

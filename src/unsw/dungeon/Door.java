@@ -37,6 +37,7 @@ public class Door extends Entity{
 		for (Entity e: p.getInventory()) {
 			if (e instanceof Key) {
 				unlockDoor(((Key) e).getKeycode());
+				p.updateImage(this);
 			}
 		}			
 		if (this.getX() == x && this.getY() == y && this.strategy.checkLock() == false){

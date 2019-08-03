@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 
 public class EntityController {
 
@@ -34,7 +35,8 @@ public class EntityController {
 	}
 	
 	public void updateImage(Entity e) {
-		//removeEntity(e);
-		this.dungeonLoader.updateImage(e);
+		removeEntity(e);
+		ImageView newI = this.dungeonLoader.updateImage(e);
+		this.controller.addNew(newI);
 	}
 }
