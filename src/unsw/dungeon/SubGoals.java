@@ -33,10 +33,12 @@ public class SubGoals implements GoalCondition {
 			if(subGoals.get(0).getGoalStatus() && subGoals.get(1).getGoalStatus()) {
 				return true;
 			}
+			break;
 		case("OR"):
 			if(subGoals.get(0).getGoalStatus() || subGoals.get(1).getGoalStatus()) {
 				return true;
 			}
+			break;
 		
 		}
 		return false;
