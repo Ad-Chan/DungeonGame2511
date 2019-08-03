@@ -1,6 +1,5 @@
 package unsw.dungeon;
 
-// Door Class (to be modified)
 public class Door extends Entity{
 	
 	private int keycode;

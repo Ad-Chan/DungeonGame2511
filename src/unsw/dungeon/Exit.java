@@ -11,7 +11,6 @@ public class Exit extends Entity {
     @Override
     public boolean playerWalksInto(Player player) {
     	this.found = true;
-    	System.out.println("found");
     	return false;
     }
     

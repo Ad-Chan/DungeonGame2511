@@ -4,7 +4,7 @@ class Explode implements LitBombState{
 
 	@Override
 	public void next_stage(LitBomb bomb) {
-		//EXPLODE STATE
+
 	}
 
 	@Override
