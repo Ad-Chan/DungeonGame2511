@@ -21,6 +21,7 @@ public abstract class DungeonLoader {
 
     private JSONObject json;
     private int uniqueID;
+    private ArrayList<Goal> singleGoals;
 
     public DungeonLoader(String filename) throws FileNotFoundException {
         json = new JSONObject(new JSONTokener(new FileReader("dungeons/" + filename)));
@@ -38,6 +39,7 @@ public abstract class DungeonLoader {
 
         JSONArray jsonEntities = json.getJSONArray("entities");
         JSONObject jsonGoal = json.getJSONObject("goal-condition");
+        this.singleGoals = new ArrayList<Goal>();
 
         uniqueID = 0;
         
@@ -48,7 +50,7 @@ public abstract class DungeonLoader {
         ArrayList<GoalCondition> goalList = loadGoal(jsonGoal);
         dungeon.addGoalList(goalList);
 
-        System.out.print(goalList + "\n");
+        System.out.print(singleGoals + "\n");
         ArrayList<GoalCondition> subGoalsList = goalList.get(0).getSubGoalsList();
         System.out.print(subGoalsList.get(0).getEntityName() + " " + subGoalsList.get(1).getEntityName() + "\n");
         return dungeon;
@@ -174,15 +176,19 @@ public abstract class DungeonLoader {
         switch(mainGoal) {
         case "exit":
         	goal = new Goal("exit");
+        	addSingleGoal((Goal) goal);
         	break;
         case "boulders":
         	goal = new Goal("boulders");
+        	addSingleGoal((Goal) goal);
         	break;
         case "treasure":
         	goal = new Goal("treasure");
+        	addSingleGoal((Goal) goal);
         	break;
         case "enemies":
         	goal = new Goal("enemies");
+        	addSingleGoal((Goal) goal);
         	break;
         case "AND":
         	goal = new SubGoals("AND");
@@ -211,6 +217,15 @@ public abstract class DungeonLoader {
             subGoalsList.addAll(loadGoal(jsonSubGoals.getJSONObject(i)));
         }
     	return subGoalsList;
+    }
+    
+    public void addSingleGoal(Goal goal) {
+    	for(Goal g: this.singleGoals) {
+    		if(g.getEntityName().equals(goal.getEntityName())) {
+    			return;
+    		}
+    	}
+    	this.singleGoals.add(goal);
     }
 
     public abstract void onLoad(Entity player, Boolean isNewEntity);

@@ -22,6 +22,7 @@ public class Dungeon {
     private Player player;
     private EntityController controller;
     private ArrayList<GoalCondition> goalList;
+    private ArrayList<Goal> singleGoals;
 
     public Dungeon(int width, int height) {
         this.width = width;
@@ -170,13 +171,8 @@ public class Dungeon {
     	return count;
     }
     
-    public GoalCondition findGoal(String goalName) {
-    	for(GoalCondition g: this.goalList) {
-    		if(g.getEntityName().equals(goalName)) {
-    			return g;
-    		}
-    	}
-    	return null;
+    public void addSingleGoals(ArrayList<Goal> singleGoals) {
+    	this.singleGoals.addAll(singleGoals);
     }
     
     public boolean checkGoalCompletion() {
