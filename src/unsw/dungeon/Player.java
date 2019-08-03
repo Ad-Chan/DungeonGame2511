@@ -40,7 +40,7 @@ public class Player extends Entity implements PlayerPos{
 		if (this.potionTime > 0) {
 			this.potionTime--;	
 		} else {
-			//((Timer) runnable).cancel();
+			//runnable.currentThread().interrupt();
 		}
 	}
 	

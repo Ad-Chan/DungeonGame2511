@@ -37,8 +37,8 @@ public class EntityController {
 	public void updateImage(Entity e) {
 		removeEntity(e);
 		ImageView newI = this.dungeonLoader.updateImage(e);
-		e.setImage(newI);
 		this.controller.addNew(newI);
+		e.setImage(newI);
 	}
 	
 }

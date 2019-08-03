@@ -3,6 +3,8 @@ package unsw.dungeon;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 
 
@@ -11,11 +13,13 @@ public class LitBomb extends Entity {
 	
 	private LitBombState state;
 	private Player player;
+	private boolean explode;
 	public LitBomb(int x, int y, Player p) {
 		super(x, y);
 		this.state = new LitBomb1();
 		bombTick();
 		this.player = p;
+		this.explode = false;
 	}
 	
 	public void setState(LitBombState state) {
@@ -24,7 +28,12 @@ public class LitBomb extends Entity {
 	
 	public void bombTick() {
 		Timer timer = new Timer();
-		timer.schedule(new bombTimer(),0,500);	
+		timer.schedule(new bombTimer(),0,500);
+		//Timeline timeline = new Timeline();
+		//timeline.setCycleCount(Timeline.INDEFINITE);
+		
+		//timeline.play();
+
 	}
 	
 	public int checkStrategy() {
@@ -36,7 +45,10 @@ public class LitBomb extends Entity {
 	}
     
 	public void blowup() {
-		this.player.blowup(this);
+		if (this.explode == false) {
+			this.player.blowup(this);
+			this.explode = true;
+		}
 	}
 	
 	class bombTimer extends TimerTask {
@@ -50,6 +62,7 @@ public class LitBomb extends Entity {
     		    			updateBomb();
     		    		} else {
     		    			blowup();
+    		    			
     		    		}
     		      }
     		    });
