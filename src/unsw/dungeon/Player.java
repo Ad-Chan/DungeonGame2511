@@ -58,13 +58,21 @@ public class Player extends Entity implements PlayerPos{
  		    });
     	}
     }
+	
+	public void movementRunFunctions() {
+    	dungeon.checkSwitches();
+    	notifyObservers();
+    	dungeon.updateGoals();	
+    	if (dungeon.checkGoalCompletion() == true) {
+    		System.out.println("completed");
+    	}
+	}
 
     public void moveUp() {
         if (!findObstacles(getX(), getY()-1) == true) {
         	y().set(getY() - 1); 
         	pickupCollectables(this.getX(), this.getY());
-        	dungeon.checkSwitches();
-        	notifyObservers();
+        	movementRunFunctions();
         }
     }
 
@@ -72,8 +80,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX(), getY()+1) == true) {
         	y().set(getY() + 1);
         	pickupCollectables(this.getX(), this.getY());
-        	dungeon.checkSwitches();
-        	notifyObservers();      	
+        	movementRunFunctions();
         }
     }
 
@@ -81,8 +88,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX()-1, getY()) == true) {
         	x().set(getX() - 1);
         	pickupCollectables(this.getX(), this.getY());
-        	dungeon.checkSwitches();
-        	notifyObservers();       	
+        	movementRunFunctions();
         }
 
     }
@@ -91,8 +97,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX()+1, getY()) == true) {
         	x().set(getX() + 1);
         	pickupCollectables(this.getX(), this.getY());
-        	dungeon.checkSwitches();
-        	notifyObservers();       	
+        	movementRunFunctions();
         }
 
     }

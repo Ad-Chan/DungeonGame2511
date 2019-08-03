@@ -23,6 +23,11 @@ public class Enemy extends Entity {
 		this.runAway = false;
 	}
 	
+	@Override
+	public boolean objective() {
+		return true;
+	}
+	
     public void moveUp() {
         if (!this.dungeon.getPlayer().findObstacles(getX(), getY()-1) == true) {    
         	y().set(getY() - 1);
@@ -52,7 +57,7 @@ public class Enemy extends Entity {
     }
     
     public void moveEnemy(Runnable runnable) {
-    	if (this.runAway == false) {
+    	if (this.runAway == false && this.health == 1) {
 	    	if (this.getPlayerX() > this.getX()) {
 	    		this.moveRight();
 	    	}
@@ -65,7 +70,7 @@ public class Enemy extends Entity {
 	    	if (this.getPlayerY() < this.getY()) {
 	    		this.moveUp();
 	    	}
-    	} else {
+    	} else if (this.runAway == true && this.health == 1){
 	    	if (this.getPlayerX() > this.getX()) {
 	    		this.moveLeft();
 	    	}

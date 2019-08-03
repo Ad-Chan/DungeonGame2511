@@ -29,10 +29,6 @@ public class LitBomb extends Entity {
 	public void bombTick() {
 		Timer timer = new Timer();
 		timer.schedule(new bombTimer(),0,500);
-		//Timeline timeline = new Timeline();
-		//timeline.setCycleCount(Timeline.INDEFINITE);
-		
-		//timeline.play();
 
 	}
 	
@@ -61,8 +57,7 @@ public class LitBomb extends Entity {
     		    			LitBomb.this.state.next_stage(LitBomb.this);
     		    			updateBomb();
     		    		} else {
-    		    			blowup();
-    		    			
+    		    			blowup();    		    			
     		    		}
     		      }
     		    });

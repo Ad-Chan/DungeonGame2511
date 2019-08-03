@@ -31,6 +31,7 @@ public class Dungeon {
         this.player = null;
         this.controller = null;
         this.singleGoals = new ArrayList<Goal>();
+        this.goalList = new ArrayList<GoalCondition>();
     }
 
     public int getWidth() {
@@ -151,34 +152,15 @@ public class Dungeon {
     		}
     	}
     }
-        
-    public int countTreasure() {
-    	int count = 0;
-    	for (Entity e: entities) {
-    		if (e instanceof Treasure) {
-    			count++;
-    		}
-    	}
-    	return count;
-    }
-    
-    public int countEnemies() {
-    	int count = 0;
-    	for (Entity e: entities) {
-    		if (e instanceof Enemy) {
-    			count++;
-    		}
-    	}
-    	return count;
-    }
-    
+            
     public void addSingleGoals(ArrayList<Goal> singleGoals) {
     	this.singleGoals.addAll(singleGoals);
     }
     
     public boolean checkGoalCompletion() {
     	for(GoalCondition g: this.goalList) {
-    		if(!g.getGoalStatus()) {
+    		System.out.println("goals");
+    		if(g.getGoalStatus() == false) {
     			return false;
     		}
     	}
@@ -199,4 +181,73 @@ public class Dungeon {
     	return enemies;
     }
     
+    public void updateGoals() {
+    	boolean complete = true;
+    	for (Entity e: this.entities) {
+			if (e.objective() == true) {
+				System.out.println("false");
+				complete = false;
+			}
+    	}
+    	if (complete == true) {
+    		
+	    	for (Goal g: this.singleGoals) {
+		    		g.setGoalComplete();
+
+    		/*if (g.getEntityName().equals("boulders")) {
+    			boolean complete = true;
+    			for (Entity e: this.entities) {
+    				if (e instanceof FloorSwitch) {
+    					if (((FloorSwitch)e).getState() == false) {
+    						complete = false;
+    						break;
+    					}
+    				}
+    				if (e.objective() == true) {
+    					complete = false;
+    				}
+    			}
+    			if (complete == true) {
+    				g.setGoalComplete();
+    				System.out.println("completed boulders");
+    			}
+    		}
+    		if (g.getEntityName().equals("enemies")) {
+    			boolean complete = true;
+    			for (Entity e: this.entities) {
+    				if (e instanceof Enemy) {
+    					complete = false;
+    				}
+    				if (e.objective() == true) {
+    					complete = false;
+    				}
+    			}
+    			if (complete == true) {
+    				g.setGoalComplete();
+    				System.out.println("completed enemies");
+    			}
+    		}
+    		if (g.getEntityName().equals("treasure")) {
+    			boolean complete = true;
+    			for (Entity e: this.entities) {
+    				if (e instanceof Treasure) {
+    					complete = false;
+    				}
+    				if (e.objective() == true) {
+    					complete = false;
+    				}
+    			}
+    			if (complete == true) {
+    				g.setGoalComplete();
+    				System.out.println("completed treasure");
+    			}
+    		}
+    		if (g.getEntityName().equals("exit")) {
+    			
+    		}
+    	}*/
+	    	}
+	    }
+    
+    }
 }

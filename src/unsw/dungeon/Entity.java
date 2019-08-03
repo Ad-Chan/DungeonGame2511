@@ -82,4 +82,8 @@ public class Entity implements PlayerPosObserver{
 	public ImageView getImage() {
 		return this.image;
 	}
+	
+	public boolean objective() {
+		return false;
+	}
 }
