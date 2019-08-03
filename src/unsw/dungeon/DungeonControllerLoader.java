@@ -245,11 +245,11 @@ public class DungeonControllerLoader extends DungeonLoader {
     public ImageView updateImage(Entity e) {
     	ImageView view = null;
     	if (e instanceof LitBomb) {
-    		if (((LitBomb)e).checkStrategy() == 2) {
+    		if (((LitBomb)e).checkState() == 2) {
     			view = new ImageView(litBomb2Image);
-    		} else if (((LitBomb)e).checkStrategy() == 3) {
+    		} else if (((LitBomb)e).checkState() == 3) {
     			view = new ImageView(litBomb3Image);
-    		} else if (((LitBomb)e).checkStrategy() == 4) {
+    		} else if (((LitBomb)e).checkState() == 4) {
     			view = new ImageView(litBomb4Image);
     		}
     	} else if (e instanceof Door) {

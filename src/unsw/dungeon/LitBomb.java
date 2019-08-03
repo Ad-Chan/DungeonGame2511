@@ -28,7 +28,7 @@ public class LitBomb extends Entity {
 
 	}
 	
-	public int checkStrategy() {
+	public int checkState() {
 		return this.state.bombState();
 	}
 	
