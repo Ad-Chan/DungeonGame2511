@@ -1,5 +1,7 @@
 package unsw.dungeon;
 
+import java.util.ArrayList;
+
 public class Goal implements GoalCondition {
 	
 	private String goalType;
@@ -10,11 +12,22 @@ public class Goal implements GoalCondition {
 		this.complete = false;
 	}
 	
+	@Override
 	public String getEntityName() {
 		return this.goalType;
 	}
 	
 	public boolean getGoalStatus() {
 		return this.complete;
+	}
+
+	@Override
+	public void addSubGoal(Goal goal) {
+
+	}
+
+	@Override
+	public ArrayList<GoalCondition> getSubGoalsList() {
+		return null;
 	}
 }

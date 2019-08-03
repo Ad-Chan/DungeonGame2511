@@ -23,7 +23,13 @@ public class SubGoals implements GoalCondition {
 		return this.complete;
 	}
 	
+	@Override
 	public void addSubGoal(Goal goal) {
 		subGoalsList.add(goal);
+	}
+	
+	@Override
+	public ArrayList<GoalCondition> getSubGoalsList() {
+		return this.subGoalsList;
 	}
 }
