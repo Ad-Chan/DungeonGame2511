@@ -35,10 +35,11 @@ public class Player extends Entity implements PlayerPos{
 		timer.schedule(new potionTimer(),0,1000);	
 	}
 	
-	public void decrementPotionTime() {
+	public void decrementPotionTime(Player.potionTimer timer) {
 		if (this.potionTime > 0) {
 			this.potionTime--;	
 		} else {
+			timer.cancel();
 		}
     	System.out.println(this.potionTime);
 	}
@@ -47,7 +48,7 @@ public class Player extends Entity implements PlayerPos{
 
     	@Override
     	public void run() {
-    		decrementPotionTime();
+    		decrementPotionTime(this);
     	}
     }
 
