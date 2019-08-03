@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class StartController {
 
@@ -15,13 +18,11 @@ public class StartController {
     private DungeonApplication dungeonScreen;
 
     @FXML
-    public void handleStartButton(ActionEvent event) throws IOException {
-    	Stage primaryStage = new Stage();
-    	Scene scene1;
-    	//startButton.setOnAction(value);
+    public void handleStartButton(ActionEvent event) throws IOException {;
+    	dungeonScreen.start();
     }
     
-    public void setCountScreen(DungeonApplication dungeonScreen) {
+    public void setDungeonScreen(DungeonApplication dungeonScreen) {
         this.dungeonScreen = dungeonScreen;
     }
 

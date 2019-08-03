@@ -17,7 +17,7 @@ public class Enemy extends Entity {
 		super(x, y);
 		this.id = id;
 		Timer timer = new Timer();
-		timer.schedule(new moveTimer(),0,500);
+		timer.schedule(new moveTimer(),0,1000);
 		this.dungeon = dungeon;
 		this.health = 1;
 		this.runAway = false;

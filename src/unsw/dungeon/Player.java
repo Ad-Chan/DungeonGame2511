@@ -64,7 +64,7 @@ public class Player extends Entity implements PlayerPos{
     	notifyObservers();
     	dungeon.updateGoals();	
     	if (dungeon.checkGoalCompletion() == true) {
-    		System.out.println("completed");
+    		//System.out.println("completed");
     	}
 	}
 

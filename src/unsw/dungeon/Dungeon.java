@@ -158,9 +158,9 @@ public class Dungeon {
     }
     
     public boolean checkGoalCompletion() {
-    	System.out.print("goals are" + goalList);
+    	//System.out.print("goals are" + goalList);
     	for(GoalCondition g: this.goalList) {
-    		System.out.println("goals");
+    		//System.out.println("goals");
     		if(g.getGoalStatus() == false) {
     			return false;
     		}
@@ -186,7 +186,7 @@ public class Dungeon {
     	boolean complete = true;
     	for (Entity e: this.entities) {
 			if (e.objective() == true) {
-				System.out.println("false");
+				//System.out.println("false");
 				complete = false;
 			}
     	}
