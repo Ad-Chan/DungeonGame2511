@@ -20,7 +20,6 @@ public class DungeonApplication {
     public DungeonApplication(Stage primaryStage, String Level) throws IOException {
     	this.stage = primaryStage;
     	this.title = ("Dungeon");
-    	System.out.println(Level);
         DungeonControllerLoader dungeonLoader = new DungeonControllerLoader(Level);
         DungeonController controller = dungeonLoader.loadController();
 	    controller.setDungeonScreen(stage);

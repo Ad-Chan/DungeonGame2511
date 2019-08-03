@@ -69,7 +69,6 @@ public class StartController {
     	for (String s: dungeons) {
     		levelChoice.getItems().add(s);
     	}
-    	//setItems(FXCollections.observableArrayList(dungeons));
     }
 
 }

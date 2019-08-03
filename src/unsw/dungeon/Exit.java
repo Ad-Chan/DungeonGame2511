@@ -11,15 +11,16 @@ public class Exit extends Entity {
     @Override
     public boolean playerWalksInto(Player player) {
     	this.found = true;
+    	System.out.println("found");
     	return false;
     }
     
 	@Override
 	public boolean objective() {
 		if (this.found == false) {
-			return false;
-		} else if (this.found == true){
 			return true;
+		} else if (this.found == true){
+			return false;
 		} else {
 			return false;
 		}

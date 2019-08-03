@@ -26,19 +26,13 @@ public class StartScreen {
 	       scene = new Scene(root);
 	        ArrayList<String> levels = new ArrayList<String>();
 			File folder = new File("./dungeons/");
-			File[] listOfFiles = folder.listFiles();
-			
+			File[] listOfFiles = folder.listFiles();			
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {
 			        if (file.getName().contains(".json")) {
 				    	levels.add(file.getName());
-				    	
-
 			        }
 			    }
-			}
-			for (String s: levels) {
-				System.out.println(s);
 			}
 	       controller.setLevels(levels);
 	       controller.populateChoiceBox(levels);

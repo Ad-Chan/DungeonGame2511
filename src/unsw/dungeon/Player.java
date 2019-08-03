@@ -65,7 +65,7 @@ public class Player extends Entity implements PlayerPos{
     	notifyObservers();
     	dungeon.updateGoals();	
     	if (dungeon.checkGoalCompletion() == true) {
-    		//System.out.println("completed");
+    		dungeon.killWindow();
     	}
 	}
 
@@ -104,7 +104,6 @@ public class Player extends Entity implements PlayerPos{
     }
     
     public void addCollectable(Collectable item) {
-    	//dungeon.removeEntity(item);
     	this.inventory.add(item);
     }
     
@@ -170,8 +169,7 @@ public class Player extends Entity implements PlayerPos{
 			dungeon.removeEntity(e);
     	}
     	if (dungeon.findSpecificEntity(e) != null) {
-    		dungeon.removeEntity(this);
-    		dungeon.killWindow();
+    		this.killPlayer();
     	}
     }
     
@@ -190,7 +188,6 @@ public class Player extends Entity implements PlayerPos{
     			LitBomb newBomb = new LitBomb(this.getX(), this.getY(), this);
     			dungeon.addEntity(newBomb);
     			this.inventory.remove(e);
-    			//newBomb.updateBomb();
     			break;
     		}
     	}
@@ -239,9 +236,16 @@ public class Player extends Entity implements PlayerPos{
 	public void bombDestroyEntities(int x, int y) {
 		ArrayList<Entity> entities = dungeon.findEntity(x, y);
 		for (Entity e: entities) {
-			if (e instanceof Boulder || e instanceof Player || e instanceof Enemy) {
+			if (e instanceof Boulder || e instanceof Enemy) {
 				dungeon.removeEntity(e);
+			} else if (e instanceof Player) {
+				this.killPlayer();
 			}
 		}
+	}
+	
+	public void killPlayer() {
+		dungeon.removeEntity(this);
+		dungeon.killWindow();
 	}
 }

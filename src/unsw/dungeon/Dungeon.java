@@ -193,6 +193,7 @@ public class Dungeon {
     	if (complete == true) {
     	
 	    	for (Goal g: this.singleGoals) {
+	        	//System.out.println(g);
 		    		g.setGoalComplete();
 	    	}
 	    }
