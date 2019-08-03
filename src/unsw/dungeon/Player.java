@@ -261,6 +261,17 @@ public class Player extends Entity implements PlayerPos{
 		}
 	}
 	
+	public void projectileDestroyEntities(int x, int y) {
+		ArrayList<Entity> entities = dungeon.findEntity(x, y);
+		for (Entity e: entities) {
+			if (e instanceof Enemy) {
+				dungeon.removeEntity(e);
+			} else if (e instanceof Player) {
+				this.killPlayer();
+			}
+		}
+	}
+	
 	public void killPlayer() {
 		dungeon.removeEntity(this);
 		dungeon.killWindow();

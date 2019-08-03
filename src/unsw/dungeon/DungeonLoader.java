@@ -266,4 +266,5 @@ public abstract class DungeonLoader {
     public abstract void onLoad(Wand wand, Boolean isNewEntity);
     
     public abstract void onLoad(WandProjectile wandProjectile, Boolean isNewEntity);
+    
 }

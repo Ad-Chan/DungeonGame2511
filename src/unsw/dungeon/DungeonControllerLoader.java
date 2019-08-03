@@ -42,6 +42,8 @@ public class DungeonControllerLoader extends DungeonLoader {
     private Image litBomb4Image;
     private Image wandImage;
     private Image wandProjectileImage;
+    private Image slingshotImage;
+    private Image slingshotProjectileImage;
     
 
     public DungeonControllerLoader(String filename)
@@ -68,6 +70,7 @@ public class DungeonControllerLoader extends DungeonLoader {
         litBomb4Image = new Image("/bomb_lit_4.png");
         wandImage = new Image("/wand.png");
         wandProjectileImage = new Image("/wandProjectile.png");
+
         
         
     }
@@ -220,8 +223,7 @@ public class DungeonControllerLoader extends DungeonLoader {
         	addEntity(wandProjectile, view);    		
     	} else {
     		addNewEntity(wandProjectile, view);
-    	}
-		
+    	}		
 	}
     
     private void addEntity(Entity entity, ImageView view) {
