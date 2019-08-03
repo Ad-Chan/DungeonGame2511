@@ -11,7 +11,6 @@ public class FloorSwitch extends Entity {
 	
 	public void updateSwitch(Boolean b) {
 		state = b;
-		System.out.println("update");
 	}
 	
 	public boolean getState() {

@@ -58,6 +58,8 @@ public abstract class DungeonLoader {
         int x = json.getInt("x");
         int y = json.getInt("y");
         Boolean isNewEntity = false;
+        int doorKeycode = 0;
+        int keyKeycode = 0;
 
         Entity entity = null;
         switch (type) {
@@ -107,15 +109,17 @@ public abstract class DungeonLoader {
         	uniqueID++;
         	break;
         case "key":
-        	Key key = new Key(x, y, uniqueID , 4);
+        	Key key = new Key(x, y, uniqueID , keyKeycode);
         	onLoad(key, isNewEntity);
         	entity = key;
         	uniqueID++;
+        	keyKeycode++;
         	break;
         case "door":
-        	Door door = new Door(x, y, 4);
+        	Door door = new Door(x, y, doorKeycode);
         	onLoad(door, isNewEntity);
         	entity = door;
+        	doorKeycode++;
         	break;
         case "enemy":
         	Enemy enemy = new Enemy(x, y, dungeon);
