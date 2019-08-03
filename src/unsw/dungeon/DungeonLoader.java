@@ -49,7 +49,8 @@ public abstract class DungeonLoader {
         
         ArrayList<GoalCondition> goalList = loadGoal(jsonGoal);
         dungeon.addGoalList(goalList);
-
+        dungeon.addSingleGoals(this.singleGoals);
+        
         System.out.print(singleGoals + "\n");
         ArrayList<GoalCondition> subGoalsList = goalList.get(0).getSubGoalsList();
         System.out.print(subGoalsList.get(0).getEntityName() + " " + subGoalsList.get(1).getEntityName() + "\n");
