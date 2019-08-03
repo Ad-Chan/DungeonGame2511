@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  * A JavaFX controller for the dungeon.
@@ -24,6 +25,8 @@ public class DungeonController {
     private Player player;
 
     private Dungeon dungeon;
+    
+    private Stage dungeonScreen;
 
     public DungeonController(Dungeon dungeon, List<ImageView> initialEntities) {
         this.dungeon = dungeon;
@@ -68,8 +71,8 @@ public class DungeonController {
         case RIGHT:
             player.moveRight();
             break;
-        case J: //Preliminary binding, can be changed
-        	//player.attackEnemy();
+        case ESCAPE: //Preliminary binding, can be changed
+        	this.killWindow();
         	break;
         case L: //Preliminary binding, can be changed
         	player.placeBomb();
@@ -87,5 +90,14 @@ public class DungeonController {
     	return this.squares;
     }
 
+    public void setDungeonScreen(Stage stage) {
+        this.dungeonScreen = stage;
+    }
+    
+    public void killWindow() {
+    	Stage stage = (Stage) dungeonScreen.getScene().getWindow();
+    	stage.close();
+    }
+    
 }
 

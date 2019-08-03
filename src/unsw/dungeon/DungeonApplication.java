@@ -16,13 +16,13 @@ public class DungeonApplication {
 	   public Stage stage;
 	   public String title;
 	   public Scene scene;	
-	   public DungeonController controller;
 	
     public DungeonApplication(Stage primaryStage) throws IOException {
     	this.stage = primaryStage;
     	this.title = ("Dungeon");
         DungeonControllerLoader dungeonLoader = new DungeonControllerLoader("advanced.json");
         DungeonController controller = dungeonLoader.loadController();
+	    controller.setDungeonScreen(stage);
         EntityController eController = new EntityController(dungeonLoader, controller);
         controller.getDungeon().setEntityController(eController);       
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DungeonView.fxml"));
@@ -30,8 +30,8 @@ public class DungeonApplication {
         Parent root = loader.load();
         scene = new Scene(root);
         root.requestFocus();
-        primaryStage.setScene(scene);
-        primaryStage.show();    	
+        //primaryStage.setScene(scene);
+        //primaryStage.show();    	
 	}
 
 	public void start() {
@@ -39,5 +39,6 @@ public class DungeonApplication {
 	    stage.setScene(scene);
 	    stage.show();
     }
+	
 
 }

@@ -198,4 +198,8 @@ public class Dungeon {
 	    }
     
     }
+    
+    public void killWindow() {
+    	this.controller.killWindow();
+    }
 }

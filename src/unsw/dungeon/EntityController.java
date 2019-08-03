@@ -39,4 +39,8 @@ public class EntityController {
 		e.setImage(newI);
 	}
 	
+	public void killWindow() {
+		this.controller.killWindow();
+	}
+	
 }

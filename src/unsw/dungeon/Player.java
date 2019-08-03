@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
 
 
 /**
@@ -170,6 +171,7 @@ public class Player extends Entity implements PlayerPos{
     	}
     	if (dungeon.findSpecificEntity(e) != null) {
     		dungeon.removeEntity(this);
+    		dungeon.killWindow();
     	}
     }
     

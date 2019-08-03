@@ -9,7 +9,8 @@ public class StartApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         StartScreen startScreen = new StartScreen(primaryStage);
-        DungeonApplication dungeonScreen = new DungeonApplication(primaryStage);
+        Stage newStage = new Stage();
+        DungeonApplication dungeonScreen = new DungeonApplication(newStage);
 
         startScreen.start();
         startScreen.controller.setDungeonScreen(dungeonScreen);
