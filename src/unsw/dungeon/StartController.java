@@ -24,6 +24,10 @@ public class StartController {
 
     @FXML
     public void handleStartButton(ActionEvent event) throws IOException {;
+    	//dungeonScreen.start();
+    	Stage stage = new Stage();
+    	String level = "";
+    	dungeonScreen = new DungeonApplication(stage, level);
     	dungeonScreen.start();
     }
     

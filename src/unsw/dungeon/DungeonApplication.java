@@ -17,7 +17,7 @@ public class DungeonApplication {
 	   public String title;
 	   public Scene scene;	
 	
-    public DungeonApplication(Stage primaryStage) throws IOException {
+    public DungeonApplication(Stage primaryStage, String Level) throws IOException {
     	this.stage = primaryStage;
     	this.title = ("Dungeon");
         DungeonControllerLoader dungeonLoader = new DungeonControllerLoader("advanced.json");
