@@ -20,6 +20,10 @@ public class Goal implements GoalCondition {
 	public boolean getGoalStatus() {
 		return this.complete;
 	}
+	
+	public void setGoalComplete() {
+		this.complete = true;
+	}
 
 	@Override
 	public void addSubGoal(Goal goal) {
