@@ -191,62 +191,9 @@ public class Dungeon {
 			}
     	}
     	if (complete == true) {
-    		
+    	
 	    	for (Goal g: this.singleGoals) {
 		    		g.setGoalComplete();
-
-    		/*if (g.getEntityName().equals("boulders")) {
-    			boolean complete = true;
-    			for (Entity e: this.entities) {
-    				if (e instanceof FloorSwitch) {
-    					if (((FloorSwitch)e).getState() == false) {
-    						complete = false;
-    						break;
-    					}
-    				}
-    				if (e.objective() == true) {
-    					complete = false;
-    				}
-    			}
-    			if (complete == true) {
-    				g.setGoalComplete();
-    				System.out.println("completed boulders");
-    			}
-    		}
-    		if (g.getEntityName().equals("enemies")) {
-    			boolean complete = true;
-    			for (Entity e: this.entities) {
-    				if (e instanceof Enemy) {
-    					complete = false;
-    				}
-    				if (e.objective() == true) {
-    					complete = false;
-    				}
-    			}
-    			if (complete == true) {
-    				g.setGoalComplete();
-    				System.out.println("completed enemies");
-    			}
-    		}
-    		if (g.getEntityName().equals("treasure")) {
-    			boolean complete = true;
-    			for (Entity e: this.entities) {
-    				if (e instanceof Treasure) {
-    					complete = false;
-    				}
-    				if (e.objective() == true) {
-    					complete = false;
-    				}
-    			}
-    			if (complete == true) {
-    				g.setGoalComplete();
-    				System.out.println("completed treasure");
-    			}
-    		}
-    		if (g.getEntityName().equals("exit")) {
-    			
-    		}
-    	}*/
 	    	}
 	    }
     
