@@ -3,6 +3,8 @@ package unsw.dungeon;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.application.Platform;
+
 
 // Lit Bomb Class (to be modified)
 public class LitBomb extends Entity {
@@ -37,11 +39,15 @@ public class LitBomb extends Entity {
 
     	@Override
     	public void run() {
-    		if (!(LitBomb.this.state.bombState() == 4)) {
-    			LitBomb.this.state.next_stage(LitBomb.this);
-    			//updateBomb();
+    		Platform.runLater(new Runnable() {
+    		       public void run() {
+    		    		if (!(LitBomb.this.state.bombState() == 4)) {
+    		    			LitBomb.this.state.next_stage(LitBomb.this);
+    		    			updateBomb();
+    		    		}
+    		      }
+    		    });
     		}
     	}
-    }
 }
 

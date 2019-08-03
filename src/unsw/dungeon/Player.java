@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.application.Platform;
+
 
 /**
  * The player entity
@@ -34,11 +36,11 @@ public class Player extends Entity implements PlayerPos{
 		timer.schedule(new potionTimer(),0,1000);	
 	}
 	
-	public void decrementPotionTime(Player.potionTimer timer) {
+	public void decrementPotionTime(Runnable runnable) {
 		if (this.potionTime > 0) {
 			this.potionTime--;	
 		} else {
-			timer.cancel();
+			//((Timer) runnable).cancel();
 		}
 	}
 	
@@ -46,7 +48,11 @@ public class Player extends Entity implements PlayerPos{
 
     	@Override
     	public void run() {
-    		decrementPotionTime(this);
+    		Platform.runLater(new Runnable() {
+ 		       public void run() {
+ 		    		decrementPotionTime(this);
+ 		      }
+ 		    });
     	}
     }
 

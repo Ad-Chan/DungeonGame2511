@@ -27,8 +27,6 @@ public class EntityController {
 		ObservableList<Node> list = this.controller.getSquares().getChildren();
 		for (Node n: list) {
 			if (n.equals(e.getImage())) {
-				System.out.println(n);
-				System.out.println(e.getImage());
 				list.remove(n);
 				break;
 			}
@@ -39,6 +37,7 @@ public class EntityController {
 	public void updateImage(Entity e) {
 		removeEntity(e);
 		ImageView newI = this.dungeonLoader.updateImage(e);
+		e.setImage(newI);
 		this.controller.addNew(newI);
 	}
 	

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.application.Platform;
+
 // Enemy Class (to be modified)
 public class Enemy extends Entity {
 	
@@ -47,9 +49,9 @@ public class Enemy extends Entity {
         }
     }
     
-    public void moveEnemy(Enemy.moveTimer timer) {
+    public void moveEnemy(Runnable runnable) {
     	if (this.health <= 0) {
-    		timer.cancel();
+    		//((Timer) runnable).cancel();
     	}
     	if (this.getPlayerX() > this.getX()) {
     		this.moveRight();
@@ -98,7 +100,14 @@ public class Enemy extends Entity {
 
     	@Override
     	public void run() {
-    		Enemy.this.moveEnemy(this);  		
+    		Platform.runLater(new Runnable() {
+  		       public void run() {
+  		    		Enemy.this.moveEnemy(this); 
+  		      }
+  		    });
+ 		
     	}
+    	
+    	
     }
 }
