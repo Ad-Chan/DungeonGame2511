@@ -71,10 +71,10 @@ public class DungeonController {
         case RIGHT:
             player.moveRight();
             break;
-        case ESCAPE: //Preliminary binding, can be changed
+        case ESCAPE:
         	this.killWindow();
         	break;
-        case L: //Preliminary binding, can be changed
+        case L:
         	player.placeBomb();
         	break;
         default:

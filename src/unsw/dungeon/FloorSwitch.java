@@ -1,7 +1,6 @@
 package unsw.dungeon;
 
 
-// Floor Switch Class (to be modified)
 public class FloorSwitch extends Entity {
 	
 	private boolean state;

@@ -26,8 +26,6 @@ public class Entity implements PlayerPosObserver{
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
         this.image = null;
-        //this.playerX = -999; //values to be determined
-        //this.playerY = -999; //values to be determined
     }
 
     public IntegerProperty x() {

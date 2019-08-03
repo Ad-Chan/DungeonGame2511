@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class SubGoals implements GoalCondition {
 	
 	private String goalType;
-	//private boolean complete;
 	
 	private ArrayList<GoalCondition> subGoalsList;
 	
 	public SubGoals(String goalType) {
 		this.goalType = goalType;
-		//this.complete = false;
 		this.subGoalsList = new ArrayList<GoalCondition>();
 	}
 	

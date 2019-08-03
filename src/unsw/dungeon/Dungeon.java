@@ -157,9 +157,7 @@ public class Dungeon {
     }
     
     public boolean checkGoalCompletion() {
-    	//System.out.print("goals are" + goalList);
     	for(GoalCondition g: this.goalList) {
-    		//System.out.println("goals");
     		if(g.getGoalStatus() == false) {
     			return false;
     		}
@@ -185,18 +183,14 @@ public class Dungeon {
     	boolean complete = true;
     	for (Entity e: this.entities) {
 			if (e.objective() == true) {
-				//System.out.println("false");
 				complete = false;
 			}
     	}
-    	if (complete == true) {
-    	
+    	if (complete == true) {    	
 	    	for (Goal g: this.singleGoals) {
-	        	//System.out.println(g);
 		    		g.setGoalComplete();
 	    	}
 	    }
-    
     }
     
     public void killWindow() {

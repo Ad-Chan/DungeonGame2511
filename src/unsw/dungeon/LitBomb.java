@@ -5,7 +5,6 @@ import java.util.TimerTask;
 import javafx.application.Platform;
 
 
-// Lit Bomb Class (to be modified)
 public class LitBomb extends Entity {
 	
 	private LitBombState state;

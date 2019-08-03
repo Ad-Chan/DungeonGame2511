@@ -3,6 +3,8 @@ package unsw.dungeon;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,15 +28,17 @@ public class StartController {
     
     private DungeonApplication dungeonScreen;
     
-    //private ChooseScreen chooseScreen;
-    
     private String playLevel;
 
     @FXML
     public void handleStartButton(ActionEvent event) throws IOException {;
-    	Stage stage = new Stage();
-    	dungeonScreen = new DungeonApplication(stage, playLevel);
-    	dungeonScreen.start();
+	    if (playLevel != null) {	
+	    	Stage stage = new Stage();
+	    	dungeonScreen = new DungeonApplication(stage, playLevel);
+	    	dungeonScreen.start();
+	    } else {
+	    	JOptionPane.showMessageDialog(null, "Please select a level!");
+	    }
     }
     
     @FXML

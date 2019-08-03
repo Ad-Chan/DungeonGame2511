@@ -219,14 +219,11 @@ public class DungeonControllerLoader extends DungeonLoader {
     	ImageView view = null;
     	if (e instanceof LitBomb) {
     		if (((LitBomb)e).checkStrategy() == 2) {
-    			//System.out.println("2");
     			view = new ImageView(litBomb2Image);
     		} else if (((LitBomb)e).checkStrategy() == 3) {
     			view = new ImageView(litBomb3Image);
-    			//System.out.println("3");
     		} else if (((LitBomb)e).checkStrategy() == 4) {
     			view = new ImageView(litBomb4Image);
-    			//System.out.println("4");
     		}
     	} else if (e instanceof Door) {
     		if (((Door)e).isUnlocked() == false) {

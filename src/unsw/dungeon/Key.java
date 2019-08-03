@@ -1,6 +1,6 @@
 package unsw.dungeon;
 
-// Key Class (to be modified)
+
 public class Key extends Collectable{
 	
 	private int keycode;

@@ -6,7 +6,6 @@ import java.util.TimerTask;
 
 import javafx.application.Platform;
 
-// Enemy Class (to be modified)
 public class Enemy extends Entity {
 	
 	private Dungeon dungeon;
