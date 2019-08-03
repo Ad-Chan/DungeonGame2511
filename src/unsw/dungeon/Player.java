@@ -18,7 +18,7 @@ public class Player extends Entity implements PlayerPos{
     private Dungeon dungeon;
     private ArrayList<Collectable> inventory;
     ArrayList<PlayerPosObserver> observers;
-    private Sword weapon;
+    private Weapon weapon;
     private int potionTime;
     /**
      * Create a player positioned in square (x,y)
@@ -302,11 +302,11 @@ public class Player extends Entity implements PlayerPos{
 		dungeon.removeEntity(e);
 	}
 	
-	public Sword getWeapon() {
+	public Weapon getWeapon() {
 		return this.weapon;
 	}
 	
-	public void setWeapon(Sword weapon) {
+	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
 	

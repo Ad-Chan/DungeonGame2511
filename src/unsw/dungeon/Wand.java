@@ -1,6 +1,6 @@
 package unsw.dungeon;
 
-public class Wand extends Sword{
+public class Wand extends Weapon{
 
 	public Wand (int x, int y, int id) {
 		super(x, y, id);
