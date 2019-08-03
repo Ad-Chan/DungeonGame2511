@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import unsw.dungeon.LitBomb.bombTimer;
 
 /**
  * The player entity
@@ -112,6 +111,16 @@ public class Player extends Entity implements PlayerPos{
     	return false;
     }
     
+    public boolean findEnemyObstacles(int x, int y) {
+    	ArrayList<Entity> entities = dungeon.findEntityNoEnemy(x, y);
+    	for (Entity e : entities) {
+    		if (e.isObstacle(x, y, this) == true) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
     public ArrayList<Entity> findEntity(int x, int y) {
     	return dungeon.findEntity(x, y);
     }
@@ -125,20 +134,24 @@ public class Player extends Entity implements PlayerPos{
     	}
     }
     
+    
     public void attackEnemy(Enemy e) { 
     	for (Collectable c: inventory) {  		
     		if (c instanceof Sword) {
     			if (((Sword)c).getHealth() > 1) {
-        			dungeon.removeEntity(e);
+        			e.decrementHealth();
+    				dungeon.removeEntity(e);
         			((Sword)c).decrementHealth();   				
     			} else if (((Sword)c).getHealth() == 1){
-        			dungeon.removeEntity(e);
+        			e.decrementHealth();
+    				dungeon.removeEntity(e);
         			((Sword)c).decrementHealth();
         			this.removeCollectable(c);
     			}
     		}
     	}
     	if (this.potionTime > 0) {
+			e.decrementHealth();
 			dungeon.removeEntity(e);
     	}
     	if (dungeon.findSpecificEntity(e) != null) {
@@ -189,5 +202,9 @@ public class Player extends Entity implements PlayerPos{
 	
 	public void updateImage(Entity e) {
 		this.dungeon.updateImage(e);
+	}
+	
+	public Dungeon getDungeon() {
+		return this.dungeon;
 	}
 }

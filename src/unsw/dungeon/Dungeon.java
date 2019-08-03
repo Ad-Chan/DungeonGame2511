@@ -91,6 +91,16 @@ public class Dungeon {
     	return foundEntities;
     }
     
+    public ArrayList<Entity> findEntityNoEnemy(int x, int y) {
+    	ArrayList<Entity> foundEntities = new ArrayList<Entity>();
+    	for(Entity e: entities){
+    		if(e.getX()==x && e.getY()==y && !(e instanceof Enemy)) {
+    			foundEntities.add(e);
+    		}
+    	}
+    	return foundEntities;
+    }
+    
     public Entity findSpecificEntity(Entity e) {
     	if (entities.contains(e)) {
     		return e;
@@ -139,7 +149,7 @@ public class Dungeon {
     		}
     	}
     }
-    
+        
     public int countTreasure() {
     	int count = 0;
     	for (Entity e: entities) {
@@ -176,5 +186,9 @@ public class Dungeon {
     		}
     	}
     	return true;
+    }
+    
+    public void killPlayer(Enemy e) {
+    	this.player.attackEnemy(e);
     }
 }

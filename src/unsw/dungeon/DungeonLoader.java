@@ -119,7 +119,7 @@ public abstract class DungeonLoader {
         	entity = door;
         	break;
         case "enemy":
-        	Enemy enemy = new Enemy(x, y, uniqueID);
+        	Enemy enemy = new Enemy(x, y, uniqueID, dungeon);
         	onLoad(enemy, isNewEntity);
         	entity = enemy;
         	uniqueID++;
