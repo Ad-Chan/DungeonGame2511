@@ -35,6 +35,10 @@ public class LitBomb extends Entity {
 		this.player.updateImage(this);
 	}
     
+	public void blowup() {
+		this.player.blowup(this);
+	}
+	
 	class bombTimer extends TimerTask {
 
     	@Override
@@ -44,6 +48,8 @@ public class LitBomb extends Entity {
     		    		if (!(LitBomb.this.state.bombState() == 4)) {
     		    			LitBomb.this.state.next_stage(LitBomb.this);
     		    			updateBomb();
+    		    		} else {
+    		    			blowup();
     		    		}
     		      }
     		    });

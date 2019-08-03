@@ -213,4 +213,21 @@ public class Player extends Entity implements PlayerPos{
 	public Dungeon getDungeon() {
 		return this.dungeon;
 	}
+	
+	public void blowup(LitBomb b) {
+		bombDestroyEntities(b.getX()+1, b.getY());
+		bombDestroyEntities(b.getX()-1, b.getY());
+		bombDestroyEntities(b.getX(), b.getY()+1);
+		bombDestroyEntities(b.getX(), b.getY()-1);
+		dungeon.removeEntity(b);
+	}
+	
+	public void bombDestroyEntities(int x, int y) {
+		ArrayList<Entity> entities = dungeon.findEntity(x, y);
+		for (Entity e: entities) {
+			if (e instanceof Boulder || e instanceof Player || e instanceof Enemy) {
+				dungeon.removeEntity(e);
+			}
+		}
+	}
 }
