@@ -16,5 +16,18 @@ public class FloorSwitch extends Entity {
 		state = b;
 	}
 	
+	public boolean getState() {
+		return this.state;
+	}
 	
+	@Override
+	public boolean objective() {
+		if (this.state == false) {
+			return false;
+		} else if (this.state == true){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

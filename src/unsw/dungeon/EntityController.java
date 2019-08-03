@@ -1,8 +1,6 @@
 package unsw.dungeon;
 
 
-import java.util.ArrayList;
-
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;

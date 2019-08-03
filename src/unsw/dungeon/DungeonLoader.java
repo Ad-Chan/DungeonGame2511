@@ -53,7 +53,7 @@ public abstract class DungeonLoader {
         
         System.out.print(singleGoals + "\n");
         ArrayList<GoalCondition> subGoalsList = goalList.get(0).getSubGoalsList();
-        System.out.print(subGoalsList.get(0).getEntityName() + " " + subGoalsList.get(1).getEntityName() + "\n");
+        //System.out.print(subGoalsList.get(0).getEntityName() + " " + subGoalsList.get(1).getEntityName() + "\n");
         return dungeon;
     }
 
