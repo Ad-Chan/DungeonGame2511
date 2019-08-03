@@ -265,6 +265,7 @@ public class Player extends Entity implements PlayerPos{
 		ArrayList<Entity> entities = dungeon.findEntity(x, y);
 		for (Entity e: entities) {
 			if (e instanceof Enemy) {
+				((Enemy)e).decrementHealth();
 				dungeon.removeEntity(e);
 			} else if (e instanceof Player) {
 				this.killPlayer();

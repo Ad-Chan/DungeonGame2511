@@ -135,6 +135,12 @@ public abstract class DungeonLoader {
         	entity = wand;
         	uniqueID++;
         	break;
+        case "gnome":
+        	Gnome gnome = new Gnome(x, y, dungeon);
+        	onLoad(gnome, isNewEntity);
+        	entity = gnome;
+        	uniqueID++;
+        	break;	
         }
         dungeon.addEntityLocal(entity);
     }
@@ -170,6 +176,8 @@ public abstract class DungeonLoader {
         	onLoad((Wand)entity, isNewEntity);
         } else if (entity instanceof WandProjectile) {
         	onLoad((WandProjectile)entity, isNewEntity);
+        } else if (entity instanceof Gnome) {
+        	onLoad((Gnome)entity, isNewEntity);
         }
         dungeon.addEntityLocal(entity);
     }
@@ -266,5 +274,7 @@ public abstract class DungeonLoader {
     public abstract void onLoad(Wand wand, Boolean isNewEntity);
     
     public abstract void onLoad(WandProjectile wandProjectile, Boolean isNewEntity);
+    
+    public abstract void onLoad(Gnome gnome, Boolean isNewEntity);
     
 }

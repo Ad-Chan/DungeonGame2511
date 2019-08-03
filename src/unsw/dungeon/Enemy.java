@@ -15,7 +15,7 @@ public class Enemy extends Entity {
 		super(x, y);
 		Timer timer = new Timer();
 		timer.schedule(new moveTimer(),0,1000);
-		this.dungeon = dungeon;
+		this.setDungeon(dungeon);
 		this.health = 1;
 		this.runAway = false;
 	}
@@ -26,30 +26,30 @@ public class Enemy extends Entity {
 	}
 	
     public void moveUp() {
-        if (!this.dungeon.getPlayer().findObstacles(getX(), getY()-1) == true) {    
+        if (!this.getDungeon().getPlayer().findObstacles(getX(), getY()-1) == true) {    
         	y().set(getY() - 1);
-        	this.findPlayer(this.dungeon);
+        	this.findPlayer(this.getDungeon());
         }
     }
 
     public void moveDown() {
-        if (!this.dungeon.getPlayer().findObstacles(getX(), getY()+1) == true) {    
+        if (!this.getDungeon().getPlayer().findObstacles(getX(), getY()+1) == true) {    
         	y().set(getY() + 1);
-        	this.findPlayer(this.dungeon);
+        	this.findPlayer(this.getDungeon());
         }
     }
 
     public void moveLeft() {
-    	if (!this.dungeon.getPlayer().findObstacles(getX()-1, getY()) == true) {    
+    	if (!this.getDungeon().getPlayer().findObstacles(getX()-1, getY()) == true) {    
         	x().set(getX() - 1);
-        	this.findPlayer(this.dungeon);
+        	this.findPlayer(this.getDungeon());
         }
     }
 
     public void moveRight() {
-        if (!this.dungeon.getPlayer().findObstacles(getX()+1, getY()) == true) {    
+        if (!this.getDungeon().getPlayer().findObstacles(getX()+1, getY()) == true) {    
         	x().set(getX() + 1);
-        	this.findPlayer(this.dungeon);
+        	this.findPlayer(this.getDungeon());
         }
     }
     
@@ -96,12 +96,20 @@ public class Enemy extends Entity {
     	this.health--;
     }
     
+    public int getHealth() {
+    	return this.health;
+    }
+    
     public void setDungeon(Dungeon dungeon) {
     	this.dungeon = dungeon;
     }
     
     public void setRunAway(boolean b) {
     	this.runAway = b;
+    }
+    
+    public boolean getRunAway() {
+    	return this.runAway;
     }
         
     
@@ -116,7 +124,11 @@ public class Enemy extends Entity {
 		return true;
 	}	
 
-    class moveTimer extends TimerTask {
+    public Dungeon getDungeon() {
+		return dungeon;
+	}
+
+	class moveTimer extends TimerTask {
 
     	@Override
     	public void run() {

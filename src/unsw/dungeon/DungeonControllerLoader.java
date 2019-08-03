@@ -42,6 +42,7 @@ public class DungeonControllerLoader extends DungeonLoader {
     private Image litBomb4Image;
     private Image wandImage;
     private Image wandProjectileImage;
+    private Image gnomeImage;
 
 
     public DungeonControllerLoader(String filename)
@@ -68,6 +69,7 @@ public class DungeonControllerLoader extends DungeonLoader {
         litBomb4Image = new Image("/bomb_lit_4.png");
         wandImage = new Image("/wand.png");
         wandProjectileImage = new Image("/wandProjectile.png");
+        gnomeImage = new Image("/gnome.png");
 
         
         
@@ -211,7 +213,6 @@ public class DungeonControllerLoader extends DungeonLoader {
     	} else {
     		addNewEntity(wand, view);
     	}
-		
 	}
 	
 	@Override
@@ -222,6 +223,16 @@ public class DungeonControllerLoader extends DungeonLoader {
     	} else {
     		addNewEntity(wandProjectile, view);
     	}		
+	}
+	
+	@Override
+	public void onLoad(Gnome gnome, Boolean isNewEntity) {
+		ImageView view = new ImageView(gnomeImage);
+	   	if (isNewEntity == false) {
+        	addEntity(gnome, view);    		
+    	} else {
+    		addNewEntity(gnome, view);
+    	}
 	}
     
     private void addEntity(Entity entity, ImageView view) {
