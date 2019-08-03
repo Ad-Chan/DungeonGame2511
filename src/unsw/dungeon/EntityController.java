@@ -39,4 +39,5 @@ public class EntityController {
 		ImageView newI = this.dungeonLoader.updateImage(e);
 		this.controller.addNew(newI);
 	}
+	
 }

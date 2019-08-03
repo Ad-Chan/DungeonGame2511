@@ -7,29 +7,72 @@ import java.util.TimerTask;
 public class Enemy extends Entity {
 	
 	private int id;
-	
-	public Enemy(int x, int y, int id) {
+	private Dungeon dungeon;
+	private int health;
+	public Enemy(int x, int y, int id, Dungeon dungeon) {
 		super(x, y);
 		this.id = id;
-		//Timer timer = new Timer();
-		//timer.schedule(new moveTimer(),0,5000);
+		Timer timer = new Timer();
+		timer.schedule(new moveTimer(),0,1000);
+		this.dungeon = dungeon;
+		this.health = 1;
 	}
 	
     public void moveUp() {
-            y().set(getY() - 1);
+        if (!this.dungeon.getPlayer().findObstacles(getX(), getY()-1) == true) {    
+        	y().set(getY() - 1);
+        }
     }
 
     public void moveDown() {
-            y().set(getY() + 1);
+        if (!this.dungeon.getPlayer().findObstacles(getX(), getY()+1) == true) {    
+        	y().set(getY() + 1);
+        }
     }
 
     public void moveLeft() {
-            x().set(getX() - 1);
+    	if (!this.dungeon.getPlayer().findObstacles(getX()-1, getY()) == true) {    
+        	x().set(getX() - 1);
+        }
     }
 
     public void moveRight() {
-            x().set(getX() + 1);
+        if (!this.dungeon.getPlayer().findObstacles(getX()+1, getY()) == true) {    
+        	x().set(getX() + 1);
+        }
     }
+    
+    public void moveEnemy(Enemy.moveTimer timer) {
+    	if (this.health <= 0) {
+    		timer.cancel();
+    	}
+    	if (this.getPlayerX() > this.getX()) {
+    		this.moveRight();
+    		System.out.println("Right");
+    	}
+    	if (this.getPlayerY() > this.getY()) {
+    		this.moveDown();
+    		System.out.println("Up");
+    	}
+    	if (this.getPlayerX() < this.getX()) {
+    		this.moveLeft();
+    		System.out.println("Left");
+    	}
+    	if (this.getPlayerY() < this.getY()) {
+    		this.moveUp();
+    		System.out.println("Down");
+    	}
+    	
+    }
+    
+    public void decrementHealth() {
+    	this.health--;
+    }
+    
+    public void setDungeon(Dungeon dungeon) {
+    	this.dungeon = dungeon;
+    }
+        
     
 	@Override
     public boolean playerWalksInto(Player player) {
@@ -41,7 +84,7 @@ public class Enemy extends Entity {
 
     	@Override
     	public void run() {
-    		Enemy.this.moveLeft();    		
+    		Enemy.this.moveEnemy(this);  		
     	}
     }
 }
