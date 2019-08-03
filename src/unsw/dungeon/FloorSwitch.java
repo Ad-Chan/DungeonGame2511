@@ -1,24 +1,27 @@
 package unsw.dungeon;
 
-import java.util.ArrayList;
 
 // Floor Switch Class (to be modified)
-public class FloorSwitch extends Entity {
+public class FloorSwitch extends ObjectiveEntity {
 	
-	private int id;
 	private boolean state;
 	public FloorSwitch(int x, int y, int id) {
-		super(x, y);
-		this.id = id;
+		super(x, y, id);
 		this.state = false;
 	}
 	
-	@Override
-	public boolean isObstacle(int x, int y, Player p) {
-		return false;
+	public void updateSwitch(Boolean b) {
+		state = b;
+		//System.out.println(this);
+		System.out.println(state);
 	}
 	
 	@Override
+	public void checkObjective() {
+		
+	}
+	
+	/*@Override
     public boolean playerWalksInto(Player player) {
 		ArrayList<Entity> findBoulder = player.findEntity(this.getX(), this.getY());
 		for (Entity e: findBoulder) {
@@ -29,5 +32,5 @@ public class FloorSwitch extends Entity {
 		
 		}
 		return false;
-	}
+	}*/
 }

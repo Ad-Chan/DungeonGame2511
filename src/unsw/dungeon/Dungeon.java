@@ -121,8 +121,22 @@ public class Dungeon {
     }
     
     public void checkSwitches() {
+    	ArrayList<Entity> switches;
     	for (Entity e: entities) {
-    		
+    		if (e instanceof FloorSwitch) {
+    			switches = this.findEntity(e.getX(), e.getY());
+    			boolean onSwitch = false;
+    			for (Entity f: switches) {    				
+    				if (f instanceof Boulder) {
+    					onSwitch = true;
+    				}
+    			}
+    			if (onSwitch == true) {
+    				((FloorSwitch)e).updateSwitch(true);
+    			} else {
+    				((FloorSwitch)e).updateSwitch(false);
+    			}
+    		}
     	}
     }
     

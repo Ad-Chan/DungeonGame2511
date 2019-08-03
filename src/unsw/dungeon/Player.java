@@ -30,6 +30,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX(), getY()-1) == true) {
         	y().set(getY() - 1); 
         	pickupCollectables(this.getX(), this.getY());
+        	dungeon.checkSwitches();
         	notifyObservers();
         }
     }
@@ -38,6 +39,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX(), getY()+1) == true) {
         	y().set(getY() + 1);
         	pickupCollectables(this.getX(), this.getY());
+        	dungeon.checkSwitches();
         	notifyObservers();      	
         }
     }
@@ -46,6 +48,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX()-1, getY()) == true) {
         	x().set(getX() - 1);
         	pickupCollectables(this.getX(), this.getY());
+        	dungeon.checkSwitches();
         	notifyObservers();       	
         }
 
@@ -55,6 +58,7 @@ public class Player extends Entity implements PlayerPos{
         if (!findObstacles(getX()+1, getY()) == true) {
         	x().set(getX() + 1);
         	pickupCollectables(this.getX(), this.getY());
+        	dungeon.checkSwitches();
         	notifyObservers();       	
         }
 
@@ -94,7 +98,6 @@ public class Player extends Entity implements PlayerPos{
     			dungeon.addToInventory(e);
     		}
     	}
-    	dungeon.printEntities();
     }
     
     public void attackEnemy(Enemy e) { 
