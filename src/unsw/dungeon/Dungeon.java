@@ -140,4 +140,24 @@ public class Dungeon {
     	}
     }
     
+    public int countTreasure() {
+    	int count = 0;
+    	for (Entity e: entities) {
+    		if (e instanceof Treasure) {
+    			count++;
+    		}
+    	}
+    	return count;
+    }
+    
+    public int countEnemies() {
+    	int count = 0;
+    	for (Entity e: entities) {
+    		if (e instanceof Enemy) {
+    			count++;
+    		}
+    	}
+    	return count;
+    }
+    
 }

@@ -8,10 +8,12 @@ import java.util.TimerTask;
 public class LitBomb extends Entity {
 	
 	private LitBombState state;
-	public LitBomb(int x, int y) {
+	private Player player;
+	public LitBomb(int x, int y, Player p) {
 		super(x, y);
-		this.state = new LitBomb3();
+		this.state = new LitBomb1();
 		bombTick();
+		this.player = p;
 	}
 	
 	public void setState(LitBombState state) {
@@ -26,6 +28,10 @@ public class LitBomb extends Entity {
 	public int checkStrategy() {
 		return this.state.bombState();
 	}
+	
+	public void updateBomb() {
+		this.player.updateImage(this);
+	}
     
 	class bombTimer extends TimerTask {
 
@@ -33,6 +39,7 @@ public class LitBomb extends Entity {
     	public void run() {
     		if (!(LitBomb.this.state.bombState() == 4)) {
     			LitBomb.this.state.next_stage(LitBomb.this);
+    			//updateBomb();
     		}
     	}
     }

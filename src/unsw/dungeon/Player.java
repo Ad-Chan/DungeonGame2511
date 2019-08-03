@@ -125,9 +125,10 @@ public class Player extends Entity implements PlayerPos{
     public void placeBomb() {
     	for (Collectable e: this.inventory) {
     		if (e instanceof UnlitBomb) {
-    			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
+    			LitBomb newBomb = new LitBomb(this.getX(), this.getY(), this);
     			dungeon.addEntity(newBomb);
     			this.inventory.remove(e);
+    			//newBomb.updateBomb();
     			break;
     		}
     	}
@@ -155,5 +156,9 @@ public class Player extends Entity implements PlayerPos{
 	
 	public ArrayList<PlayerPosObserver> getObservers() {
 		return this.observers;
+	}
+	
+	public void updateImage(Entity e) {
+		this.dungeon.updateImage(e);
 	}
 }
