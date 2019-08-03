@@ -9,9 +9,9 @@ public class Exit extends Entity {
     @Override
     public boolean playerWalksInto(Player player) {
     	if (player.getDungeon().checkGoalCompletion() == true) {
-    		
+    		//Complete level
     	} else {
-    		
+
     	}
     	return false;
     }
