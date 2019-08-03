@@ -41,7 +41,6 @@ public class Player extends Entity implements PlayerPos{
 		} else {
 			timer.cancel();
 		}
-    	System.out.println(this.potionTime);
 	}
 	
 	class potionTimer extends TimerTask {
@@ -129,7 +128,7 @@ public class Player extends Entity implements PlayerPos{
     public void attackEnemy(Enemy e) { 
     	for (Collectable c: inventory) {  		
     		if (c instanceof Sword) {
-    			if (((Sword)c).getHealth() > 1 || this.potionTime > 0) {
+    			if (((Sword)c).getHealth() > 1) {
         			dungeon.removeEntity(e);
         			((Sword)c).decrementHealth();   				
     			} else if (((Sword)c).getHealth() == 1){
@@ -139,6 +138,9 @@ public class Player extends Entity implements PlayerPos{
     			}
     		}
     	}
+    	if (this.potionTime > 0) {
+			dungeon.removeEntity(e);
+    	}
     	if (dungeon.findSpecificEntity(e) != null) {
     		dungeon.removeEntity(this);
     	}
@@ -147,7 +149,6 @@ public class Player extends Entity implements PlayerPos{
     public void activatePotion(InvincibilityPotion i) {
     	this.potionTime += i.getTime_limit();
     	this.potionTick();
-    	System.out.println(this.potionTime);
     }
     
     public void placeBomb() {

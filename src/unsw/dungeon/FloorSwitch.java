@@ -12,8 +12,6 @@ public class FloorSwitch extends ObjectiveEntity {
 	
 	public void updateSwitch(Boolean b) {
 		state = b;
-		//System.out.println(this);
-		//System.out.println(state);
 	}
 	
 	@Override
@@ -21,16 +19,4 @@ public class FloorSwitch extends ObjectiveEntity {
 		
 	}
 	
-	/*@Override
-    public boolean playerWalksInto(Player player) {
-		ArrayList<Entity> findBoulder = player.findEntity(this.getX(), this.getY());
-		for (Entity e: findBoulder) {
-			if (e instanceof Boulder) {
-				this.state = true;
-				System.out.println("true");
-			}		
-		
-		}
-		return false;
-	}*/
 }
