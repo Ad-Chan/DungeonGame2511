@@ -40,7 +40,10 @@ public class Player extends Entity implements PlayerPos{
 		if (this.potionTime > 0) {
 			this.potionTime--;	
 		} else {
-			//runnable.currentThread().interrupt();
+	    	ArrayList<Enemy> enemies = this.dungeon.getAllEnemies();
+	    	for (Enemy e: enemies) {
+	    		e.setRunAway(false);
+	    	}
 		}
 	}
 	
@@ -168,6 +171,10 @@ public class Player extends Entity implements PlayerPos{
     public void activatePotion(InvincibilityPotion i) {
     	this.potionTime += i.getTime_limit();
     	this.potionTick();
+    	ArrayList<Enemy> enemies = this.dungeon.getAllEnemies();
+    	for (Enemy e: enemies) {
+    		e.setRunAway(true);
+    	}
     }
     
     public void placeBomb() {
