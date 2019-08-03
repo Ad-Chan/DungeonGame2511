@@ -63,8 +63,13 @@ public class Dungeon {
     	this.controller.removeEntity(entity);
     }
     
+    public void removeEntityLocal(Entity entity) {
+    	entities.remove(entity);
+    }
+    
     public void addToInventory(Entity entity) {
     	this.controller.removeEntity(entity);
+    	this.removeEntityLocal(entity);
     }
     
     public void addGoalList(ArrayList<GoalCondition> goalList) {
@@ -113,6 +118,12 @@ public class Dungeon {
     
     public void updateImage(Entity e) {
     	this.controller.updateImage(e);
+    }
+    
+    public void checkSwitches() {
+    	for (Entity e: entities) {
+    		
+    	}
     }
     
 }

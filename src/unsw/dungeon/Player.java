@@ -83,6 +83,10 @@ public class Player extends Entity implements PlayerPos{
     	return false;
     }
     
+    public ArrayList<Entity> findEntity(int x, int y) {
+    	return dungeon.findEntity(x, y);
+    }
+    
     public void pickupCollectables(int x, int y) {
     	ArrayList<Entity> entities = dungeon.findEntity(x, y);
     	for (Entity e: entities) {
@@ -90,6 +94,7 @@ public class Player extends Entity implements PlayerPos{
     			dungeon.addToInventory(e);
     		}
     	}
+    	dungeon.printEntities();
     }
     
     public void attackEnemy(Enemy e) { 
