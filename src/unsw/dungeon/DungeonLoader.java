@@ -200,6 +200,7 @@ public abstract class DungeonLoader {
         	for (GoalCondition g: subGoalsList) {
         		goal.addSubGoal((Goal) g);
         	}
+        	break;
         case "OR":
         	goal = new SubGoals("OR");
         	jsonSubGoals = jsonGoal.getJSONArray("subgoals");
@@ -207,6 +208,7 @@ public abstract class DungeonLoader {
         	for (GoalCondition g: subGoalsList) {
         		goal.addSubGoal((Goal) g);
         	}
+        	break;
         	
         }
         goalList.add(goal);
