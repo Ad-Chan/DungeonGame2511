@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class KeyDoorTest {
 
-	@Test
+	/*@Test
 	void createKey() {
 		Key newKey = new Key(1, 1, 2, 5, "Key");
 		assert(newKey.getX() == 1 && newKey.getY() == 1);
@@ -43,7 +43,7 @@ class KeyDoorTest {
 		assert(newKey.getKeycode() == newDoor.getKeycode());
 		newDoor.unlockDoor(newKey.getKeycode());
 		assert(newDoor.checkStrategy() == "Open");
-	}
+	}*/
 	
 
 }

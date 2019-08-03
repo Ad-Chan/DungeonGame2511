@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class DungeonTest {
 
-	@Test
+	/*@Test
 	void createDungeon() {
 		Dungeon dungeon = new Dungeon(50,50);
 		Player newP = new Player(dungeon, 0, 0, "Player");
@@ -35,7 +35,7 @@ class DungeonTest {
 		dungeon.removeEntity(newBoulder);
 		assert(dungeon.getEntity(1, 1, "Boulder") == null);
 		
-	}	
+	}	*/
 	
 	
 
