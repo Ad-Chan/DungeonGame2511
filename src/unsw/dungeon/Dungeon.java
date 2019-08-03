@@ -188,4 +188,14 @@ public class Dungeon {
     	this.player.attackEnemy(e);
     }
     
+    public ArrayList<Enemy> getAllEnemies() {
+    	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    	for (Entity e: entities) {
+    		if (e instanceof Enemy) {
+    			enemies.add((Enemy)e);
+    		}
+    	}
+    	return enemies;
+    }
+    
 }

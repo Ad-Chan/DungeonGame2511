@@ -12,6 +12,7 @@ public class Enemy extends Entity {
 	private int id;
 	private Dungeon dungeon;
 	private int health;
+	private boolean runAway;
 	public Enemy(int x, int y, int id, Dungeon dungeon) {
 		super(x, y);
 		this.id = id;
@@ -19,6 +20,7 @@ public class Enemy extends Entity {
 		timer.schedule(new moveTimer(),0,500);
 		this.dungeon = dungeon;
 		this.health = 1;
+		this.runAway = false;
 	}
 	
     public void moveUp() {
@@ -50,26 +52,33 @@ public class Enemy extends Entity {
     }
     
     public void moveEnemy(Runnable runnable) {
-    	if (this.health <= 0) {
-    		//((Timer) runnable).cancel();
+    	if (this.runAway == false) {
+	    	if (this.getPlayerX() > this.getX()) {
+	    		this.moveRight();
+	    	}
+	    	if (this.getPlayerY() > this.getY()) {
+	    		this.moveDown();
+	    	}
+	    	if (this.getPlayerX() < this.getX()) {
+	    		this.moveLeft();
+	    	}
+	    	if (this.getPlayerY() < this.getY()) {
+	    		this.moveUp();
+	    	}
+    	} else {
+	    	if (this.getPlayerX() > this.getX()) {
+	    		this.moveLeft();
+	    	}
+	    	if (this.getPlayerY() > this.getY()) {
+	    		this.moveUp();
+	    	}
+	    	if (this.getPlayerX() < this.getX()) {
+	    		this.moveRight();
+	    	}
+	    	if (this.getPlayerY() < this.getY()) {
+	    		this.moveDown();
+	    	}
     	}
-    	if (this.getPlayerX() > this.getX()) {
-    		this.moveRight();
-    		//System.out.println("Right");
-    	}
-    	if (this.getPlayerY() > this.getY()) {
-    		this.moveDown();
-    		//System.out.println("Up");
-    	}
-    	if (this.getPlayerX() < this.getX()) {
-    		this.moveLeft();
-    		//System.out.println("Left");
-    	}
-    	if (this.getPlayerY() < this.getY()) {
-    		this.moveUp();
-    		//System.out.println("Down");
-    	}
-    	
     }
     
     public void findPlayer(Dungeon dungeon) {
@@ -87,6 +96,10 @@ public class Enemy extends Entity {
     
     public void setDungeon(Dungeon dungeon) {
     	this.dungeon = dungeon;
+    }
+    
+    public void setRunAway(boolean b) {
+    	this.runAway = b;
     }
         
     
