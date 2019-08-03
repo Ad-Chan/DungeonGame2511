@@ -13,7 +13,7 @@ public class FloorSwitch extends ObjectiveEntity {
 	public void updateSwitch(Boolean b) {
 		state = b;
 		//System.out.println(this);
-		System.out.println(state);
+		//System.out.println(state);
 	}
 	
 	@Override
