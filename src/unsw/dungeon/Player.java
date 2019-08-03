@@ -152,20 +152,6 @@ public class Player extends Entity implements PlayerPos{
     
     
     public void attackEnemy(Enemy e) { 
-    	/*for (Collectable c: inventory) {  		
-    		if (c instanceof Sword) {
-    			if (((Sword)c).getHealth() > 1) {
-        			e.decrementHealth();
-    				dungeon.removeEntity(e);
-        			((Sword)c).decrementHealth();   				
-    			} else if (((Sword)c).getHealth() == 1){
-        			e.decrementHealth();
-    				dungeon.removeEntity(e);
-        			((Sword)c).decrementHealth();
-        			this.removeCollectable(c);
-    			}
-    		}
-    	}*/
     	if (this.weapon != null) {
 	    	if (this.weapon.ranged() == false) {
 	    		if (this.weapon.getHealth() > 1) {
@@ -190,20 +176,6 @@ public class Player extends Entity implements PlayerPos{
     }
     
     public void useWand() {
-    	/*if (inventory.size() > 0) {
-	    	for (Collectable c: inventory) {
-	    		if (c instanceof Wand) {
-	    			if (((Wand)c).getHealth() > 1) {
-	        			((Wand)c).decrementHealth(); 
-	        			((Wand)c).fireProjectiles(this); 
-	    			} else if (((Wand)c).getHealth() == 1){
-	        			((Wand)c).decrementHealth();
-	        			((Wand)c).fireProjectiles(this); 
-	        			this.removeCollectable(c);
-	    			}
-	    		}
-	    	}
-    	}*/
     	if (this.weapon != null) {
 	    	if (this.weapon.ranged() == true) {
 	    		if (this.weapon.getHealth() > 1) {
