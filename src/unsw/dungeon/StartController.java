@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,8 +27,6 @@ public class StartController {
     private DungeonApplication dungeonScreen;
     
     //private ChooseScreen chooseScreen;
-    
-    private ArrayList<String> levels;
     
     private String playLevel;
 
@@ -55,10 +52,6 @@ public class StartController {
     
     public void setDungeonScreen(DungeonApplication dungeonScreen) {
         this.dungeonScreen = dungeonScreen;
-    }
-    
-    public void setLevels(ArrayList<String> levels) {
-    	this.levels = levels;
     }
     
     public void setPlayLevel(String s) {

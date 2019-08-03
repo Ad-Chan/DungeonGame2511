@@ -5,11 +5,9 @@ package unsw.dungeon;
 public class FloorSwitch extends Entity {
 	
 	private boolean state;
-	private int id;
-	public FloorSwitch(int x, int y, int id) {
+	public FloorSwitch(int x, int y) {
 		super(x, y);
 		this.state = false;
-		this.id = id;
 	}
 	
 	public void updateSwitch(Boolean b) {

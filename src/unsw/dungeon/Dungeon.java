@@ -4,7 +4,6 @@
 package unsw.dungeon;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A dungeon in the interactive dungeon player.

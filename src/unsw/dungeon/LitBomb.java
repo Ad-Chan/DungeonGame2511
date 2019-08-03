@@ -2,9 +2,6 @@ package unsw.dungeon;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 
 

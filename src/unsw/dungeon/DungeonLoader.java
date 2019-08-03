@@ -84,7 +84,7 @@ public abstract class DungeonLoader {
         	entity = exit;
         	break;
         case "switch":
-        	FloorSwitch floorSwitch = new FloorSwitch(x, y, uniqueID);
+        	FloorSwitch floorSwitch = new FloorSwitch(x, y);
         	onLoad(floorSwitch, isNewEntity);
         	entity = floorSwitch;
         	uniqueID++;;
@@ -124,7 +124,7 @@ public abstract class DungeonLoader {
         	entity = door;
         	break;
         case "enemy":
-        	Enemy enemy = new Enemy(x, y, uniqueID, dungeon);
+        	Enemy enemy = new Enemy(x, y, dungeon);
         	onLoad(enemy, isNewEntity);
         	entity = enemy;
         	uniqueID++;

@@ -1,15 +1,11 @@
 package unsw.dungeon;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 
 public class DungeonApplication {
 
@@ -30,8 +26,7 @@ public class DungeonApplication {
         Parent root = loader.load();
         scene = new Scene(root);
         root.requestFocus();
-        //primaryStage.setScene(scene);
-        //primaryStage.show();    	
+   	
 	}
 
 	public void start() {

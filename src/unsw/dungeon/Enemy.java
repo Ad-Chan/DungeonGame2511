@@ -9,13 +9,11 @@ import javafx.application.Platform;
 // Enemy Class (to be modified)
 public class Enemy extends Entity {
 	
-	private int id;
 	private Dungeon dungeon;
 	private int health;
 	private boolean runAway;
-	public Enemy(int x, int y, int id, Dungeon dungeon) {
+	public Enemy(int x, int y, Dungeon dungeon) {
 		super(x, y);
-		this.id = id;
 		Timer timer = new Timer();
 		timer.schedule(new moveTimer(),0,1000);
 		this.dungeon = dungeon;
