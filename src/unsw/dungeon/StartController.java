@@ -1,16 +1,15 @@
 package unsw.dungeon;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 public class StartController {
 
@@ -18,17 +17,32 @@ public class StartController {
     private Button startButton;
     
     @FXML
+    private Button chooseLevelButton;
+    
+    @FXML
     private Button exitButton;
     
+    @FXML
+    private ChoiceBox<String> levelChoice;
+    
     private DungeonApplication dungeonScreen;
+    
+    //private ChooseScreen chooseScreen;
+    
+    private ArrayList<String> levels;
+    
+    private String playLevel;
 
     @FXML
     public void handleStartButton(ActionEvent event) throws IOException {;
-    	//dungeonScreen.start();
     	Stage stage = new Stage();
-    	String level = "";
-    	dungeonScreen = new DungeonApplication(stage, level);
+    	dungeonScreen = new DungeonApplication(stage, playLevel);
     	dungeonScreen.start();
+    }
+    
+    @FXML
+    public void handleChooseLevel(ActionEvent event) throws IOException {;
+		this.playLevel = (String) levelChoice.getValue();
     }
     
     @FXML
@@ -41,6 +55,21 @@ public class StartController {
     
     public void setDungeonScreen(DungeonApplication dungeonScreen) {
         this.dungeonScreen = dungeonScreen;
+    }
+    
+    public void setLevels(ArrayList<String> levels) {
+    	this.levels = levels;
+    }
+    
+    public void setPlayLevel(String s) {
+    	this.playLevel = s;
+    }
+    
+    public void populateChoiceBox(ArrayList<String> dungeons) {
+    	for (String s: dungeons) {
+    		levelChoice.getItems().add(s);
+    	}
+    	//setItems(FXCollections.observableArrayList(dungeons));
     }
 
 }

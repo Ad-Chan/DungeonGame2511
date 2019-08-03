@@ -13,14 +13,15 @@ import javafx.scene.image.ImageView;
 
 public class DungeonApplication {
 
-	   public Stage stage;
-	   public String title;
-	   public Scene scene;	
+	   private Stage stage;
+	   private String title;
+	   private Scene scene;	
 	
     public DungeonApplication(Stage primaryStage, String Level) throws IOException {
     	this.stage = primaryStage;
     	this.title = ("Dungeon");
-        DungeonControllerLoader dungeonLoader = new DungeonControllerLoader("advanced.json");
+    	System.out.println(Level);
+        DungeonControllerLoader dungeonLoader = new DungeonControllerLoader(Level);
         DungeonController controller = dungeonLoader.loadController();
 	    controller.setDungeonScreen(stage);
         EntityController eController = new EntityController(dungeonLoader, controller);
