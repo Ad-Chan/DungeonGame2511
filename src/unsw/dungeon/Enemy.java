@@ -48,19 +48,19 @@ public class Enemy extends Entity {
     	}
     	if (this.getPlayerX() > this.getX()) {
     		this.moveRight();
-    		System.out.println("Right");
+    		//System.out.println("Right");
     	}
     	if (this.getPlayerY() > this.getY()) {
     		this.moveDown();
-    		System.out.println("Up");
+    		//System.out.println("Up");
     	}
     	if (this.getPlayerX() < this.getX()) {
     		this.moveLeft();
-    		System.out.println("Left");
+    		//System.out.println("Left");
     	}
     	if (this.getPlayerY() < this.getY()) {
     		this.moveUp();
-    		System.out.println("Down");
+    		//System.out.println("Down");
     	}
     	
     }
