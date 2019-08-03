@@ -76,7 +76,7 @@ public class Dungeon {
     }
     
     public void addGoalList(ArrayList<GoalCondition> goalList) {
-    	goalList.equals(goalList);
+    	this.goalList.addAll(goalList);
     	return;
     }
     
@@ -158,6 +158,7 @@ public class Dungeon {
     }
     
     public boolean checkGoalCompletion() {
+    	System.out.print("goals are" + goalList);
     	for(GoalCondition g: this.goalList) {
     		System.out.println("goals");
     		if(g.getGoalStatus() == false) {
