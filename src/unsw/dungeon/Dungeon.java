@@ -138,7 +138,7 @@ public class Dungeon {
     		if (e instanceof FloorSwitch) {
     			switches = this.findEntity(e.getX(), e.getY());
     			boolean onSwitch = false;
-    			for (Entity f: switches) {    				
+    			for (Entity f: switches) { 
     				if (f instanceof Boulder) {
     					onSwitch = true;
     				}

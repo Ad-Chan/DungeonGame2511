@@ -11,6 +11,7 @@ public class FloorSwitch extends Entity {
 	
 	public void updateSwitch(Boolean b) {
 		state = b;
+		System.out.println("update");
 	}
 	
 	public boolean getState() {
@@ -20,11 +21,11 @@ public class FloorSwitch extends Entity {
 	@Override
 	public boolean objective() {
 		if (this.state == false) {
-			return false;
-		} else if (this.state == true){
 			return true;
-		} else {
+		} else if (this.state == true){
 			return false;
+		} else {
+			return true;
 		}
 	}
 }
