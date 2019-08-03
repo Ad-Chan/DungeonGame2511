@@ -30,6 +30,7 @@ public class Dungeon {
         this.entities = new ArrayList<>();
         this.player = null;
         this.controller = null;
+        this.singleGoals = new ArrayList<Goal>();
     }
 
     public int getWidth() {
