@@ -1,6 +1,10 @@
 package unsw.dungeon;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import unsw.dungeon.LitBomb.bombTimer;
 
 /**
  * The player entity
@@ -24,6 +28,27 @@ public class Player extends Entity implements PlayerPos{
         this.inventory = new ArrayList<Collectable>();
         this.observers = new ArrayList<PlayerPosObserver>();
         this.potionTime = 0;
+    }
+    
+	public void potionTick() {
+		Timer timer = new Timer();
+		timer.schedule(new potionTimer(),0,1000);	
+	}
+	
+	public void decrementPotionTime() {
+		if (this.potionTime > 0) {
+			this.potionTime--;	
+		} else {
+		}
+    	System.out.println(this.potionTime);
+	}
+	
+	class potionTimer extends TimerTask {
+
+    	@Override
+    	public void run() {
+    		decrementPotionTime();
+    	}
     }
 
     public void moveUp() {
@@ -120,6 +145,8 @@ public class Player extends Entity implements PlayerPos{
     
     public void activatePotion(InvincibilityPotion i) {
     	this.potionTime += i.getTime_limit();
+    	this.potionTick();
+    	System.out.println(this.potionTime);
     }
     
     public void placeBomb() {
