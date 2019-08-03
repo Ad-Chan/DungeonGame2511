@@ -10,7 +10,7 @@ public class LitBomb extends Entity {
 	private LitBombState state;
 	public LitBomb(int x, int y) {
 		super(x, y);
-		this.state = new LitBomb1();
+		this.state = new LitBomb3();
 		bombTick();
 	}
 	
@@ -24,23 +24,14 @@ public class LitBomb extends Entity {
 	}
 	
 	public int checkStrategy() {
-		if (this.state instanceof LitBomb1) {
-			return 1;
-		} else if (this.state instanceof LitBomb2) {
-			return 2;
-		} else if (this.state instanceof LitBomb3) {
-			return 3;
-		} else if (this.state instanceof Explode) {
-			return 4;
-		} 
-		return -1;
+		return this.state.bombState();
 	}
     
 	class bombTimer extends TimerTask {
 
     	@Override
     	public void run() {
-    		if (!(LitBomb.this.state instanceof Explode)) {
+    		if (!(LitBomb.this.state.bombState() == 4)) {
     			LitBomb.this.state.next_stage(LitBomb.this);
     		}
     	}

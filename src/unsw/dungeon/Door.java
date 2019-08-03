@@ -28,6 +28,9 @@ public class Door extends Entity{
 		this.strategy = newState;
 	}
 	
+	public boolean isUnlocked() {
+		return this.strategy.checkLock();
+	}
 	
 	@Override
 	public boolean isObstacle(int x, int y, Player p) {

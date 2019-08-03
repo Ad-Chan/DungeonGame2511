@@ -34,6 +34,7 @@ public class EntityController {
 	}
 	
 	public void updateImage(Entity e) {
+		//removeEntity(e);
 		this.dungeonLoader.updateImage(e);
 	}
 }

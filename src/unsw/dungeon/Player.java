@@ -128,7 +128,6 @@ public class Player extends Entity implements PlayerPos{
     			LitBomb newBomb = new LitBomb(this.getX(), this.getY());
     			dungeon.addEntity(newBomb);
     			this.inventory.remove(e);
-
     			break;
     		}
     	}
